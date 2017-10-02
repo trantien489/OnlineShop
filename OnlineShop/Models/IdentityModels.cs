@@ -6,12 +6,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 
 namespace OnlineShop.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public const string AdminRoleName = "Admin";
+        public const string UserRoleName = "User";
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -45,6 +49,12 @@ namespace OnlineShop.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Invoice> Invoices { get; set; }
+        public virtual DbSet<Producer> Producers { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -87,6 +97,44 @@ namespace OnlineShop.Models
             modelBuilder.Entity<Producer>().HasKey(producer => producer.Id);
 
 
+        }
+        #endregion
+
+        #region Save Changes
+        public override int SaveChanges()
+        {
+            var entries = this.ChangeTracker.Entries<BaseModel>();
+            foreach (var entry in entries)
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedDate = DateTime.Now;
+                        entry.Entity.ModifiedDate = DateTime.Now;
+                        entry.Entity.Status = true;
+                        break;
+                    case EntityState.Modified:
+                        entry.Property(x => x.CreatedDate).IsModified = false;
+                        entry.Entity.ModifiedDate = DateTime.Now;
+                        break;
+                }
+            }
+
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException.InnerException != null)
+                {
+                    throw ex.InnerException.InnerException;
+                }
+                else
+                {
+                    throw ex.InnerException;
+                }
+            }
         }
         #endregion
     }

@@ -28,6 +28,7 @@
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <Use64BitIISExpress />
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -245,6 +246,24 @@
     <Content Include="Asset\Admin\build\images\loading.gif" />
     <Content Include="Asset\Admin\build\js\custom.js" />
     <Content Include="Asset\Admin\build\js\custom.min.js" />
+    <Content Include="Asset\Admin\css\maps\jquery-jvectormap-2.0.3.css" />
+    <Content Include="Asset\Admin\images\american-express.png" />
+    <Content Include="Asset\Admin\images\cropper.jpg" />
+    <Content Include="Asset\Admin\images\img.jpg" />
+    <Content Include="Asset\Admin\images\inbox.png" />
+    <Content Include="Asset\Admin\images\mastercard.png" />
+    <Content Include="Asset\Admin\images\media.jpg" />
+    <Content Include="Asset\Admin\images\paypal.png" />
+    <Content Include="Asset\Admin\images\picture.jpg" />
+    <Content Include="Asset\Admin\images\prod-1.jpg" />
+    <Content Include="Asset\Admin\images\prod-2.jpg" />
+    <Content Include="Asset\Admin\images\prod-3.jpg" />
+    <Content Include="Asset\Admin\images\prod-4.jpg" />
+    <Content Include="Asset\Admin\images\prod-5.jpg" />
+    <Content Include="Asset\Admin\images\user.png" />
+    <Content Include="Asset\Admin\images\visa.png" />
+    <Content Include="Asset\Admin\js\datepicker\daterangepicker.js" />
+    <Content Include="Asset\Admin\js\moment\moment.min.js" />
     <Content Include="Asset\Admin\vendors\animate.css\animate.css" />
     <Content Include="Asset\Admin\vendors\animate.css\animate.min.css" />
     <Content Include="Asset\Admin\vendors\animate.css\gulpfile.js" />
@@ -4501,6 +4520,7 @@
     <Content Include="Asset\Admin\vendors\validator\.gitignore" />
     <Content Include="Asset\Admin\vendors\validator\README.md" />
     <Content Include="Asset\Admin\vendors\validator\validator.jquery.json" />
+    <None Include="Properties\PublishProfiles\OnlineShop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
