@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login, Register form</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="~/Asset/Common/Login/css/style.css">
+
+</head>
+<style>   
+.u-form-group input[type="text"]{
+  width: calc(50% - 22px);
+  height:45px;
+  outline: none;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  border-radius: 2px;
+  color: #333;
+  font-size:0.8rem;
+  -webkit-transition:all 0.1s linear;
+  -moz-transition:all 0.1s linear;
+  transition:all 0.1s linear;
+}
+</style>
+<body>
+
+    <div class="login-box" style="margin-top: 10%;">
+        <div class="lb-header">
+            <a href="#" class="active" id="login-box-link">Login</a>
+            <a href="#" id="signup-box-link">Sign Up</a>
+        </div>
+        <div class="social-login">
+            <a href="#">
+                <i class="fa fa-facebook fa-lg"></i>
+                Login in with facebook
+            </a>
+            <a href="#">
+                <i class="fa fa-google-plus fa-lg"></i>
+                log in with Google
+            </a>
+        </div>
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "email-login", role = "" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="u-form-group">
+                <input type="text" name="Username" placeholder="Username" />
+            </div>
+            <div class="u-form-group">
+                <input type="password" name="Password" placeholder="Password" />
+            </div>
+            <div class="u-form-group">
+                <button type="submit">Log in</button>
+            </div>
+            <div class="u-form-group">
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+        }
+        <form class="email-signup">
+            <div class="u-form-group">
+                <input type="email" placeholder="Email" />
+            </div>
+            <div class="u-form-group">
+                <input type="password" placeholder="Password" />
+            </div>
+            <div class="u-form-group">
+                <input type="password" placeholder="Confirm Password" />
+            </div>
+            <div class="u-form-group">
+                <button>Sign Up</button>
+            </div>
+        </form>
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="~/Asset/Common/Login/js/index.js"></script>
+</body>
+</html>

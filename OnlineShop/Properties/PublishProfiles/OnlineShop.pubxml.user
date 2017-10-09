@@ -12913,7 +12913,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/03/2014 20:33:56</publishTime>
     </File>
     <File Include="bin/OnlineShop.dll">
-      <publishTime>10/02/2017 21:58:17</publishTime>
+      <publishTime>10/07/2017 20:23:36</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>11/27/2012 13:00:52</publishTime>

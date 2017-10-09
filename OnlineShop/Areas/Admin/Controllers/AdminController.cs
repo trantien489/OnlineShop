@@ -6,12 +6,8 @@ using System.Web.Mvc;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
-    public class HomeController : AdminController
+    [Authorize(Roles ="Admin")]
+    public class AdminController: Controller
     {
-        // GET: Admin/Home
-        public ActionResult Index()
-        {
-            return View();
-        }
     }
-}
+}   
