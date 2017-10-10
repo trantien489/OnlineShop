@@ -16,7 +16,8 @@ namespace OnlineShop.Models
 
         public string MetaKeyword { get; set; }
         
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<CategoryProducer> CategoryProducers { get; set; }
+
 
     }
 }

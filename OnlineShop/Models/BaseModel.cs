@@ -29,7 +29,7 @@ namespace OnlineShop.Models
         //        mCreatedDate = value;
         //    }
         //}
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         //private DateTime mModifiedDate = new SqlDateTime(DateTime.UtcNow).Value;
         //[DataType(DataType.Date)]
@@ -44,7 +44,7 @@ namespace OnlineShop.Models
         //        mModifiedDate = value;
         //    }
         //}
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
         
 

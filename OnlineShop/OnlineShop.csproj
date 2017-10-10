@@ -210,6 +210,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProducerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -218,14 +220,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709261437421_Create-Database.cs" />
-    <Compile Include="Migrations\201709261437421_Create-Database.Designer.cs">
-      <DependentUpon>201709261437421_Create-Database.cs</DependentUpon>
+    <Compile Include="Migrations\201710091517155_Create-database.cs" />
+    <Compile Include="Migrations\201710091517155_Create-database.Designer.cs">
+      <DependentUpon>201710091517155_Create-database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710101452517_Add-table-CategoryProducer.cs" />
+    <Compile Include="Migrations\201710101452517_Add-table-CategoryProducer.Designer.cs">
+      <DependentUpon>201710101452517_Add-table-CategoryProducer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710101628084_allter-createDate-modifiedDate.cs" />
+    <Compile Include="Migrations\201710101628084_allter-createDate-modifiedDate.Designer.cs">
+      <DependentUpon>201710101628084_allter-createDate-modifiedDate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryProducer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceDetail.cs" />
@@ -4523,6 +4534,8 @@
     <Content Include="Asset\Admin\vendors\validator\.gitignore" />
     <Content Include="Asset\Admin\vendors\validator\README.md" />
     <Content Include="Asset\Admin\vendors\validator\validator.jquery.json" />
+    <Content Include="Areas\Admin\Views\User\ListUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Producer\Index.cshtml" />
     <None Include="Properties\PublishProfiles\OnlineShop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -4585,16 +4598,22 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709261437421_Create-Database.resx">
-      <DependentUpon>201709261437421_Create-Database.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Asset\Admin\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
     <TypeScriptCompile Include="Asset\Admin\vendors\moment\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710091517155_Create-database.resx">
+      <DependentUpon>201710091517155_Create-database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710101452517_Add-table-CategoryProducer.resx">
+      <DependentUpon>201710101452517_Add-table-CategoryProducer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710101628084_allter-createDate-modifiedDate.resx">
+      <DependentUpon>201710101628084_allter-createDate-modifiedDate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

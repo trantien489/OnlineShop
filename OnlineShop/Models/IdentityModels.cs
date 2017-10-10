@@ -39,6 +39,7 @@ namespace OnlineShop.Models
         [Required]
         public DateTime JoinDate { get; set; }
 
+        public string Image { get; set; }
 
         public virtual ICollection<Invoice> Invoices { get; set; }
     }
@@ -55,6 +56,8 @@ namespace OnlineShop.Models
         public virtual DbSet<Producer> Producers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public virtual DbSet<CategoryProducer> CategoryProducers { get; set; }
+
 
         public static ApplicationDbContext Create()
         {
@@ -81,15 +84,20 @@ namespace OnlineShop.Models
             //modelbuilder.entity<invoicedetail>().hasmany(invoicedetail => invoicedetail.products)
             //    .withoptional().hasforeignkey(invoicedetail => invoicedetail.productid);
 
-            modelBuilder.Entity<Product>().HasKey(product => product.Id)
-                .HasRequired(product => product.Category)
-                .WithMany(category => category.Products)
-                .HasForeignKey(product => product.CategoryId);
+            modelBuilder.Entity<CategoryProducer>().HasKey(CategoryProducer => CategoryProducer.Id)
+                .HasRequired(CategoryProducer => CategoryProducer.Producer)
+                .WithMany(producers => producers.CategoryProducers)
+                .HasForeignKey(CategoryProducer => CategoryProducer.ProducerId);
 
-            modelBuilder.Entity<Product>()
-                .HasRequired(product => product.Producer)
-                .WithMany(producer => producer.Products)
-                .HasForeignKey(product => product.ProducerId);
+            modelBuilder.Entity<CategoryProducer>()
+               .HasRequired(CategoryProducer => CategoryProducer.Category)
+               .WithMany(category => category.CategoryProducers)
+               .HasForeignKey(CategoryProducer => CategoryProducer.CategoryId);
+
+            modelBuilder.Entity<Product>().HasKey(product => product.Id)
+                .HasRequired(product => product.CategoryProducer)
+                .WithMany(CategoryProducer => CategoryProducer.Products)
+                .HasForeignKey(product => product.CategoryProducerId);
 
             modelBuilder.Entity<Category>().HasKey(category => category.Id);
 

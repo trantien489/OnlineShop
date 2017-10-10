@@ -178,5 +178,7 @@ D:\Study\OnlineShop\OnlineShop\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Study\OnlineShop\OnlineShop\bin\Microsoft.Owin.Security.Google.xml
 D:\Study\OnlineShop\OnlineShop\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Study\OnlineShop\OnlineShop\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.CreateDatabase.resources
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.Createdatabase.resources
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.GenerateResource.Cache
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.AddtableCategoryProducer.resources
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.alltercreateDatemodifiedDate.resources

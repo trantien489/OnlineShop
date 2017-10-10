@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SANH SÁCH NHÀ SẢN XUẤT</h2>
+
+<table id="myGrid" class="">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+</table>
+
+@section Script {
+    <script>
+        $(document).ready(function () {
+            $('#myGrid').DataTable({
+                "ajax": {
+                    "url": "/Admin/Producer/GetProducers/",
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "Id" },
+                    { "data": "Name" },
+                    { "data": "Image" },              
+                ]
+            });
+        });
+    </script>
+}

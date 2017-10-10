@@ -17,6 +17,7 @@ namespace OnlineShop.Models
         [StringLength(100)]
         public string Image { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<CategoryProducer> CategoryProducers { get; set; }
+
     }
 }

@@ -26,9 +26,7 @@ namespace OnlineShop.Models
 
         public int? ImageId { get; set; }
 
-        public int CategoryId { get; set; }
-
-        public int ProducerId { get; set; }
+        public int CategoryProducerId { get; set; }
 
         public int? Quantity { get; set; }
 
@@ -44,10 +42,7 @@ namespace OnlineShop.Models
 
         public int? ViewCount { get; set; }
 
-        public virtual Category Category { get; set; }
-
-        public virtual Producer Producer { get; set; }
-
+        public virtual CategoryProducer CategoryProducer { get; set; }
 
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }

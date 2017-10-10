@@ -7,13 +7,13 @@ namespace OnlineShop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class CreateDatabase : IMigrationMetadata
+    public sealed partial class alltercreateDatemodifiedDate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(alltercreateDatemodifiedDate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201709261437421_Create-Database"; }
+            get { return "201710101628084_allter-createDate-modifiedDate"; }
         }
         
         string IMigrationMetadata.Source
