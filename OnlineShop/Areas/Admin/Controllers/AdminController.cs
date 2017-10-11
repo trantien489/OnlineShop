@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
+using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +13,17 @@ namespace OnlineShop.Areas.Admin.Controllers
     public class AdminController: Controller
     {
         #region OwinContext
-        private OwinContext mOwinContext;
-        protected OwinContext OwinContext
+        protected ApplicationDbContext mDbContext;
+        protected ApplicationDbContext DbContext
         {
             get
             {
-                if (mOwinContext == null)
+                if (mDbContext == null)
                 {
-                    mOwinContext = new Microsoft.Owin.OwinContext();
+                    mDbContext = this.HttpContext.GetOwinContext().Get<ApplicationDbContext>();
                 }
 
-                return mOwinContext;
+                return mDbContext;
             }
         }
         #endregion

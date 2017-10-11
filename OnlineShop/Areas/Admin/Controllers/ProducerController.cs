@@ -21,10 +21,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             try
             {
-                var context = this.OwinContext.Get<ApplicationDbContext>();
-                var a = context.Producers.ToList();
-                var b = context.Set<Producer>().ToList();
-                return Json(context.Producers, JsonRequestBehavior.AllowGet);
+                return Json(DbContext.Producers.ToList(), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
