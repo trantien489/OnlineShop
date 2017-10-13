@@ -6,12 +6,13 @@
 
 <h2>SANH SÁCH NHÀ SẢN XUẤT</h2>
 
-<table id="myGrid" class="table">
+<table id="myGrid" class="table" >
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Image</th>
+            <th>Tên</th>
+            <th>Hình</th>
+            <th>Thao tác</th>
         </tr>
     </thead>
 </table>
@@ -19,7 +20,7 @@
 @section Script {
     <script>
         $(document).ready(function () {
-            $('#myGrid').DataTable({
+             var editor = $('#myGrid').DataTable({
                 "ajax": {
                     "url": "/Admin/Producer/GetProducers/",
                     "dataSrc": ""
@@ -28,8 +29,53 @@
                     
                     { "data": "Id" },
                     { "data": "Name" },
-                    { "data": "Image" },              
+                    { "data": "Image" },   
+                    {
+                        data: null,
+                        className: "center",
+                        defaultContent: '<a href="" class="editor_edit">Edit</a> / <a href="" class="editor_remove">Delete</a>'
+                    }
                 ]
+            });
+
+
+            //var table = $('#myGrid').DataTable();
+            //$('#myGrid tbody').on('click', 'tr', function () {
+            //    var data = table.row(this).data().Id;
+            //    console.log();
+            //    alert(data);
+                
+            //});
+
+            // New record
+            $('a.editor_create').on('click', function (e) {
+                e.preventDefault();
+
+                editor.create({
+                    title: 'Create new record',
+                    buttons: 'Add'
+                });
+            });
+
+            // Edit record
+            $('#myGrid').on('click', 'a.editor_edit', function (e) {
+                e.preventDefault();
+
+                editor.edit($(this).closest('tr'), {
+                    title: 'Edit record',
+                    buttons: 'Update'
+                });
+            });
+
+            // Delete a record
+            $('#myGrid').on('click', 'a.editor_remove', function (e) {
+                e.preventDefault();
+
+                editor.remove($(this).closest('tr'), {
+                    title: 'Delete record',
+                    message: 'Are you sure you wish to remove this record?',
+                    buttons: 'Delete'
+                });
             });
         });
     </script>
