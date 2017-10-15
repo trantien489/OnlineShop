@@ -275,3 +275,4 @@ D:\Tien\My Project\OnlineShop\obj\Debug\OnlineShop.csproj.GenerateResource.Cache
 D:\Tien\My Project\OnlineShop\obj\Debug\OnlineShop.csproj.CoreCompileInputs.cache
 D:\Tien\My Project\OnlineShop\obj\Debug\OnlineShop.dll
 D:\Tien\My Project\OnlineShop\obj\Debug\OnlineShop.pdb
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.CoreCompileInputs.cache

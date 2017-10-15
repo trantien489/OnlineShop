@@ -89,8 +89,8 @@ namespace OnlineShop.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng");
+                    return View("LoginCustom", model);
             }
         }
 

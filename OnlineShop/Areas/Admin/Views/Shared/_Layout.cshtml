@@ -24,6 +24,8 @@
     <link href="~/Asset/Admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="~/Asset/Admin/build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Asset/Admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Asset/Admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -331,6 +333,9 @@
     <!-- Datatable -->
     <script src="~/Asset/Admin//vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/Asset/Admin//vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Asset/Admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Asset/Admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    @RenderSection("Script", true)
+    
 </body>
 </html>
-@RenderSection("Script",true)

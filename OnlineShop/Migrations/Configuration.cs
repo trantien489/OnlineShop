@@ -53,9 +53,9 @@
                 
             };
 
-            manager.Create(user, "Abc123456!");
+            manager.Create(user, "tien123");
 
-            var result = manager.Find(user.UserName, "Abc123456!"); 
+            var result = manager.Find(user.UserName, "tien123"); 
             manager.AddToRole(result.Id, "Admin");
             #endregion
 
