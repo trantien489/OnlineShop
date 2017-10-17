@@ -18,25 +18,30 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(string name, HttpPostedFileBase image)
+        public JsonResult Add(string name, IEnumerable<HttpPostedFileBase> image)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    string _FileName = Path.GetFileName(image.FileName);
-                    var index = _FileName.LastIndexOf('.');
-                    var filename = Guid.NewGuid().ToString() + _FileName.Substring(index, _FileName.Count() - index);
-                    var ImagePath = Server.MapPath("~/Photos/Producer");
-                    if (!System.IO.File.Exists(ImagePath))
-                    {
-                        Directory.CreateDirectory(ImagePath);
-                    }
-                    string _path = Path.Combine(ImagePath, filename);
-                    image.SaveAs(_path);
+                    var file = image.FirstOrDefault();
                     var producer = new Producer();
+                    if (file != null)
+                    {
+                        string _FileName = Path.GetFileName(file.FileName);
+                        var index = _FileName.LastIndexOf('.');
+                        var filename = Guid.NewGuid().ToString() + _FileName.Substring(index, _FileName.Count() - index);
+                        var ImagePath = Server.MapPath("~/Photos/Producer");
+                        if (!System.IO.Directory.Exists(ImagePath))
+                        {
+                            Directory.CreateDirectory(ImagePath);
+                        }
+                        string _path = Path.Combine(ImagePath, filename);
+                        file.SaveAs(_path);
+                        producer.Image = filename;
+                    }
+
                     producer.Name = name;
-                    producer.Image = _path;
                     var data = DbContext.Producers.Add(producer);
                     DbContext.SaveChanges();
                     return Json(new

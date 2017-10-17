@@ -1,5 +1,25 @@
 ﻿function Add() {
-    alert();;
+    //$("#AddForm").ajaxSubmit({ url: '~/admin/producer/add', type: 'post' })
+    var formdata = new FormData();
+    formdata.append('name', $('#name').val());
+    formdata.append('image', document.getElementById('image').files[0]);
+    //formdata.append('name', $('input[type="text"]').value);
+    //formdata.append('image', $('input[type="file"]').files);
+
+    console.log(formdata.values());
+    $.ajax({
+        type: "POST",
+        url: '../admin/producer/add',
+        data: formdata,
+        contentType: false,
+        processData: false,
+        method: 'POST',
+        type: 'POST',
+        success: function (data) {
+            console.log(data);
+        }
+    });
+
 }
 $(document).ready(function () {
 
@@ -14,18 +34,22 @@ $(document).ready(function () {
             { "data": "Id" },
             { "data": "Name" },
             {
-                data: "Image",
-                render: function (file_id) {
-                    return file_id ?
-                        '<img src="' + editor.file('files', file_id).web_path + '"/>' :
-                        null;
+                //data: "Image",
+                //render: function (file_id) {
+                //    return file_id ?
+                //        '<img src="' + editor.file('files', file_id).web_path + '"/>' :
+                //        null;
+                //},
+                "data": "Image",
+                "render": function(data, type, row) {
+                    return '<img width="40" src="../Photos/Producer/'+data+'"/>';
                 },
                 defaultContent: "No image",
             },
             {
                 data: null,
                 className: "center",
-                defaultContent: '<a href="" class="editor_edit">Edit</a> / <a href="" class="editor_remove">Delete</a>'
+                defaultContent: '<a href="" class="editor_edit">Sửa</a> / <a href="" class="editor_remove">Xóa</a>'
             },
         ],
         initComplete: function () {
@@ -42,26 +66,19 @@ $(document).ready(function () {
     //    });
     //});
 
-    //// Edit record
-    //$('#myGrid').on('click', 'a.editor_edit', function (e) {
-    //    e.preventDefault();
+    // Edit record
+    $('#myGrid').on('click', 'a.editor_edit', function (e) {
+        e.preventDefault();
 
-    //    editor.edit($(this).closest('tr'), {
-    //        title: 'Edit record',
-    //        buttons: 'Update'
-    //    });
-    //});
+      
+    });
 
-    //// Delete a record
-    //$('#myGrid').on('click', 'a.editor_remove', function (e) {
-    //    e.preventDefault();
+    // Delete a record
+    $('#myGrid').on('click', 'a.editor_remove', function (e) {
+        e.preventDefault();
 
-    //    editor.remove($(this).closest('tr'), {
-    //        title: 'Delete record',
-    //        message: 'Are you sure you wish to remove this record?',
-    //        buttons: 'Delete'
-    //    });
-    //});
+       
+    });
 
     
 
