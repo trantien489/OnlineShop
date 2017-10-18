@@ -10,7 +10,6 @@ function Add() {
         if (data != null) {
             formdata.append('image', data);
         }
-        console.log(formdata.values());
         $.ajax({
             type: "POST",
             url: '../admin/producer/add',
@@ -29,7 +28,7 @@ function Add() {
 
 }
 
-function Delete(Id) {
+function Delete() {
     $.ajax({
         type: "POST",
         url: '../admin/producer/delete/' + id,
@@ -44,6 +43,35 @@ function Delete(Id) {
     });
 }
 
+function Update() {
+    if ($('#Updatename').val() == '') {
+        $('#EditModalMessage').html("Điền tên hãng sản xuất");
+    }
+    else {
+        var formdata = new FormData();
+        formdata.append('id', id);
+        formdata.append('name', $('#Updatename').val());
+        var data = document.getElementById('Updateimage2');
+        if (data != null) {
+            formdata.append('image', data.files[0]);
+        }
+        $.ajax({
+            type: "POST",
+            url: '../admin/producer/update',
+            data: formdata,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            success: function (data) {
+                $('#EditAlertModal').modal('hide');
+                $('#message').html(data.error);
+                $('#AlertModal').modal('show');
+                table.ajax.reload();
+            }
+        });
+    }
+}
+
 $(document).ready(function () {
     table = $('#myGrid').DataTable({
         dom: 'l<"toolbar">frtip',
@@ -56,12 +84,6 @@ $(document).ready(function () {
             { "data": "Id" },
             { "data": "Name" },
             {
-                //data: "Image",
-                //render: function (file_id) {
-                //    return file_id ?
-                //        '<img src="' + editor.file('files', file_id).web_path + '"/>' :
-                //        null;
-                //},
                 "data": "Image",
                 "render": function(data, type, row) {
                     return '<img width="40" src="../Photos/Producer/'+data+'"/>';
@@ -79,21 +101,15 @@ $(document).ready(function () {
         }
     });
    
-    //$('a.editor_create').on('click', function (e) {
-    //    e.preventDefault();
-
-    //    editor.create({
-    //        title: 'Create new record',
-    //        buttons: 'Add'
-    //    });
-    //});
 
     // Edit record
     $('#myGrid').on('click', 'a.editor_edit', function (e) {
         e.preventDefault();
         var data = table.row($(this).parents('tr')).data();
-        console.log(data.Id);
-      
+        id = data.Id;
+        $('#Updatename').val(data.Name);
+        $('#Updateimage').attr("src", "../Photos/Producer/" + data.Image);
+        $('#EditAlertModal').modal('show');
     });
 
     // Delete a record
@@ -105,17 +121,5 @@ $(document).ready(function () {
 
 
     });
-
-
-    
-
-    //var table = $('#myGrid').DataTable();
-    //$('#myGrid tbody').on('click', 'tr', function () {
-    //    var data = table.row(this).data().Id;
-    //    console.log();
-    //    alert(data);
-
-    //});
-
    
 });

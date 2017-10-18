@@ -93,6 +93,54 @@ namespace OnlineShop.Areas.Admin.Controllers
             return null;
         }
 
+        [HttpPost]
+        public JsonResult Update(int id, string name, IEnumerable<HttpPostedFileBase> image)
+        {
+
+            try
+            {
+                var producer = DbContext.Producers.Find(id);
+                if (producer != null)
+                {
+                    if (image != null)
+                    {
+                        var file = image.FirstOrDefault();
+                        string _FileName = Path.GetFileName(file.FileName);
+                        var index = _FileName.LastIndexOf('.');
+                        var filename = Guid.NewGuid().ToString() +
+                                       _FileName.Substring(index, _FileName.Count() - index);
+                        var ImagePath = Server.MapPath("~/Photos/Producer");
+                        if (!System.IO.Directory.Exists(ImagePath))
+                        {
+                            Directory.CreateDirectory(ImagePath);
+                        }
+                        string _path = Path.Combine(ImagePath, filename);
+                        file.SaveAs(_path);
+                        System.IO.File.Delete(Path.Combine(ImagePath, producer.Image));
+                        producer.Image = filename;
+                    }
+                    producer.Name = name;
+                    DbContext.SaveChanges();
+                    return Json(new
+                    {
+                        result = "Success",
+                        data = producer
+                    });
+                }
+                
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    result = "Fail",
+                    error = e.ToString()
+                });
+            }
+            return null;
+        }
+
+
         [HttpGet]
         public JsonResult GetProducers()
         {
