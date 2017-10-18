@@ -24,13 +24,14 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 try
                 {
-                    var file = image.FirstOrDefault();
                     var producer = new Producer();
-                    if (file != null)
+                    if (image != null)
                     {
+                        var file = image.FirstOrDefault();
                         string _FileName = Path.GetFileName(file.FileName);
                         var index = _FileName.LastIndexOf('.');
-                        var filename = Guid.NewGuid().ToString() + _FileName.Substring(index, _FileName.Count() - index);
+                        var filename = Guid.NewGuid().ToString() +
+                                       _FileName.Substring(index, _FileName.Count() - index);
                         var ImagePath = Server.MapPath("~/Photos/Producer");
                         if (!System.IO.Directory.Exists(ImagePath))
                         {
@@ -54,7 +55,8 @@ namespace OnlineShop.Areas.Admin.Controllers
                 {
                     return Json(new
                     {
-                        result = "Fail", error = e.ToString()
+                        result = "Fail",
+                        error = e.ToString()
                     });
                 }
             }
@@ -62,6 +64,34 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         }
 
+        [HttpDelete]
+        public JsonResult Delete(int id)
+        {
+            if (id != null)
+            {
+                try
+                {
+                    var item = DbContext.Producers.Find(id);
+                    var data = DbContext.Producers.Remove(item);
+                    DbContext.SaveChanges();
+                    return Json(new
+                    {
+                        result = "Success",
+                        data = data
+                    });
+                }
+                catch (Exception e)
+                {
+                    return Json(new
+                    {
+                        result = "Fail",
+                        data = e.ToString()
+                    });
+                }
+
+            }
+            return null;
+        }
 
         [HttpGet]
         public JsonResult GetProducers()

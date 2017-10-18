@@ -22,7 +22,7 @@
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -51,6 +51,7 @@
                         </div>
                     </div>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <span id="AddModalMessage" style="color: red; margin-left:30%"> </span>
                     <div style="float:right">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                         <button type="button" onclick="Add();" class="btn btn-primary">Lưu</button>
@@ -59,6 +60,45 @@
             </div>
             <div class="modal-footer">
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+            </div>
+            <div class="x_content">
+               <h2 id="message" style="padding-left:5%"> Success </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DeleteAlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+            </div>
+            <div class="x_content">
+                <h2 id="message" style="padding-left:5%"> Bạn muốn xóa mục này? </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Delete()">Yes</button>
             </div>
         </div>
     </div>

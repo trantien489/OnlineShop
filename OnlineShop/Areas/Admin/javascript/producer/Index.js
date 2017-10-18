@@ -1,29 +1,51 @@
-﻿function Add() {
-    //$("#AddForm").ajaxSubmit({ url: '~/admin/producer/add', type: 'post' })
-    var formdata = new FormData();
-    formdata.append('name', $('#name').val());
-    formdata.append('image', document.getElementById('image').files[0]);
-    //formdata.append('name', $('input[type="text"]').value);
-    //formdata.append('image', $('input[type="file"]').files);
-
-    console.log(formdata.values());
-    $.ajax({
-        type: "POST",
-        url: '../admin/producer/add',
-        data: formdata,
-        contentType: false,
-        processData: false,
-        method: 'POST',
-        type: 'POST',
-        success: function (data) {
-            console.log(data);
+﻿var table;
+var id;
+function Add() {
+    if ($('#name').val() == '') {
+        $('#AddModalMessage').html("Điền tên hãng sản xuất");
+    } else {
+        var formdata = new FormData();
+        formdata.append('name', $('#name').val());
+        var data = document.getElementById('image').files[0];
+        if (data != null) {
+            formdata.append('image', data);
         }
-    });
+        console.log(formdata.values());
+        $.ajax({
+            type: "POST",
+            url: '../admin/producer/add',
+            data: formdata,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            success: function (data) {
+                $('#AddModal').modal('hide');
+                $('#message').html(data.result);
+                $('#AlertModal').modal('show');
+                table.ajax.reload();
+            }
+        });
+    }
 
 }
-$(document).ready(function () {
 
-    $('#myGrid').DataTable({
+function Delete(Id) {
+    $.ajax({
+        type: "POST",
+        url: '../admin/producer/delete/' + id,
+        contentType: false,
+        processData: false,
+        method: 'DELETE',
+        success: function (data) {
+            $('#message').html(data.result);
+            $('#AlertModal').modal('show');
+            table.ajax.reload();
+        }
+    });
+}
+
+$(document).ready(function () {
+    table = $('#myGrid').DataTable({
         dom: 'l<"toolbar">frtip',
         "ajax": {
             "url": "/Admin/Producer/GetProducers/",
@@ -53,7 +75,7 @@ $(document).ready(function () {
             },
         ],
         initComplete: function () {
-            $("div.toolbar").html('<br><button class="btn btn-outline-info" type="button" style="margin-right:90%; margin-top:5px" id="any_button" data-toggle="modal" data-target="#myModal">Thêm</button></br>');
+            $("div.toolbar").html('<br><button class="btn btn-outline-info" type="button" style="margin-right:90%; margin-top:5px" id="any_button" data-toggle="modal" data-target="#AddModal">Thêm</button></br>');
         }
     });
    
@@ -69,16 +91,21 @@ $(document).ready(function () {
     // Edit record
     $('#myGrid').on('click', 'a.editor_edit', function (e) {
         e.preventDefault();
-
+        var data = table.row($(this).parents('tr')).data();
+        console.log(data.Id);
       
     });
 
     // Delete a record
     $('#myGrid').on('click', 'a.editor_remove', function (e) {
         e.preventDefault();
+        var data = table.row($(this).parents('tr')).data();
+        id = data.Id;
+        $('#DeleteAlertModal').modal('show');
 
-       
+
     });
+
 
     
 
