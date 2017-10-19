@@ -74,7 +74,9 @@ function Update() {
 
 $(document).ready(function () {
     table = $('#myGrid').DataTable({
-        dom: 'l<"toolbar">frtip',
+        //dom: 'l<"toolbar">frtip',
+        dom: 'l<"br">Bfrtip',
+        
         "ajax": {
             "url": "/Admin/Producer/GetProducers/",
             "dataSrc": ""
@@ -92,28 +94,38 @@ $(document).ready(function () {
             },
             {
                 data: null,
-                className: "center",
-                defaultContent: '<a href="" class="editor_edit">Sửa</a> / <a href="" class="editor_remove">Xóa</a>'
+                className: "center", 
+                defaultContent: '<i class="fa fa-edit fa-2x" style="cursor:pointer"></i> &nbsp&nbsp<i class="fa fa-trash-o fa-2x" style="cursor:pointer"></i>'
             },
         ],
+        buttons: [
+            {
+                text: 'Thêm <i class="fa fa fa-plus"></i>',
+                action: function (e, dt, node, config) {
+                    $('#AddModal').modal('show');
+                }
+            }
+        ],
         initComplete: function () {
-            $("div.toolbar").html('<br><button class="btn btn-outline-info" type="button" style="margin-right:90%; margin-top:5px" id="any_button" data-toggle="modal" data-target="#AddModal">Thêm</button></br>');
+            //$("div.toolbar").html('<br><button class="btn btn-outline-info" type="button" style="margin-right:90%; margin-top:5px" id="any_button" data-toggle="modal" data-target="#AddModal">Thêm</button></br>');
+            $("div.br").html('<br></br>');
+
         }
     });
    
 
     // Edit record
-    $('#myGrid').on('click', 'a.editor_edit', function (e) {
+    $('#myGrid').on('click', 'i.fa-edit', function (e) {
         e.preventDefault();
         var data = table.row($(this).parents('tr')).data();
-        id = data.Id;
+        id = data.Id; 
         $('#Updatename').val(data.Name);
         $('#Updateimage').attr("src", "../Photos/Producer/" + data.Image);
         $('#EditAlertModal').modal('show');
     });
 
     // Delete a record
-    $('#myGrid').on('click', 'a.editor_remove', function (e) {
+    $('#myGrid').on('click', 'i.fa-trash-o', function (e) {
         e.preventDefault();
         var data = table.row($(this).parents('tr')).data();
         id = data.Id;

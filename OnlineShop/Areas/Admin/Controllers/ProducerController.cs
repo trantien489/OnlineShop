@@ -18,7 +18,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(string name, IEnumerable<HttpPostedFileBase> image)
+        public JsonResult Add(string name, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -27,8 +27,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                     var producer = new Producer();
                     if (image != null)
                     {
-                        var file = image.FirstOrDefault();
-                        string _FileName = Path.GetFileName(file.FileName);
+                        string _FileName = Path.GetFileName(image.FileName);
                         var index = _FileName.LastIndexOf('.');
                         var filename = Guid.NewGuid().ToString() +
                                        _FileName.Substring(index, _FileName.Count() - index);
@@ -38,7 +37,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                             Directory.CreateDirectory(ImagePath);
                         }
                         string _path = Path.Combine(ImagePath, filename);
-                        file.SaveAs(_path);
+                        image.SaveAs(_path);
                         producer.Image = filename;
                     }
 
@@ -94,18 +93,17 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(int id, string name, IEnumerable<HttpPostedFileBase> image)
+        public JsonResult Update(int id, string name, HttpPostedFileBase image)
         {
 
             try
             {
                 var producer = DbContext.Producers.Find(id);
-                if (producer != null)
+                if (producer != null )
                 {
                     if (image != null)
                     {
-                        var file = image.FirstOrDefault();
-                        string _FileName = Path.GetFileName(file.FileName);
+                        string _FileName = Path.GetFileName(image.FileName);
                         var index = _FileName.LastIndexOf('.');
                         var filename = Guid.NewGuid().ToString() +
                                        _FileName.Substring(index, _FileName.Count() - index);
@@ -115,7 +113,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                             Directory.CreateDirectory(ImagePath);
                         }
                         string _path = Path.Combine(ImagePath, filename);
-                        file.SaveAs(_path);
+                        image.SaveAs(_path);
                         System.IO.File.Delete(Path.Combine(ImagePath, producer.Image));
                         producer.Image = filename;
                     }
