@@ -70,25 +70,7 @@
         </div>
     </div>
 </div>
-<!--Alert Modal -->
-<div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-            </div>
-            <div class="x_content">
-                <h2 id="message" style="padding-left:5%"> Success </h2>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- Delete  Modal -->
 <div class="modal fade" id="DeleteAlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -100,7 +82,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
             </div>
             <div class="x_content">
-                <h2 id="message" style="padding-left:5%"> Bạn muốn xóa mục này? </h2>
+                <h2 style="padding-left:5%"> Bạn muốn xóa mục này? </h2>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
@@ -145,6 +127,28 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                 <button type="button" onclick="Update();" class="btn btn-primary">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Alert Modal -->
+<div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width:30%; margin:10px auto;display:table">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+            </div>
+            <div class="x_content">
+                <div style="margin:0 auto; display:table">
+                <img src="" id="alerticon" style="width:50px" /> <h2 id="message"></h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>

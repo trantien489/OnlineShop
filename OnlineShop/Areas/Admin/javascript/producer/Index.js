@@ -19,9 +19,17 @@ function Add() {
             method: 'POST',
             success: function (data) {
                 $('#AddModal').modal('hide');
-                $('#message').html(data.result);
+                if (data.result == "Success") {
+                    $('#message').html(data.result);
+                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                }
+                else {
+                    $('#message').html(data.error);
+                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                }
                 $('#AlertModal').modal('show');
                 table.ajax.reload();
+                
             }
         });
     }
@@ -30,15 +38,25 @@ function Add() {
 
 function Delete() {
     $.ajax({
-        type: "POST",
+       // type: "GET",
         url: '../admin/producer/delete/' + id,
         contentType: false,
         processData: false,
-        method: 'DELETE',
+        method: 'GET',
         success: function (data) {
-            $('#message').html(data.result);
+            $('#DeleteAlertModal').modal('hide');
+            if (data.result == "Success") {
+                $('#message').html(data.result);
+                $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+            }
+            else {
+                $('#message').html(data.error);
+                $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+            }
+
             $('#AlertModal').modal('show');
             table.ajax.reload();
+            console.log(data.data);
         }
     });
 }
@@ -64,7 +82,14 @@ function Update() {
             method: 'POST',
             success: function (data) {
                 $('#EditAlertModal').modal('hide');
-                $('#message').html(data.error);
+                if (data.result == "Success") {
+                    $('#message').html(data.result);
+                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                }
+                else {
+                    $('#message').html(data.error);
+                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                }
                 $('#AlertModal').modal('show');
                 table.ajax.reload();
             }
@@ -87,8 +112,8 @@ $(document).ready(function () {
             { "data": "Name" },
             {
                 "data": "Image",
-                "render": function(data, type, row) {
-                    return '<img width="40" src="../Photos/Producer/'+data+'"/>';
+                "render": function (data, type, row) {
+                    return data!=null ?'<img width="40" src="../Photos/Producer/'+data+'"/>': "Không có ảnh";
                 },
                 defaultContent: "No image",
             },
@@ -102,6 +127,9 @@ $(document).ready(function () {
             {
                 text: 'Thêm <i class="fa fa fa-plus"></i>',
                 action: function (e, dt, node, config) {
+                    //$('#name').val("");
+                    //document.getElementById('image').value = "";
+                    $('#AddForm')[0].reset();
                     $('#AddModal').modal('show');
                 }
             }
@@ -112,7 +140,6 @@ $(document).ready(function () {
 
         }
     });
-   
 
     // Edit record
     $('#myGrid').on('click', 'i.fa-edit', function (e) {
@@ -120,7 +147,8 @@ $(document).ready(function () {
         var data = table.row($(this).parents('tr')).data();
         id = data.Id; 
         $('#Updatename').val(data.Name);
-        $('#Updateimage').attr("src", "../Photos/Producer/" + data.Image);
+        data.Image != null ? $('#Updateimage').attr("src", "../Photos/Producer/" + data.Image) : "";
+        document.getElementById('Updateimage2').value = "";
         $('#EditAlertModal').modal('show');
     });
 

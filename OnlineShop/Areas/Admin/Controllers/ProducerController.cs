@@ -63,7 +63,7 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpGet]
         public JsonResult Delete(int id)
         {
             if (id != null)
@@ -71,13 +71,19 @@ namespace OnlineShop.Areas.Admin.Controllers
                 try
                 {
                     var item = DbContext.Producers.Find(id);
-                    var data = DbContext.Producers.Remove(item);
+                    item.Status = false;
+                    if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        var ImagePath = Server.MapPath("~/Photos/Producer");
+                        System.IO.File.Delete(Path.Combine(ImagePath, item.Image));
+                        item.Image = null;
+                    }
                     DbContext.SaveChanges();
                     return Json(new
                     {
                         result = "Success",
-                        data = data
-                    });
+                        data = item
+                    }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)
                 {
@@ -85,7 +91,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                     {
                         result = "Fail",
                         data = e.ToString()
-                    });
+                    }, JsonRequestBehavior.AllowGet);
                 }
 
             }
@@ -114,7 +120,11 @@ namespace OnlineShop.Areas.Admin.Controllers
                         }
                         string _path = Path.Combine(ImagePath, filename);
                         image.SaveAs(_path);
-                        System.IO.File.Delete(Path.Combine(ImagePath, producer.Image));
+                        if (!string.IsNullOrEmpty(producer.Image))
+                        {
+                            System.IO.File.Delete(Path.Combine(ImagePath, producer.Image));
+
+                        }
                         producer.Image = filename;
                     }
                     producer.Name = name;
@@ -144,7 +154,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             try
             {
-                return Json(DbContext.Producers.ToList(), JsonRequestBehavior.AllowGet);
+                return Json(DbContext.Producers.Where(p => p.Status == true).ToList(), JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
