@@ -210,6 +210,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProducerController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\javascript\category\index.js" />
     <Content Include="Areas\Admin\javascript\producer\Index.js" />
     <Content Include="Asset\Admin\build\css\custom.css" />
     <Content Include="Asset\Admin\build\css\custom.min.css" />
@@ -3725,6 +3727,7 @@
     <Content Include="Asset\Admin\vendors\validator\index.html" />
     <Content Include="Asset\Admin\vendors\validator\multifield.js" />
     <Content Include="Asset\Admin\vendors\validator\validator.js" />
+    <Content Include="Asset\Common\js\jquery.validate.min.js" />
     <Content Include="Asset\Common\Login\css\style.css" />
     <Content Include="Asset\Common\Login\js\index.js" />
     <Content Include="Asset\Common\Photos\Fail.png" />
@@ -4577,6 +4580,7 @@
     <Content Include="Asset\Admin\vendors\validator\validator.jquery.json" />
     <Content Include="Areas\Admin\Views\User\ListUser.cshtml" />
     <Content Include="Areas\Admin\Views\Producer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <None Include="Properties\PublishProfiles\OnlineShop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
