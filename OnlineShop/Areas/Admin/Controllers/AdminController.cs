@@ -22,7 +22,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 {
                     mDbContext = this.HttpContext.GetOwinContext().Get<ApplicationDbContext>();
                 }
-
+                mDbContext.Configuration.ProxyCreationEnabled = false;
                 return mDbContext;
             }
         }

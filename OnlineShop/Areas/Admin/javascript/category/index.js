@@ -1,14 +1,22 @@
-﻿$(document).ready(function () {
+﻿var table;
+$(document).ready(function () {
     table = $('#myGrid').DataTable({
         dom: 'l<"br">Bfrtip',
 
         "ajax": {
             "url": "/Admin/Category/GetCategories/",
+            "dataSrc": ""
         },
         "columns": [
+
             { "data": "Id" },
             { "data": "Name" },
-            { "data": "Producers[, ]" }
+            { "data": "Producers[, ]" },
+            {
+                data: null,
+                className: "center",
+                defaultContent: '<i class="fa fa-edit fa-2x" style="cursor:pointer"></i> &nbsp&nbsp<i class="fa fa-trash-o fa-2x" style="cursor:pointer"></i>'
+            },
         ],
         buttons: [
             {
@@ -19,9 +27,9 @@
                 }
             }
         ],
-        initComplete: function (data) {
+        initComplete: function () {
             $("div.br").html('<br></br>');
-            
+
         }
     });
 

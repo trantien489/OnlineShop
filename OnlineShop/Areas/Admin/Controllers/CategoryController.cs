@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -19,17 +20,18 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             try
             {
-                var data = DbContext.Categories.Where(c => c.Status == true).ToList();
-                var response = data.Select(x => new {
+                var data = DbContext.Categories.Include(c => c.CategoryProducers).Where(c => c.Status == true).ToList();
+                var response = data.Select(x => new
+                {
                     Id = x.Id,
                     Name = x.Name,
                     //Producers = x.CategoryProducers.Select(p => new {
                     //    //producerId = p.Producer.Id,
                     //    producerName = p.Producer.Name
                     //} )
-                    Producers = new int[] { 1, 2, 3 }
-                });
-               return Json(response, JsonRequestBehavior.AllowGet);
+                    Producers = x.CategoryProducers.Select(a => a.Producer.Name)
+                }).ToList();
+                return Json(response, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {

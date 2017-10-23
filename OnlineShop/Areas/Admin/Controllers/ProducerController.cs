@@ -154,7 +154,9 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             try
             {
-                return Json(DbContext.Producers.Where(p => p.Status == true).ToList(), JsonRequestBehavior.AllowGet);
+
+                var data = DbContext.Producers.Where(p => p.Status == true).ToList();
+                return Json(data, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
