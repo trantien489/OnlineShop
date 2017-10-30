@@ -1,4 +1,5 @@
 ﻿var table;
+var id;
 function LoadCheckboxProducer(){
     $.ajax({
         type: "GET",
@@ -10,16 +11,42 @@ function LoadCheckboxProducer(){
             if (data != null) {
                 var html = "";
                 $.each(data, function (key, value) {
-                    html +=  "<div style='margin-bottom:5px'>";
-                    html +=       "<div class='icheckbox_flat-green checked' style='position: relative;'>";
-                    html +=           " <input type='checkbox' class='flat' checked='' style='position: absolute; opacity: 0;'>";
-                    html +=       "</div> " + value.Name;
+                    html += "<div style='margin-bottom:5px'>";
+                    html +=      "<input type='checkbox' id ='ProducerAddCheckbox' value = '"+value.Id+"'> " + value.Name;
                     html += "</div>";
                 });
-                $("#CheckboxProducer").html(html);
+                $("#CheckboxProducer").append(html);
             }
         }
     });
+}
+
+function Add() {
+    var i = 0;
+    var arr = [];
+    $('#ProducerAddCheckbox:checked').each(function () {
+        arr[i++] = $(this).val();
+    });
+    var name = $('#name').val();
+    $.ajax({
+        type: "POST",
+        url: '../admin/category/add/',
+        data: { "name" :name, "producersId" : arr},
+        success: function (data) {
+            $('#AddModal').modal('hide');
+            if (data.result == "Success") {
+                $('#message').html(data.result);
+                $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+            }
+            else {
+                $('#message').html(data.error);
+                $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+            }
+            $('#AlertModal').modal('show');
+            table.ajax.reload();
+        }
+    });
+    
 }
 $(document).ready(function () {
     table = $('#myGrid').DataTable({
@@ -37,7 +64,7 @@ $(document).ready(function () {
             {
                 data: null,
                 className: "center",
-                defaultContent: '<i class="fa fa-edit fa-2x" style="cursor:pointer"></i> &nbsp&nbsp<i class="fa fa-trash-o fa-2x" style="cursor:pointer"></i>'
+                defaultContent: '<button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </button>'
             },
         ],
         buttons: [
@@ -56,18 +83,44 @@ $(document).ready(function () {
     });
 
     // Edit record
-    $('#myGrid').on('click', 'i.fa-edit', function (e) {
+    $('#myGrid').on('click', '.btn-info', function (e) {
         e.preventDefault();
         var data = table.row($(this).parents('tr')).data();
         id = data.Id;
-        $('#Updatename').val(data.Name);
-        data.Image != null ? $('#Updateimage').attr("src", "../Photos/Producer/" + data.Image) : "";
-        document.getElementById('Updateimage2').value = "";
-        $('#EditAlertModal').modal('show');
+        $('#UpdateName').val(data.Name);
+        Producers = data.Producers;
+        $.ajax({
+            type: "GET",
+            url: '../Admin/Producer/GetProducers/',
+            method: 'GET',
+            success: function (data) {
+                var check;
+                if (data != null) {
+                    var html = "";
+                    $.each(data, function (key, value) {
+                        $.each(Producers, function (i, value2) {
+                            if (value2.Id == value.Id) {
+                                check = true;
+                                return false;
+                            }
+                        });
+                        html += "<div style='margin-bottom:5px'>";
+                        if (check == true) {
+                            html += "<input type='checkbox'  id ='ProducerUpdateCheckbox' value = '" + value.Id + "' checked> " + value.Name;
+                        } else {
+                            html += "<input type='checkbox' id ='ProducerUpdateCheckbox' value = '" + value.Id + "'> " + value.Name;
+                        }
+                        html += "</div>";
+                    });
+                    $("#UpdateCheckboxProducer").html(html);
+                }
+            }
+        });
+        $('#UpdateModal').modal('show');
     });
 
     // Delete a record
-    $('#myGrid').on('click', 'i.fa-trash-o', function (e) {
+    $('#myGrid').on('click', '.btn-danger', function (e) {
         e.preventDefault();
         var data = table.row($(this).parents('tr')).data();
         id = data.Id;

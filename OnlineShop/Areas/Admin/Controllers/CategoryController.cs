@@ -25,9 +25,9 @@ namespace OnlineShop.Areas.Admin.Controllers
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    Producers = x.CategoryProducers.Where(c => c.Status == true).Select(a => new{
-                        Name = DbContext.Producers.Find(a.Id).Name,
-                        Id = a.Id
+                    Producers = x.CategoryProducers.Where(c => c.Status == true).Select(a => new {
+                        Name = DbContext.Producers.Find(a.ProducerId).Name,
+                        Id = a.ProducerId
                     })
                 }).ToList();
                 return Json(response, JsonRequestBehavior.AllowGet);
@@ -39,7 +39,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(string name)
+        public JsonResult Add(string name, int[] producersId)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -48,6 +48,13 @@ namespace OnlineShop.Areas.Admin.Controllers
                     var cate = new Category();
                     cate.Name = name;
                     var data = DbContext.Categories.Add(cate);
+                    foreach (var id in producersId)
+                    {
+                        var item = new CategoryProducer();
+                        item.CategoryId = data.Id;
+                        item.ProducerId = id;
+                        DbContext.CategoryProducers.Add(item);
+                    }
                     DbContext.SaveChanges();
                     return Json(new
                     {
