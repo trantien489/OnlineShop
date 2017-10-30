@@ -20,16 +20,15 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             try
             {
-                var data = DbContext.Categories.Include(c => c.CategoryProducers).Where(c => c.Status == true).ToList();
+                var data = DbContext.Categories.Where(c => c.Status == true).Include(c => c.CategoryProducers).ToList();
                 var response = data.Select(x => new
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    //Producers = x.CategoryProducers.Select(p => new {
-                    //    //producerId = p.Producer.Id,
-                    //    producerName = p.Producer.Name
-                    //} )
-                    Producers = x.CategoryProducers.Select(a => a.Producer.Name)
+                    Producers = x.CategoryProducers.Where(c => c.Status == true).Select(a => new{
+                        Name = DbContext.Producers.Find(a.Id).Name,
+                        Id = a.Id
+                    })
                 }).ToList();
                 return Json(response, JsonRequestBehavior.AllowGet);
             }

@@ -1,4 +1,26 @@
 ﻿var table;
+function LoadCheckboxProducer(){
+    $.ajax({
+        type: "GET",
+        url: '../Admin/Producer/GetProducers/',
+        contentType: false,
+        processData: false,
+        method: 'GET',
+        success: function (data) {
+            if (data != null) {
+                var html = "";
+                $.each(data, function (key, value) {
+                    html +=  "<div style='margin-bottom:5px'>";
+                    html +=       "<div class='icheckbox_flat-green checked' style='position: relative;'>";
+                    html +=           " <input type='checkbox' class='flat' checked='' style='position: absolute; opacity: 0;'>";
+                    html +=       "</div> " + value.Name;
+                    html += "</div>";
+                });
+                $("#CheckboxProducer").html(html);
+            }
+        }
+    });
+}
 $(document).ready(function () {
     table = $('#myGrid').DataTable({
         dom: 'l<"br">Bfrtip',
@@ -11,7 +33,7 @@ $(document).ready(function () {
 
             { "data": "Id" },
             { "data": "Name" },
-            { "data": "Producers[, ]" },
+            { "data": "Producers[, ].Name" },
             {
                 data: null,
                 className: "center",
@@ -53,5 +75,5 @@ $(document).ready(function () {
 
 
     });
-
+    LoadCheckboxProducer();
 });
