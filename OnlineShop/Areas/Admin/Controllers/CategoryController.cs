@@ -59,7 +59,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                     return Json(new
                     {
                         result = "Success",
-                        data = data
+                        data = ""
                     });
                 }
                 catch (Exception e)
@@ -76,9 +76,9 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(int id, string name)
+        public JsonResult Update(int id, string name, int[] producersId)
         {
-            if (!string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(name) || producersId.Count() == 0)
             {
                 try
                 {
@@ -86,11 +86,22 @@ namespace OnlineShop.Areas.Admin.Controllers
                     if (cate != null)
                     {
                         cate.Name = name;
+                        var categoryProducers = DbContext.CategoryProducers.Where(c => c.CategoryId == id).ToList();
+                        DbContext.CategoryProducers.RemoveRange(categoryProducers);
+                        foreach (var item in producersId)
+                        {
+                            DbContext.CategoryProducers.Add(new CategoryProducer()
+                            {
+                                CategoryId = cate.Id,
+                                ProducerId = item
+                            });
+                        }
                         DbContext.SaveChanges();
+
                         return Json(new
                         {
                             result = "Success",
-                            data = cate
+                            data = ""
                         });
                     }
                     
@@ -118,13 +129,17 @@ namespace OnlineShop.Areas.Admin.Controllers
                     var cate = DbContext.Categories.Find(id);
                     if (cate != null)
                     {
-                        cate.Status = false;
+                        var categoryProducers = DbContext.CategoryProducers.Where(c => c.CategoryId == id).ToList();
+                        DbContext.CategoryProducers.RemoveRange(categoryProducers);
+
+                        DbContext.Categories.Remove(cate);
+
                         DbContext.SaveChanges();
                         return Json(new
                         {
                             result = "Success",
-                            data = cate
-                        });
+                            data = ""
+                        }, JsonRequestBehavior.AllowGet);
                     }
                 }
                 catch (Exception e)

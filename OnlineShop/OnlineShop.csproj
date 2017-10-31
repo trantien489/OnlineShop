@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201710101628084_allter-createDate-modifiedDate.Designer.cs">
       <DependentUpon>201710101628084_allter-createDate-modifiedDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710311502044_update-table-Product.cs" />
+    <Compile Include="Migrations\201710311502044_update-table-Product.Designer.cs">
+      <DependentUpon>201710311502044_update-table-Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -3727,6 +3731,7 @@
     <Content Include="Asset\Admin\vendors\validator\index.html" />
     <Content Include="Asset\Admin\vendors\validator\multifield.js" />
     <Content Include="Asset\Admin\vendors\validator\validator.js" />
+    <Content Include="Asset\Common\css\loader.css" />
     <Content Include="Asset\Common\js\jquery.validate.min.js" />
     <Content Include="Asset\Common\Login\css\style.css" />
     <Content Include="Asset\Common\Login\js\index.js" />
@@ -4633,7 +4638,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Asset\Common\css\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -4659,6 +4663,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710101628084_allter-createDate-modifiedDate.resx">
       <DependentUpon>201710101628084_allter-createDate-modifiedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710311502044_update-table-Product.resx">
+      <DependentUpon>201710311502044_update-table-Product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

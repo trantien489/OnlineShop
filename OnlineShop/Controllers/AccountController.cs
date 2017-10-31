@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineShop.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace OnlineShop.Controllers
 {
@@ -82,7 +83,18 @@ namespace OnlineShop.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        var user = new ClaimsPrincipal(AuthenticationManager.AuthenticationResponseGrant.Identity);
+                        if (user.IsInRole("Admin"))
+                        {
+                            return RedirectToLocal("~/admin/producer");
+                        }
+                        else 
+                        {
+                            return RedirectToLocal(returnUrl);
+                        }
+
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

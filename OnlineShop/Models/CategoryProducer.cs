@@ -15,6 +15,5 @@ namespace OnlineShop.Models
 
         public virtual Producer Producer { get; set; } 
 
-        public ICollection<Product> Products { get; set; }
     }
 }

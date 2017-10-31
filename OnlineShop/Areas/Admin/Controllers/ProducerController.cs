@@ -78,6 +78,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                         System.IO.File.Delete(Path.Combine(ImagePath, item.Image));
                         item.Image = null;
                     }
+                    DbContext.CategoryProducers.RemoveRange(DbContext.CategoryProducers.Where(c => c.ProducerId == id));
                     DbContext.SaveChanges();
                     return Json(new
                     {

@@ -94,10 +94,10 @@ namespace OnlineShop.Models
                .WithMany(category => category.CategoryProducers)
                .HasForeignKey(CategoryProducer => CategoryProducer.CategoryId);
 
-            modelBuilder.Entity<Product>().HasKey(product => product.Id)
-                .HasRequired(product => product.CategoryProducer)
-                .WithMany(CategoryProducer => CategoryProducer.Products)
-                .HasForeignKey(product => product.CategoryProducerId);
+            modelBuilder.Entity<Product>().HasKey(product => product.Id);
+                //.HasRequired(product => product.CategoryProducer)
+                //.WithMany(CategoryProducer => CategoryProducer.Products)
+                //.HasForeignKey(product => product.CategoryProducerId);
 
             modelBuilder.Entity<Category>().HasKey(category => category.Id);
 

@@ -15,7 +15,7 @@ function LoadCheckboxProducer(){
                     html +=      "<input type='checkbox' id ='ProducerAddCheckbox' value = '"+value.Id+"'> " + value.Name;
                     html += "</div>";
                 });
-                $("#CheckboxProducer").append(html);
+                $("#CheckboxProducer").html(html);
             }
         }
     });
@@ -28,12 +28,67 @@ function Add() {
         arr[i++] = $(this).val();
     });
     var name = $('#name').val();
+    if (name == '' || arr.length == 0) {
+        $('#AddModalMessage').html("Hãy nhập đầy đủ thông tin");
+    } else {
+        $.ajax({
+            type: "POST",
+            url: '../admin/category/add/',
+            data: { "name": name, "producersId": arr },
+            success: function (data) {
+                $('#AddModal').modal('hide');
+                if (data.result == "Success") {
+                    $('#message').html(data.result);
+                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                }
+                else {
+                    $('#message').html(data.error);
+                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                }
+                $('#AlertModal').modal('show');
+                table.ajax.reload();
+            }
+        });
+    }
+}
+
+function Update() {
+    var name = $('#UpdateName').val();
+    var i = 0;
+    var arr = [];
+    $('#ProducerUpdateCheckbox:checked').each(function () {
+        arr[i++] = $(this).val();
+    });
+    if (name == '' || arr.length == 0) {
+        $('#UpdateModalMessage').html("Hãy nhập đầy đủ thông tin");
+    } else {
+        $('#UpdateModal').modal('hide');
+        $.ajax({
+            type: "POST",
+            url: '../admin/category/update/',
+            data: {"id":id, "name": name, "producersId": arr },
+            success: function (data) {
+                if (data.result == "Success") {
+                    $('#message').html(data.result);
+                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                }
+                else {
+                    $('#message').html(data.error);
+                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                }
+                $('#AlertModal').modal('show');
+                table.ajax.reload();
+            }
+        });
+    }
+}
+function Delete() {
+    $('#DeleteAlertModal').modal('hide');
     $.ajax({
-        type: "POST",
-        url: '../admin/category/add/',
-        data: { "name" :name, "producersId" : arr},
+        type: "GET",
+        url: '../admin/category/delete/',
+        data: { "id": id},
         success: function (data) {
-            $('#AddModal').modal('hide');
             if (data.result == "Success") {
                 $('#message').html(data.result);
                 $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
@@ -46,8 +101,8 @@ function Add() {
             table.ajax.reload();
         }
     });
-    
 }
+
 $(document).ready(function () {
     table = $('#myGrid').DataTable({
         dom: 'l<"br">Bfrtip',
@@ -72,6 +127,7 @@ $(document).ready(function () {
                 text: 'Thêm <i class="fa fa fa-plus"></i>',
                 action: function (e, dt, node, config) {
                     $('#AddForm')[0].reset();
+                    $('#AddModalMessage').html("");
                     $('#AddModal').modal('show');
                 }
             }
@@ -81,6 +137,11 @@ $(document).ready(function () {
 
         }
     });
+    table.on('order.dt search.dt', function () {
+        table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
 
     // Edit record
     $('#myGrid').on('click', '.btn-info', function (e) {
@@ -94,10 +155,11 @@ $(document).ready(function () {
             url: '../Admin/Producer/GetProducers/',
             method: 'GET',
             success: function (data) {
-                var check;
+                
                 if (data != null) {
                     var html = "";
                     $.each(data, function (key, value) {
+                        var check;
                         $.each(Producers, function (i, value2) {
                             if (value2.Id == value.Id) {
                                 check = true;
@@ -116,6 +178,7 @@ $(document).ready(function () {
                 }
             }
         });
+        $('#UpdateModalMessage').html("");
         $('#UpdateModal').modal('show');
     });
 
@@ -128,5 +191,6 @@ $(document).ready(function () {
 
 
     });
+
     LoadCheckboxProducer();
 });

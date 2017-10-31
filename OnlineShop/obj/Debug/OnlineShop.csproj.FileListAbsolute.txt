@@ -276,3 +276,4 @@ D:\Tien\My Project\OnlineShop\obj\Debug\OnlineShop.csproj.CoreCompileInputs.cach
 D:\Tien\My Project\OnlineShop\obj\Debug\OnlineShop.dll
 D:\Tien\My Project\OnlineShop\obj\Debug\OnlineShop.pdb
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.CoreCompileInputs.cache
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.updatetableProduct.resources
