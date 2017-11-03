@@ -119,7 +119,7 @@ $(document).ready(function () {
             {
                 data: null,
                 className: "center",
-                defaultContent: '<button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </button>'
+                defaultContent: '<button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Sửa </button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </button>'
             },
         ],
         buttons: [

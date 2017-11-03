@@ -212,6 +212,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProducerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -254,6 +255,7 @@
   <ItemGroup>
     <Content Include="Areas\Admin\javascript\category\index.js" />
     <Content Include="Areas\Admin\javascript\producer\Index.js" />
+    <Content Include="Areas\Admin\javascript\product\Index.js" />
     <Content Include="Asset\Admin\build\css\custom.css" />
     <Content Include="Asset\Admin\build\css\custom.min.css" />
     <Content Include="Asset\Admin\build\images\back_disabled.png" />
@@ -4586,6 +4588,7 @@
     <Content Include="Areas\Admin\Views\User\ListUser.cshtml" />
     <Content Include="Areas\Admin\Views\Producer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <None Include="Properties\PublishProfiles\OnlineShop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

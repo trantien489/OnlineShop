@@ -3,27 +3,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@*
-<link href="~/Asset/Common/css/loader.css" rel="stylesheet" />
-<div class="windows8">
-    <div class="wBall" id="wBall_1">
-        <div class="wInnerBall"></div>
-    </div>
-    <div class="wBall" id="wBall_2">
-        <div class="wInnerBall"></div>
-    </div>
-    <div class="wBall" id="wBall_3">
-        <div class="wInnerBall"></div>
-    </div>
-    <div class="wBall" id="wBall_4">
-        <div class="wInnerBall"></div>
-    </div>
-    <div class="wBall" id="wBall_5">
-        <div class="wInnerBall"></div>
-    </div>
-</div>*@
 
-<h2>DANH SÁCH DANH MỤC</h2>
+
+<h2>DANH SÁCH SẢN PHẨM</h2>
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -33,8 +15,10 @@
                     <thead>
                         <tr>
                             <th>Stt</th>
-                            <th>Tên danh mục</th>
+                            <th>Tên sản phẩm</th>
                             <th>Tên hãng</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
@@ -120,7 +104,7 @@
                             Tên danh mục <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="UpdateName" id="UpdateName"  class="form-control col-md-7 col-xs-12" required>
+                            <input type="text" name="UpdateName" id="UpdateName" class="form-control col-md-7 col-xs-12" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -163,11 +147,7 @@
         </div>
     </div>
 </div>
-
 @section Script {
-    <script src="~/Areas/Admin/javascript/category/index.js"></script>
-}
-
-
-
+<script src="~/Areas/Admin/javascript/product/Index.js"></script>
+    }
 
