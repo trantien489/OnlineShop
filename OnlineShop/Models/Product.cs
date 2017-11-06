@@ -38,6 +38,9 @@ namespace OnlineShop.Models
         [Column(TypeName = "ntext")]
         public string Detail { get; set; }
 
+        [Column(TypeName = "ntext")]
+        public string Information { get; set; }
+
         public int? ViewCount { get; set; }
 
         public int? CategoryId { get; set; }

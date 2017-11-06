@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201710311502044_update-table-Product.Designer.cs">
       <DependentUpon>201710311502044_update-table-Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711051531190_add-information-inProduct.cs" />
+    <Compile Include="Migrations\201711051531190_add-information-inProduct.Designer.cs">
+      <DependentUpon>201711051531190_add-information-inProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -3733,6 +3737,7 @@
     <Content Include="Asset\Admin\vendors\validator\index.html" />
     <Content Include="Asset\Admin\vendors\validator\multifield.js" />
     <Content Include="Asset\Admin\vendors\validator\validator.js" />
+    <Content Include="Asset\Common\ckeditor5-build-classic\ckeditor.js" />
     <Content Include="Asset\Common\css\loader.css" />
     <Content Include="Asset\Common\js\jquery.validate.min.js" />
     <Content Include="Asset\Common\Login\css\style.css" />
@@ -4589,6 +4594,9 @@
     <Content Include="Areas\Admin\Views\Producer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Asset\Common\ckeditor5-build-classic\ckeditor.js.map" />
+    <Content Include="Asset\Common\ckeditor5-build-classic\LICENSE.md" />
+    <Content Include="Asset\Common\ckeditor5-build-classic\README.md" />
     <None Include="Properties\PublishProfiles\OnlineShop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -4669,6 +4677,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710311502044_update-table-Product.resx">
       <DependentUpon>201710311502044_update-table-Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711051531190_add-information-inProduct.resx">
+      <DependentUpon>201711051531190_add-information-inProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

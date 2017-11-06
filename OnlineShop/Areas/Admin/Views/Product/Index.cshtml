@@ -35,24 +35,77 @@
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Thêm mới danh mục</h4>
+                <h4 class="modal-title" id="myModalLabel">Thêm mới sản phẩm</h4>
             </div>
             <div class="modal-body">
                 <form id="AddForm" method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                            Tên danh mục <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Tên danh mục
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" name="name" id="name" required class="form-control col-md-7 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12" id="">
+                            <select id="SelectCategory" style="margin-top: 7px">
+                                <!--Load Category-->
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">
                             Tên hãng
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12" id="CheckboxProducer">
-                            <!--Load checkbox Producers-->
+                        <div class="col-md-6 col-sm-6 col-xs-12" id="">
+                            <select id="SelectProducer" style="margin-top: 7px">
+
+                                <!--Load select Producer-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Tên sản phẩm <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="Name" id="Name" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Số lượng <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" name="Quantity" id="Quantity" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Giá <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" name="Price" id="Price" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Hình ảnh <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" name="Image" id="Image" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Thông tin sản phẩm <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <textarea name="Information" id="Information"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Chi tiết <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                            <textarea name="Deatail" id="Deatail"></textarea>
                         </div>
                     </div>
                     <span id="AddModalMessage" style="color: red; margin-left:30%"> </span>
@@ -148,6 +201,6 @@
     </div>
 </div>
 @section Script {
-<script src="~/Areas/Admin/javascript/product/Index.js"></script>
-    }
+    <script src="~/Areas/Admin/javascript/product/Index.js"></script>
+}
 
