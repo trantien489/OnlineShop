@@ -1,5 +1,6 @@
 ﻿var table;
 var editor;
+var currentData;
 function LoadModalAddProduct() {
     // Load select category
     $.ajax({
@@ -38,12 +39,16 @@ function LoadModalAddProduct() {
     });
 
 
-    // load Ckeditor
+     //load Ckeditor
     //editor = ClassicEditor
-    // .create(document.querySelector('#Deatail'))
+    // .create(document.querySelector('#Detail'))
+    // .then(editor => {
+    //     console.log(editor);
+    // })
     // .catch(error => {
     //     console.error(error);
     // });
+    //editor.setData('<p>Some text.</p>');
 }
 function Add() {
     var name = $('#Name').val();
@@ -52,9 +57,10 @@ function Add() {
     var information = $('#Information').val();
     var categoryId = $("#SelectCategory option:selected").val();
     var producerId = $("#SelectProducer option:selected").val();
+    var image = $('#Image').val();
     
-
-    if (name == '' || quantity == '' || price == '' || information == '' ) {
+    
+    if (name == '' || quantity == '' || price == '' || information == ''|| image =='' ) {
         $('#AddModalMessage').html("Hãy điền đầy đủ thông tin");
     } else {
         var formdata = new FormData();
@@ -71,25 +77,38 @@ function Add() {
         }
         $.ajax({
             type: "POST",
-            url: '../admin/product/add',
-            data: formdata,
-            contentType: false,
-            processData: false,
+            url: '../admin/product/CheckProductExist',
+            data: {"name":name},
             success: function (data) {
-                $('#AddModal').modal('hide');
-                if (data.result == "Success") {
-                    $('#message').html(data.result);
-                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                if (data) {
+                    $('#AddModalMessage').html("Sản phẩm đã tồn tại, không thể thêm mới");
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '../admin/product/add',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            $('#AddModal').modal('hide');
+                            if (data.result == "Success") {
+                                $('#message').html(data.result);
+                                $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                            }
+                            else {
+                                $('#message').html(data.error);
+                                $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                            }
+                            $('#AlertModal').modal('show');
+                            table.ajax.reload();
+
+                        }
+                    });
                 }
-                else {
-                    $('#message').html(data.error);
-                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
-                }
-                $('#AlertModal').modal('show');
-                table.ajax.reload();
 
             }
         });
+        
     }
 }
 $(document).ready(function () {
@@ -137,38 +156,58 @@ $(document).ready(function () {
     // Edit record
     $('#myGrid').on('click', '.btn-info', function (e) {
         e.preventDefault();
+        $('#UpdateForm')[0].reset();
         var data = table.row($(this).parents('tr')).data();
-        id = data.Id;
-        $('#UpdateName').val(data.Name);
-        Producers = data.Producers;
+        currentData = data;
+        // Load select category
         $.ajax({
             type: "GET",
-            url: '../Admin/Producer/GetProducers/',
+            url: '../Admin/category/GetCategories/',
+            contentType: false,
+            processData: false,
             method: 'GET',
             success: function (data) {
-
                 if (data != null) {
                     var html = "";
                     $.each(data, function (key, value) {
-                        var check;
-                        $.each(Producers, function (i, value2) {
-                            if (value2.Id == value.Id) {
-                                check = true;
-                                return false;
-                            }
-                        });
-                        html += "<div style='margin-bottom:5px'>";
-                        if (check == true) {
-                            html += "<input type='checkbox'  id ='ProducerUpdateCheckbox' value = '" + value.Id + "' checked> " + value.Name;
+                        if (value.Id == currentData.CategoryId) {
+                            html += "<option value='" + value.Id + "' selected>" + value.Name + "</option>";
                         } else {
-                            html += "<input type='checkbox' id ='ProducerUpdateCheckbox' value = '" + value.Id + "'> " + value.Name;
+                            html += "<option value='" + value.Id + "'>" + value.Name + "</option>";
                         }
-                        html += "</div>";
                     });
-                    $("#UpdateCheckboxProducer").html(html);
+                    $("#UpdateSelectCategory").html(html);
                 }
             }
         });
+        // Load select producer
+        $.ajax({
+            type: "GET",
+            url: '../Admin/producer/GetProducers/',
+            contentType: false,
+            processData: false,
+            method: 'GET',
+            success: function (data) {
+                if (data != null) {
+                    var html = "";
+                    $.each(data, function (key, value) {
+                        if (value.Id == currentData.ProducerId) {
+                            html += "<option value='" + value.Id + "' selected>" + value.Name + "</option>";
+                        } else {
+                            html += "<option value='" + value.Id + "'>" + value.Name + "</option>";
+                        }
+                    });
+                    $("#UpdateSelectProducer").html(html);
+                }
+            }
+        });
+        $('#UpdateName').val(currentData.Name);
+        $('#UpdateQuantity').val(currentData.Quantity);
+        $('#UpdatePrice').val(currentData.PriceInt);
+        $('#UpdateInformation').val(currentData.Information);
+        $('#UpdateDetail').val(currentData.Detail);
+        currentData.Image != null ? $('#UpdateimageView').attr("src", "../Photos/Product/" + currentData.Image) : "";
+
         $('#UpdateModalMessage').html("");
         $('#UpdateModal').modal('show');
     });
@@ -179,10 +218,22 @@ $(document).ready(function () {
         var data = table.row($(this).parents('tr')).data();
         id = data.Id;
         $('#DeleteAlertModal').modal('show');
-
-
     });
 
+    // View a record
+    $('#myGrid').on('click', '.btn-primary', function (e) {
+        e.preventDefault();
+        var data = table.row($(this).parents('tr')).data();
+        currentData = data;
+        $('#DetailProductImage').attr("src", "../Photos/Product/" + data.Image);
+        $('#DetailName').html(data.Name);
+        $('#DetailProducer').html(data.Producer);
+        $('#DetailCategory').html(data.Category);
+        $('#DetailPrice').html(data.Price);
+        $('#DetailInformation').html(data.Information);
+
+        $('#ViewDetaiModal').modal('show');
+    });
     LoadModalAddProduct();
     // editor.setData('<p>Some text.</p>');
 

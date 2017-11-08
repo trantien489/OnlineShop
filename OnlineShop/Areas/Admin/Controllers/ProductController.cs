@@ -31,11 +31,15 @@ namespace OnlineShop.Areas.Admin.Controllers
                     Id = p.Id,
                     Name = p.ProductName,
                     Producer = DbContext.Producers.Find(p.ProducerId) != null ? DbContext.Producers.Find(p.ProducerId).Name : "",
+                    Category = DbContext.Categories.Find(p.CategoryId) != null ? DbContext.Categories.Find(p.CategoryId).Name : "",
                     Quantity = p.Quantity,
-                    Price = p.Price.Value.ToString("N0"),
+                    Price = p.Price.Value.ToString("N0")+" VND",
+                    PriceInt = p.Price.Value,
                     ProducerId = p.ProducerId,
                     CategoryId = p.CategoryId,
-                    Image = p.Image
+                    Image = p.Image,
+                    Detail = p.Detail,
+                    Information = p.Information
                 }).ToList();
                 return Json(resultProduct, JsonRequestBehavior.AllowGet);
             }
@@ -87,7 +91,68 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public bool CheckProductExist(string name)
+        {
+            try
+            {
+                var product = DbContext.Products.FirstOrDefault(p => p.ProductName == name);
+                if (product == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
+        [HttpPost]
+        public JsonResult Update(Product model, HttpPostedFileBase Image)
+        {
+            try
+            {
+                if (Image != null)
+                {
+                    string _FileName = Path.GetFileName(Image.FileName);
+                    var index = _FileName.LastIndexOf('.');
+                    var filename = Guid.NewGuid().ToString() +
+                                   _FileName.Substring(index, _FileName.Count() - index);
+                    var ImagePath = Server.MapPath("~/Photos/Product");
+                    if (!System.IO.Directory.Exists(ImagePath))
+                    {
+                        Directory.CreateDirectory(ImagePath);
+                    }
+                    string _path = Path.Combine(ImagePath, filename);
+                    Image.SaveAs(_path);
+                    if (!string.IsNullOrEmpty(model.Image))
+                    {
+                        System.IO.File.Delete(Path.Combine(ImagePath, model.Image));
+
+                    }
+                    model.Image = filename;
+                }
+                DbContext.SaveChanges();
+                return Json(new
+                {
+                    result = "Success",
+                    data = model
+                });
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    result = "Fail",
+                    error = e.ToString()
+                });
+            }
+        }
     }
    
 }
