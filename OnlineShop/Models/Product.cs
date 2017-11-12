@@ -16,7 +16,6 @@ namespace OnlineShop.Models
             this.InvoiceDetails = new HashSet<InvoiceDetail>();
         }
 
-
         [Required]
         [StringLength(100)]
         public string ProductName { get; set; }

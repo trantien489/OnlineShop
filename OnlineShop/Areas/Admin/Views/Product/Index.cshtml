@@ -29,7 +29,7 @@
 </div>
 <!--Add Modal-->
 <div class="modal fade bs-example-modal-lg" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog ">
+    <div class="modal-dialog modal-lg ">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">
@@ -94,15 +94,15 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                            Thông tin sản phẩm <span class="required">*</span>
+                            Thông số kỹ thuật <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
                             <textarea name="Information" id="Information"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                            Chi tiết <span class="required">*</span>
+                            Chi tiết <span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                             <textarea name="Deatail" id="Detail"></textarea>
@@ -142,7 +142,7 @@
 
 <!--Update Alert Modal -->
 <div class="modal fade bs-example-modal-lg" id="UpdateModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog ">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">
@@ -207,17 +207,17 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                            Thông tin sản phẩm <span class="required">*</span>
+                            Thông số kỹ thuật <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
                             <textarea name="Information" id="UpdateInformation"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                            Chi tiết <span class="required">*</span>
+                            Chi tiết <span class="required"></span>
                         </label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
                             <textarea name="Deatail" id="UpdateDetail"></textarea>
                         </div>
                     </div>
@@ -276,11 +276,13 @@
                         <p>Danh mục: <span id="DetailCategory"></span> </p>
                         <p>Hãng sản xuất: <span id="DetailProducer"></span> </p>
                         <p>Giá: <span id="DetailPrice"></span></p>
-                        <p>Thông tin: <span id="DetailInformation"></span> </p>
+                        <p>Thông số kỹ thuật: <span id="DetailInformation"></span> </p>
                     </div>
                 </div>
                 <div class="row" style="padding-left:3%">
-                    <h3 id="DetailDetail">Chi tiết</h3>
+                    <h3>Chi tiết</h3>
+                    <span id="DetailDetail"></span>
+
                 </div>
             </div>
             <div class="modal-footer">

@@ -1,4 +1,5 @@
-﻿using OnlineShop.Models;
+﻿using MiscUtil.Reflection;
+using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -54,6 +55,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public JsonResult Add(Product model, HttpPostedFileBase Image)
         {
             try
@@ -92,18 +94,18 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public bool CheckProductExist(string name)
+        public ActionResult CheckProductExist(string name)
         {
             try
             {
                 var product = DbContext.Products.FirstOrDefault(p => p.ProductName == name);
                 if (product == null)
                 {
-                    return false;
+                    return Json(false);
                 }
                 else
                 {
-                    return true;
+                    return Json(true);
                 }
             }
             catch (Exception e)
@@ -112,11 +114,23 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
         }
 
+
+
         [HttpPost]
+        [ValidateInput(false)]
         public JsonResult Update(Product model, HttpPostedFileBase Image)
         {
             try
             {
+                var product = DbContext.Products.Find(model.Id);
+                if (product == null)
+                {
+                    return Json(new
+                    {
+                        result = "Fail",
+                        error = $"Id {model.Id} not correct"
+                    });
+                }
                 if (Image != null)
                 {
                     string _FileName = Path.GetFileName(Image.FileName);
@@ -130,13 +144,21 @@ namespace OnlineShop.Areas.Admin.Controllers
                     }
                     string _path = Path.Combine(ImagePath, filename);
                     Image.SaveAs(_path);
-                    if (!string.IsNullOrEmpty(model.Image))
+                    if (!string.IsNullOrEmpty(product.Image))
                     {
-                        System.IO.File.Delete(Path.Combine(ImagePath, model.Image));
+                        System.IO.File.Delete(Path.Combine(ImagePath, product.Image));
 
                     }
-                    model.Image = filename;
+                    product.Image = filename;
                 }
+
+                product.ProductName = model.ProductName;
+                product.Price = model.Price;
+                product.Detail = model.Detail;
+                product.Information = model.Information;
+                product.CategoryId = model.CategoryId;
+                product.ProducerId = model.ProducerId;
+
                 DbContext.SaveChanges();
                 return Json(new
                 {
@@ -152,6 +174,41 @@ namespace OnlineShop.Areas.Admin.Controllers
                     error = e.ToString()
                 });
             }
+        }
+
+        [HttpGet]
+        public JsonResult Delete(int id)
+        {
+            if (id != null)
+            {
+                try
+                {
+                    var product = DbContext.Products.Find(id);
+                    product.Status = false;
+                    if (!string.IsNullOrEmpty(product.Image))
+                    {
+                        var ImagePath = Server.MapPath("~/Photos/Product");
+                        System.IO.File.Delete(Path.Combine(ImagePath, product.Image));
+                        product.Image = null;
+                    }
+                    DbContext.SaveChanges();
+                    return Json(new
+                    {
+                        result = "Success",
+                        data = product
+                    }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception e)
+                {
+                    return Json(new
+                    {
+                        result = "Fail",
+                        data = e.ToString()
+                    }, JsonRequestBehavior.AllowGet);
+                }
+
+            }
+            return null;
         }
     }
    

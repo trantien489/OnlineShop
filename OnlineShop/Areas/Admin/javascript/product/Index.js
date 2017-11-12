@@ -13,7 +13,7 @@ function LoadModalAddProduct() {
             if (data != null) {
                 var html = "";
                 $.each(data, function (key, value) {
-                    html += "<option value='"+ value.Id +"'>" + value.Name + "</option>";
+                    html += "<option value='" + value.Id + "'>" + value.Name + "</option>";
                 });
                 $("#SelectCategory").html(html);
             }
@@ -38,55 +38,57 @@ function LoadModalAddProduct() {
         }
     });
 
+    CKEDITOR.config.allowedContent = true;
+    CKEDITOR.replace('Detail');
+    CKEDITOR.replace('Information');
+    CKEDITOR.replace('UpdateDetail');
+    CKEDITOR.replace('UpdateInformation');
 
-     //load Ckeditor
-    //editor = ClassicEditor
-    // .create(document.querySelector('#Detail'))
-    // .then(editor => {
-    //     console.log(editor);
-    // })
-    // .catch(error => {
-    //     console.error(error);
-    // });
-    //editor.setData('<p>Some text.</p>');
 }
 function Add() {
     var name = $('#Name').val();
     var quantity = $('#Quantity').val();
     var price = $('#Price').val();
-    var information = $('#Information').val();
     var categoryId = $("#SelectCategory option:selected").val();
     var producerId = $("#SelectProducer option:selected").val();
     var image = $('#Image').val();
-    
-    
-    if (name == '' || quantity == '' || price == '' || information == ''|| image =='' ) {
+    var detail = CKEDITOR.instances.Detail.getData();
+    var information = CKEDITOR.instances.Information.getData();
+
+    if (name == '' || quantity == '' || price == '' || information == '' || image == '') {
         $('#AddModalMessage').html("Hãy điền đầy đủ thông tin");
     } else {
-        var formdata = new FormData();
-        formdata.append('ProductName', name);
-        formdata.append('Quantity', quantity);
-        formdata.append('Price', price);
-        formdata.append('Information', information);
-        formdata.append('CategoryId', categoryId);
-        formdata.append('ProducerId', producerId);
+        var formData = new FormData();
+        formData.append('ProductName', name);
+        formData.append('Quantity', quantity);
+        formData.append('Price', price);
+        formData.append('Information', information);
+        formData.append('CategoryId', categoryId);
+        formData.append('ProducerId', producerId);
+        formData.append('Detail', detail);
+
 
         var data = document.getElementById('Image').files[0];
         if (data != null) {
-            formdata.append('image', data);
+            formData.append('image', data);
         }
         $.ajax({
             type: "POST",
             url: '../admin/product/CheckProductExist',
-            data: {"name":name},
+            data: { "name": name },
             success: function (data) {
                 if (data) {
                     $('#AddModalMessage').html("Sản phẩm đã tồn tại, không thể thêm mới");
                 } else {
+                    // Display the key/value pairs
+                    //for (var pair of formData.entries())
+                    //{
+                    //    console.log(pair[0] + ', ' + pair[1]);
+                    //}
                     $.ajax({
                         type: "POST",
                         url: '../admin/product/add',
-                        data: formdata,
+                        data: formData,
                         contentType: false,
                         processData: false,
                         success: function (data) {
@@ -108,8 +110,120 @@ function Add() {
 
             }
         });
-        
+
     }
+}
+function Update() {
+    var name = $('#UpdateName').val();
+    var quantity = $('#UpdateQuantity').val();
+    var price = $('#UpdatePrice').val();
+    var categoryId = $("#UpdateSelectCategory option:selected").val();
+    var producerId = $("#UpdateSelectProducer option:selected").val();
+    var image = $('#UpdateImage').val();
+    var detail = CKEDITOR.instances.UpdateDetail.getData();
+    var information = CKEDITOR.instances.UpdateInformation.getData();
+
+    if (name == '' || quantity == '' || price == '' || information == '') {
+        $('#UpdateModalMessage').html("Hãy điền đầy đủ thông tin");
+    } else {
+        var formData = new FormData();
+        formData.append('ProductName', name);
+        formData.append('Quantity', quantity);
+        formData.append('Price', price);
+        formData.append('Information', information);
+        formData.append('CategoryId', categoryId);
+        formData.append('ProducerId', producerId);
+        formData.append('Detail', detail);
+        formData.append('Id', currentData.Id);
+
+
+        var data = document.getElementById('UpdateImage').files[0];
+        if (data != null) {
+            formData.append('image', data);
+        }
+        //Have update Product name
+        if (currentData.Name != name) {
+            $.ajax({
+                type: "POST",
+                url: '../admin/product/CheckProductExist',
+                data: { "name": name },
+                success: function (data) {
+                    if (data) {
+                        $('#UpdateModalMessage').html("Sản phẩm đã tồn tại, hãy chọn tên khác");
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: '../admin/product/update',
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            success: function (data) {
+                                $('#UpdateModal').modal('hide');
+                                if (data.result == "Success") {
+                                    $('#message').html(data.result);
+                                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                                }
+                                else {
+                                    $('#message').html(data.error);
+                                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                                }
+                                $('#AlertModal').modal('show');
+                                table.ajax.reload();
+
+                            }
+                        });
+                    }
+                }
+            });
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: '../admin/product/update',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    $('#UpdateModal').modal('hide');
+                    if (data.result == "Success") {
+                        $('#message').html(data.result);
+                        $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                    }
+                    else {
+                        $('#message').html(data.error);
+                        $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                    }
+                    $('#AlertModal').modal('show');
+                    table.ajax.reload();
+
+                }
+            });
+        }
+
+       
+
+
+    }
+}
+function Delete() {
+    $.ajax({
+        url: '../admin/product/delete/' + currentData.Id,
+        method: 'GET',
+        success: function (data) {
+            $('#DeleteAlertModal').modal('hide');
+            if (data.result == "Success") {
+                $('#message').html(data.result);
+                $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+            }
+            else {
+                $('#message').html(data.error);
+                $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+            }
+
+            $('#AlertModal').modal('show');
+            table.ajax.reload();
+        }
+    });
 }
 $(document).ready(function () {
     table = $('#myGrid').DataTable({
@@ -127,7 +241,7 @@ $(document).ready(function () {
             { "data": "Quantity" },
             { "data": "Price" },
             {
-                data: null, 
+                data: null,
                 className: "center",
                 defaultContent: '<button class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Chi tiết </button> <button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Sửa </button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </button>'
             },
@@ -137,6 +251,8 @@ $(document).ready(function () {
                 text: 'Thêm <i class="fa fa fa-plus"></i>',
                 action: function (e, dt, node, config) {
                     $('#AddForm')[0].reset();
+                    CKEDITOR.instances.Information.setData("");
+                    CKEDITOR.instances.Detail.setData("");
                     $('#AddModalMessage').html("");
                     $('#AddModal').modal('show');
                 }
@@ -204,8 +320,8 @@ $(document).ready(function () {
         $('#UpdateName').val(currentData.Name);
         $('#UpdateQuantity').val(currentData.Quantity);
         $('#UpdatePrice').val(currentData.PriceInt);
-        $('#UpdateInformation').val(currentData.Information);
-        $('#UpdateDetail').val(currentData.Detail);
+        CKEDITOR.instances.UpdateInformation.setData(currentData.Information);
+        CKEDITOR.instances.UpdateDetail.setData(currentData.Detail);
         currentData.Image != null ? $('#UpdateimageView').attr("src", "../Photos/Product/" + currentData.Image) : "";
 
         $('#UpdateModalMessage').html("");
@@ -216,7 +332,7 @@ $(document).ready(function () {
     $('#myGrid').on('click', '.btn-danger', function (e) {
         e.preventDefault();
         var data = table.row($(this).parents('tr')).data();
-        id = data.Id;
+        currentData = data;
         $('#DeleteAlertModal').modal('show');
     });
 
@@ -231,10 +347,9 @@ $(document).ready(function () {
         $('#DetailCategory').html(data.Category);
         $('#DetailPrice').html(data.Price);
         $('#DetailInformation').html(data.Information);
+        $('#DetailDetail').html(data.Detail);
 
         $('#ViewDetaiModal').modal('show');
     });
     LoadModalAddProduct();
-    // editor.setData('<p>Some text.</p>');
-
 });
