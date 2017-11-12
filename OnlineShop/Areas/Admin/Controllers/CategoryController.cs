@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.IO;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -29,6 +30,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 {
                     Id = x.Id,
                     Name = x.Name,
+                    Image = x.Image,
                     Producers = x.CategoryProducers.Where(c => c.Status == true).Select(a => new {
                         Name = DbContext.Producers.Find(a.ProducerId).Name,
                         Id = a.ProducerId
@@ -43,7 +45,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(string name, int[] producersId)
+        public JsonResult Add(string name, int[] producersId, HttpPostedFileBase image)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -58,6 +60,21 @@ namespace OnlineShop.Areas.Admin.Controllers
                         item.CategoryId = data.Id;
                         item.ProducerId = id;
                         DbContext.CategoryProducers.Add(item);
+                    }
+                    if (image != null)
+                    {
+                        string _FileName = Path.GetFileName(image.FileName);
+                        var index = _FileName.LastIndexOf('.');
+                        var filename = Guid.NewGuid().ToString() +
+                                       _FileName.Substring(index, _FileName.Count() - index);
+                        var ImagePath = Server.MapPath("~/Photos/Category");
+                        if (!System.IO.Directory.Exists(ImagePath))
+                        {
+                            Directory.CreateDirectory(ImagePath);
+                        }
+                        string _path = Path.Combine(ImagePath, filename);
+                        image.SaveAs(_path);
+                        cate.Image = filename;
                     }
                     DbContext.SaveChanges();
                     return Json(new
@@ -80,7 +97,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Update(int id, string name, int[] producersId)
+        public JsonResult Update(int id, string name, int[] producersId, HttpPostedFileBase image)
         {
             if (!string.IsNullOrEmpty(name) || producersId.Count() == 0)
             {
@@ -99,6 +116,26 @@ namespace OnlineShop.Areas.Admin.Controllers
                                 CategoryId = cate.Id,
                                 ProducerId = item
                             });
+                        }
+                        if (image != null)
+                        {
+                            string _FileName = Path.GetFileName(image.FileName);
+                            var index = _FileName.LastIndexOf('.');
+                            var filename = Guid.NewGuid().ToString() +
+                                           _FileName.Substring(index, _FileName.Count() - index);
+                            var ImagePath = Server.MapPath("~/Photos/Category");
+                            if (!System.IO.Directory.Exists(ImagePath))
+                            {
+                                Directory.CreateDirectory(ImagePath);
+                            }
+                            string _path = Path.Combine(ImagePath, filename);
+                            image.SaveAs(_path);
+                            if (!string.IsNullOrEmpty(cate.Image))
+                            {
+                                System.IO.File.Delete(Path.Combine(ImagePath, cate.Image));
+
+                            }
+                            cate.Image = filename;
                         }
                         DbContext.SaveChanges();
 

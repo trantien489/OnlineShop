@@ -279,3 +279,4 @@ D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.CoreCompileInputs.cac
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.updatetableProduct.resources
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addinformationinProduct.resources
 D:\Study\OnlineShop\OnlineShop\bin\MiscUtil.dll
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addimageinCategory.resources

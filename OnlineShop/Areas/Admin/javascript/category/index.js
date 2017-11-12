@@ -1,6 +1,6 @@
 ﻿var table;
 var id;
-function LoadCheckboxProducer(){
+function LoadCheckboxProducer() {
     $.ajax({
         type: "GET",
         url: '../Admin/Producer/GetProducers/',
@@ -12,7 +12,7 @@ function LoadCheckboxProducer(){
                 var html = "";
                 $.each(data, function (key, value) {
                     html += "<div style='margin-bottom:5px'>";
-                    html +=      "<input type='checkbox' id ='ProducerAddCheckbox' value = '"+value.Id+"'> " + value.Name;
+                    html += "<input type='checkbox' id ='ProducerAddCheckbox' value = '" + value.Id + "'> " + value.Name;
                     html += "</div>";
                 });
                 $("#CheckboxProducer").html(html);
@@ -28,13 +28,26 @@ function Add() {
         arr[i++] = $(this).val();
     });
     var name = $('#name').val();
-    if (name == '' || arr.length == 0) {
+
+    var formdata = new FormData();
+    formdata.append('name', name);
+    for (var i = 0; i < arr.length; i++) {
+        formdata.append('producersId[]', arr[i]);
+    }
+    var image = document.getElementById('image').files[0];
+    if (image != null) {
+        formdata.append('image', image);
+    }
+
+    if (name == '' || arr.length == 0 || $('#image').val() == '') {
         $('#AddModalMessage').html("Hãy nhập đầy đủ thông tin");
     } else {
         $.ajax({
             type: "POST",
             url: '../admin/category/add/',
-            data: { "name": name, "producersId": arr },
+            data: formdata,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 $('#AddModal').modal('hide');
                 if (data.result == "Success") {
@@ -59,6 +72,19 @@ function Update() {
     $('#ProducerUpdateCheckbox:checked').each(function () {
         arr[i++] = $(this).val();
     });
+
+    var formdata = new FormData();
+    for (var i = 0; i < arr.length; i++) {
+        formdata.append('producersId[]', arr[i]);
+    }
+    var image = document.getElementById('Updateimage').files[0];
+    if (image != null) {
+        formdata.append('image', image);
+    }
+    formdata.append('name', name);
+    formdata.append('id', id);
+
+
     if (name == '' || arr.length == 0) {
         $('#UpdateModalMessage').html("Hãy nhập đầy đủ thông tin");
     } else {
@@ -66,7 +92,9 @@ function Update() {
         $.ajax({
             type: "POST",
             url: '../admin/category/update/',
-            data: {"id":id, "name": name, "producersId": arr },
+            data: formdata,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 if (data.result == "Success") {
                     $('#message').html(data.result);
@@ -87,7 +115,7 @@ function Delete() {
     $.ajax({
         type: "GET",
         url: '../admin/category/delete/',
-        data: { "id": id},
+        data: { "id": id },
         success: function (data) {
             if (data.result == "Success") {
                 $('#message').html(data.result);
@@ -148,14 +176,18 @@ $(document).ready(function () {
         e.preventDefault();
         var data = table.row($(this).parents('tr')).data();
         id = data.Id;
+        $('#UpdateForm')[0].reset();
         $('#UpdateName').val(data.Name);
+        data.Image != null ? $('#UpdateImageView').attr("src", "../Photos/Category/" + data.Image) : "";
+
+
         Producers = data.Producers;
         $.ajax({
             type: "GET",
             url: '../Admin/Producer/GetProducers/',
             method: 'GET',
             success: function (data) {
-                
+
                 if (data != null) {
                     var html = "";
                     $.each(data, function (key, value) {
