@@ -178,8 +178,8 @@ $(document).ready(function () {
         id = data.Id;
         $('#UpdateForm')[0].reset();
         $('#UpdateName').val(data.Name);
+        $('#UpdateImageView').removeAttr("src");
         data.Image != null ? $('#UpdateImageView').attr("src", "../Photos/Category/" + data.Image) : "";
-
 
         Producers = data.Producers;
         $.ajax({

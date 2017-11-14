@@ -154,6 +154,7 @@ $(document).ready(function () {
         var data = table.row($(this).parents('tr')).data();
         id = data.Id; 
         $('#Updatename').val(data.Name);
+        $('#Updateimage').removeAttr("src");
         data.Image != null ? $('#Updateimage').attr("src", "../Photos/Producer/" + data.Image) : "";
         document.getElementById('Updateimage2').value = "";
         $('#EditAlertModal').modal('show');

@@ -322,6 +322,7 @@ $(document).ready(function () {
         $('#UpdatePrice').val(currentData.PriceInt);
         CKEDITOR.instances.UpdateInformation.setData(currentData.Information);
         CKEDITOR.instances.UpdateDetail.setData(currentData.Detail);
+        $('#UpdateimageView').removeAttr("src");
         currentData.Image != null ? $('#UpdateimageView').attr("src", "../Photos/Product/" + currentData.Image) : "";
 
         $('#UpdateModalMessage').html("");
