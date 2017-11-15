@@ -1,4 +1,4 @@
-﻿
+﻿@using System.Data.Entity;
 @{
     ViewBag.Title = "HomePage";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -97,72 +97,22 @@
 
                     <!-- *** MENUS AND FILTERS ***
                     _________________________________________________________ -->
+                    @{
 
-                    <div class="panel panel-default sidebar-menu">
+                        var context = new OnlineShop.Models.ApplicationDbContext();
+                        var categoryProducers = context.CategoryProducers.Where(c => c.Status == true).Include(c => c.Category).Include(c => c.Producer).OrderBy(c => c.CategoryId).ToList();
 
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Categories</h3>
-                        </div>
+                        var results = categoryProducers.GroupBy(c => c.CategoryId).ToDictionary(g => g.Key, g => g.Select(i => new
+                        {
+                            CategoryName = i.Category.Name,
+                            CategoryId = i.CategoryId,
+                            ProducerName = i.Producer.Name,
+                            ProducerId = i.ProducerId,
+                            CategoryImage = i.Category.Image
+                        }));
 
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-stacked category-menu">
-                                <li>
-                                    <a href="shop-category.html">Men <span class="badge pull-right">42</span></a>
-                                    <ul>
-                                        <li>
-                                            <a href="shop-category.html">T-shirts</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Shirts</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Pants</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Accessories</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="active">
-                                    <a href="shop-category.html">Ladies  <span class="badge pull-right">123</span></a>
-                                    <ul>
-                                        <li>
-                                            <a href="shop-category.html">T-shirts</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Skirts</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Pants</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Accessories</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="shop-category.html">Kids  <span class="badge pull-right">11</span></a>
-                                    <ul>
-                                        <li>
-                                            <a href="shop-category.html">T-shirts</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Skirts</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Pants</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-category.html">Accessories</a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-
-                        </div>
-                    </div>
-
+                        Html.RenderPartial("~/Views/Shared/LeftMenu.cshtml", Newtonsoft.Json.JsonConvert.SerializeObject(results));
+                    }
 
                     <!-- *** MENUS AND FILTERS END *** -->
 

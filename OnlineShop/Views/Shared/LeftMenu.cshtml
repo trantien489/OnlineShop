@@ -1,0 +1,59 @@
+﻿@model string
+@{
+    dynamic obj = Json.Decode(Model);
+}
+<style>
+    .ahref {
+        color: #ffffff;
+        line-height: 33px;
+        padding-left: 10px;
+        text-decoration: none !important;
+    }
+    .ahref:hover {
+            color: #ffffff ;
+            font-size: larger;
+        }
+    .ahrefIcon {
+        color: #ffffff;
+        line-height: 33px;
+        padding-left: 10px;
+        text-decoration: none !important;
+        margin-right: 10px;
+        float: right;
+    }
+
+</style>
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Danh mục</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked category-menu">
+
+            @foreach (var item in obj)
+            {
+                var categoryPath = $"product/{@item.Value[0].CategoryId}";
+                <li class="active">
+                     @*<a href="@Url.Content(categoryPath)" >@item.Value[0].CategoryName </a> <span data-target="#demo" class="badge pull-right">123</span>*@
+                    <div style="background-color: #38a7bb">
+                        <a href="@Url.Content(categoryPath)" class="ahref">@item.Value[0].CategoryName</a>
+                        <a href="#@item.Key" data-toggle="collapse" class="ahrefIcon"><span class="glyphicon glyphicon-collapse-up"></span></a>
+                    </div>
+                    <ul id="@item.Key" class="collapse in">
+                        @foreach (var value in item.Value)
+                        {
+                            var productPath = $"product/{value.CategoryId}/{value.ProducerId}";
+                            <li>
+                                <a href="@Url.Content(productPath)">@value.ProducerName</a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+        </ul>
+
+    </div>
+</div>
