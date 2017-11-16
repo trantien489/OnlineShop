@@ -4177,6 +4177,12 @@
     <Content Include="Asset\User\js\owl.carousel.min.js" />
     <Content Include="Asset\User\js\respond.min.js" />
     <Content Include="Asset\User\js\waypoints.min.js" />
+    <Content Include="Asset\User\Search\css\reset.min.css" />
+    <Content Include="Asset\User\Search\css\style.css" />
+    <Content Include="Asset\User\Search\index.html" />
+    <Content Include="Asset\User\Search\js\index.js" />
+    <Content Include="Asset\User\Search\license.txt" />
+    <Content Include="Asset\User\Search\README.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -5080,6 +5086,7 @@
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Asset\User\Search\scss\style.scss" />
     <None Include="Properties\PublishProfiles\OnlineShop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
