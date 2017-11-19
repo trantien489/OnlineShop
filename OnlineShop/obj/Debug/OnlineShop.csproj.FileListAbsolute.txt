@@ -90,7 +90,6 @@ D:\Study\Tieu Luan\OnlineShop\OnlineShop\bin\Model.dll
 D:\Study\Tieu Luan\OnlineShop\OnlineShop\bin\Model.pdb
 D:\Study\Tieu Luan\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.CreateTable.resources
 D:\Study\Tieu Luan\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.GenerateResource.Cache
-D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csprojResolveAssemblyReference.cache
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.dll
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.pdb
 D:\Study\OnlineShop\OnlineShop\bin\ApplicationInsights.config
@@ -278,5 +277,9 @@ D:\Tien\My Project\OnlineShop\obj\Debug\OnlineShop.pdb
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.CoreCompileInputs.cache
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.updatetableProduct.resources
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addinformationinProduct.resources
-D:\Study\OnlineShop\OnlineShop\bin\MiscUtil.dll
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addimageinCategory.resources
+D:\Study\OnlineShop\OnlineShop\bin\PagedList.dll
+D:\Study\OnlineShop\OnlineShop\bin\PagedList.Mvc.dll
+D:\Study\OnlineShop\OnlineShop\bin\PagedList.xml
+D:\Study\OnlineShop\OnlineShop\bin\PagedList.Mvc.xml
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csprojResolveAssemblyReference.cache

@@ -1,4 +1,8 @@
 ﻿@using System.Data.Entity;
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineShop.Models.Product>
+
 @{
     ViewBag.Title = "HomePage";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -140,7 +144,8 @@
                         CategoryId = i.CategoryId,
                         ProducerName = i.Producer.Name,
                         ProducerId = i.ProducerId,
-                        CategoryImage = i.Category.Image
+                        CategoryImage = i.Category.Image,
+                        MetaKeyword = i.Category.MetaKeyword
                     }));
 
                     Html.RenderPartial("~/Views/Shared/LeftMenu.cshtml", Newtonsoft.Json.JsonConvert.SerializeObject(results));
@@ -162,201 +167,54 @@
             _________________________________________________________ -->
 
             <div class="col-sm-9">
-
+                @{
+                    if (Model.Count == 0)
+                    {
+                        <h1 style="text-align:center">Không có sản phẩm</h1>
+                    }
+                }
 
                 <div class="row products">
 
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image" style="height: 212px;">
-                                <a href="shop-detail.html">
-                                    <img src="~/Asset/User/img/product1.jpg" alt="" class="img-responsive image1">
-                                </a>
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-md-4 col-sm-6">
+                            <div class="product">
+                                <div class="image" style="height: 212px;">
+                                    <a href="shop-detail.html">
+                                        <img src="@Url.Content($"~/Photos/Product/{product.Image}")" alt="" class="img-responsive image1">
+                                    </a>
+                                </div>
+                                <!-- /.image -->
+                                <div class="text">
+                                    <h3><a href="shop-detail.html">@product.ProductName</a></h3>
+                                    <p class="price">@product.Price.Value.ToString("N0") VND</p>
+                                </div>
+                                <!-- /.text -->
                             </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">Fur coat with very but very very long name</a></h3>
-                                <p class="price">$143.00</p>
-                                <p class="buttons">
-                                    <a href="shop-detail.html" class="btn btn-default">View detail</a>
-                                    <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </p>
-                            </div>
-                            <!-- /.text -->
+                            <!-- /.product -->
                         </div>
-                        <!-- /.product -->
-                    </div>
+                    }
 
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image" style="height: 212px;">
-                                <a href="shop-detail.html">
-                                    <img src="~/Asset/User/img/product2.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">White Blouse Armani</a></h3>
-                                <p class="price"><del>$280</del> $143.00</p>
-                                <p class="buttons">
-                                    <a href="shop-detail.html" class="btn btn-default">View detail</a>
-                                    <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </p>
-                            </div>
-                            <!-- /.text -->
-
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
-
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image" style="height: 212px;">
-                                <a href="shop-detail.html">
-                                    <img src="~/Asset/User/img/product3.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">Black Blouse Versace</a></h3>
-                                <p class="price">$143.00</p>
-                                <p class="buttons">
-                                    <a href="shop-detail.html" class="btn btn-default">View detail</a>
-                                    <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </p>
-
-                            </div>
-                            <!-- /.text -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image" style="height: 212px;">
-                                <a href="shop-detail.html">
-                                    <img src="~/Asset/User/img/product3.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">Black Blouse Versace</a></h3>
-                                <p class="price">$143.00</p>
-                                <p class="buttons">
-                                    <a href="shop-detail.html" class="btn btn-default">View detail</a>
-                                    <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </p>
-
-                            </div>
-                            <!-- /.text -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image" style="height: 212px;">
-                                <a href="shop-detail.html">
-                                    <img src="~/Asset/User/img/product2.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">White Blouse Versace</a></h3>
-                                <p class="price">$143.00</p>
-                                <p class="buttons">
-                                    <a href="shop-detail.html" class="btn btn-default">View detail</a>
-                                    <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </p>
-
-                            </div>
-                            <!-- /.text -->
-
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            <!-- /.ribbon -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image" style="height: 212px;">
-                                <a href="shop-detail.html">
-                                    <img src="~/Asset/User/img/product1.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <!-- /.image -->
-                            <div class="text">
-                                <h3><a href="shop-detail.html">Fur coat</a></h3>
-                                <p class="price">$143.00</p>
-                                <p class="buttons">
-                                    <a href="shop-detail.html" class="btn btn-default">View detail</a>
-                                    <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </p>
-
-                            </div>
-                            <!-- /.text -->
-                        </div>
-                        <!-- /.product -->
-                    </div>
                     <!-- /.col-md-4 -->
                 </div>
                 <!-- /.products -->
 
-                <div class="row">
-
-                    <div class="col-md-12 banner">
-                        <a href="#">
-                            <img src="~/Asset/User/img/banner2.jpg" alt="" class="img-responsive">
-                        </a>
-                    </div>
-
-                </div>
-
-
-                <div class="pages">
-
-                    <p class="loadMore">
-                        <a href="#" class="btn btn-template-main"><i class="fa fa-chevron-down"></i> Load more</a>
-                    </p>
-
-                    <ul class="pagination">
-                        <li>
-                            <a href="#">«</a>
-                        </li>
-                        <li class="active">
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">5</a>
-                        </li>
-                        <li>
-                            <a href="#">»</a>
-                        </li>
-                    </ul>
+                <div class="pages" style="float:right">
+                    @{
+                        if (ViewBag.ControllerName == "Home" && ViewBag.ActionName == "HomePage")
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.ActionName, new { page }));
+                        }
+                        else if (ViewBag.ControllerName == "Product" && ViewBag.ActionName == "GetProductbyCategory")
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.Category, "san-pham", new { page }));
+                        }
+                        else if (ViewBag.ControllerName == "Product" && ViewBag.ActionName == "GetProductByCategoryProducer")
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.Category +"/"+ ViewBag.Producer, "san-pham", new { page }));
+                        }
+                    }
                 </div>
 
 

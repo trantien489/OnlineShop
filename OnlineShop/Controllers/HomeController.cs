@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace OnlineShop.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : UserController
     {
         public ActionResult Index()
         {
@@ -27,9 +28,12 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult HomePage()
+        public ActionResult HomePage(int page = 1, int pageSize = 3)
         {
-            return View();
+            var products = DbContext.Products.Where(p =>p.Status == true).OrderBy(p => p.CreatedDate).ToPagedList(page, pageSize);
+            ViewBag.ActionName = this.ControllerContext.RouteData.Values["action"].ToString();
+            ViewBag.ControllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+            return View(products);
         }
     }
 }

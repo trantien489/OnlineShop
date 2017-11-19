@@ -34,17 +34,20 @@
 
             @foreach (var item in obj)
             {
-                var categoryPath = $"product/{@item.Value[0].CategoryId}";
+                var categoryPath = $"~/san-pham/{@item.Value[0].MetaKeyword}";
                 <li class="active">
                      @*<a href="@Url.Content(categoryPath)" >@item.Value[0].CategoryName </a> <span data-target="#demo" class="badge pull-right">123</span>*@
                     <div style="background-color: #38a7bb">
                         <a href="@Url.Content(categoryPath)" class="ahref">@item.Value[0].CategoryName</a>
-                        <a href="#@item.Key" data-toggle="collapse" class="ahrefIcon"><span class="glyphicon glyphicon-collapse-up"></span></a>
+                        @*<a href="#@item.Key" data-toggle="collapse" class="ahrefIcon"><span class="glyphicon glyphicon-collapse-up"></span></a>*@
+                        <a href="#@item.Key" data-toggle="collapse" class="ahrefIcon"><b class="caret"></b></a>
+
+                        
                     </div>
                     <ul id="@item.Key" class="collapse in">
                         @foreach (var value in item.Value)
                         {
-                            var productPath = $"product/{value.CategoryId}/{value.ProducerId}";
+                            var productPath = $"~/san-pham/{value.MetaKeyword}/{value.ProducerName.ToLower()}";
                             <li>
                                 <a href="@Url.Content(productPath)">@value.ProducerName</a>
                             </li>

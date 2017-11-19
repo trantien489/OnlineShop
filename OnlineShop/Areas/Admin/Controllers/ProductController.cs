@@ -1,4 +1,5 @@
 ﻿using MiscUtil.Reflection;
+using OnlineShop.Helper;
 using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
@@ -62,19 +63,15 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 if (Image != null)
                 {
-                    string _FileName = Path.GetFileName(Image.FileName);
-                    var index = _FileName.LastIndexOf('.');
-                    var filename = Guid.NewGuid().ToString() +
-                                   _FileName.Substring(index, _FileName.Count() - index);
                     var ImagePath = Server.MapPath("~/Photos/Product");
+                    var filename = ImageHelper.SaveImage(Image, ImagePath);
                     if (!System.IO.Directory.Exists(ImagePath))
                     {
                         Directory.CreateDirectory(ImagePath);
                     }
-                    string _path = Path.Combine(ImagePath, filename);
-                    Image.SaveAs(_path);
                     model.Image = filename;
                 }
+                model.MetaKeyword = StringHelper.GetMetaTitle(model.ProductName);
                 var data = DbContext.Products.Add(model);
                 DbContext.SaveChanges();
                 return Json(new
@@ -98,7 +95,8 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             try
             {
-                var product = DbContext.Products.FirstOrDefault(p => p.ProductName == name);
+                var metaName = StringHelper.GetMetaTitle(name);
+                var product = DbContext.Products.FirstOrDefault(p => p.MetaKeyword == metaName);
                 if (product == null)
                 {
                     return Json(false);
@@ -133,17 +131,18 @@ namespace OnlineShop.Areas.Admin.Controllers
                 }
                 if (Image != null)
                 {
-                    string _FileName = Path.GetFileName(Image.FileName);
-                    var index = _FileName.LastIndexOf('.');
-                    var filename = Guid.NewGuid().ToString() +
-                                   _FileName.Substring(index, _FileName.Count() - index);
+                    //string _FileName = Path.GetFileName(Image.FileName);
+                    //var index = _FileName.LastIndexOf('.');
+                    //var filename = Guid.NewGuid().ToString() +
+                    //               _FileName.Substring(index, _FileName.Count() - index);
                     var ImagePath = Server.MapPath("~/Photos/Product");
                     if (!System.IO.Directory.Exists(ImagePath))
                     {
                         Directory.CreateDirectory(ImagePath);
                     }
-                    string _path = Path.Combine(ImagePath, filename);
-                    Image.SaveAs(_path);
+                    //string _path = Path.Combine(ImagePath, filename);
+                    //Image.SaveAs(_path);
+                    var filename = ImageHelper.SaveImage(Image, ImagePath);
                     if (!string.IsNullOrEmpty(product.Image))
                     {
                         System.IO.File.Delete(Path.Combine(ImagePath, product.Image));
@@ -158,6 +157,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 product.Information = model.Information;
                 product.CategoryId = model.CategoryId;
                 product.ProducerId = model.ProducerId;
+                product.MetaKeyword = StringHelper.GetMetaTitle(model.ProductName);
 
                 DbContext.SaveChanges();
                 return Json(new
@@ -210,6 +210,9 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
             return null;
         }
+
+
+
     }
    
 }

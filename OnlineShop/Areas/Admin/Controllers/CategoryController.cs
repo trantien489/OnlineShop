@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.IO;
+using OnlineShop.Helper;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -53,6 +54,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 {
                     var cate = new Category();
                     cate.Name = name;
+                    cate.MetaKeyword = StringHelper.GetMetaTitle(name);
                     var data = DbContext.Categories.Add(cate);
                     foreach (var id in producersId)
                     {
@@ -63,17 +65,12 @@ namespace OnlineShop.Areas.Admin.Controllers
                     }
                     if (image != null)
                     {
-                        string _FileName = Path.GetFileName(image.FileName);
-                        var index = _FileName.LastIndexOf('.');
-                        var filename = Guid.NewGuid().ToString() +
-                                       _FileName.Substring(index, _FileName.Count() - index);
                         var ImagePath = Server.MapPath("~/Photos/Category");
+                        var filename = ImageHelper.SaveImage(image, ImagePath);
                         if (!System.IO.Directory.Exists(ImagePath))
                         {
                             Directory.CreateDirectory(ImagePath);
                         }
-                        string _path = Path.Combine(ImagePath, filename);
-                        image.SaveAs(_path);
                         cate.Image = filename;
                     }
                     DbContext.SaveChanges();
@@ -107,6 +104,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                     if (cate != null)
                     {
                         cate.Name = name;
+                        cate.MetaKeyword = StringHelper.GetMetaTitle(name);
                         var categoryProducers = DbContext.CategoryProducers.Where(c => c.CategoryId == id).ToList();
                         DbContext.CategoryProducers.RemoveRange(categoryProducers);
                         foreach (var item in producersId)
@@ -119,17 +117,12 @@ namespace OnlineShop.Areas.Admin.Controllers
                         }
                         if (image != null)
                         {
-                            string _FileName = Path.GetFileName(image.FileName);
-                            var index = _FileName.LastIndexOf('.');
-                            var filename = Guid.NewGuid().ToString() +
-                                           _FileName.Substring(index, _FileName.Count() - index);
                             var ImagePath = Server.MapPath("~/Photos/Category");
+                            var filename = ImageHelper.SaveImage(image, ImagePath);
                             if (!System.IO.Directory.Exists(ImagePath))
                             {
                                 Directory.CreateDirectory(ImagePath);
                             }
-                            string _path = Path.Combine(ImagePath, filename);
-                            image.SaveAs(_path);
                             if (!string.IsNullOrEmpty(cate.Image))
                             {
                                 System.IO.File.Delete(Path.Combine(ImagePath, cate.Image));
@@ -195,5 +188,28 @@ namespace OnlineShop.Areas.Admin.Controllers
             return null;
 
         }
+
+        [HttpPost]
+        public ActionResult CheckCategoryExist(string name)
+        {
+            try
+            {
+                var metaName = StringHelper.GetMetaTitle(name);
+                var product = DbContext.Categories.FirstOrDefault(p => p.MetaKeyword == metaName);
+                if (product == null)
+                {
+                    return Json(false);
+                }
+                else
+                {
+                    return Json(true);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

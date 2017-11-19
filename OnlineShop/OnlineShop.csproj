@@ -84,6 +84,12 @@
     <Reference Include="MiscUtil">
       <HintPath>C:\Users\tranv\Desktop\MiscUtil.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -222,9 +228,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ImageHelper.cs" />
+    <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Migrations\201710091517155_Create-database.cs" />
     <Compile Include="Migrations\201710091517155_Create-database.Designer.cs">
       <DependentUpon>201710091517155_Create-database.cs</DependentUpon>
@@ -4111,6 +4121,7 @@
     <Content Include="Asset\User\img\detailsquare.jpg" />
     <Content Include="Asset\User\img\detailsquare2.jpg" />
     <Content Include="Asset\User\img\detailsquare3.jpg" />
+    <Content Include="Asset\User\img\eShoplogo.png" />
     <Content Include="Asset\User\img\favicon.ico" />
     <Content Include="Asset\User\img\fixed-background-1.jpg" />
     <Content Include="Asset\User\img\fixed-background-2.jpg" />
@@ -4177,18 +4188,27 @@
     <Content Include="Asset\User\js\owl.carousel.min.js" />
     <Content Include="Asset\User\js\respond.min.js" />
     <Content Include="Asset\User\js\waypoints.min.js" />
-    <Content Include="Asset\User\Search\css\reset.min.css" />
-    <Content Include="Asset\User\Search\css\style.css" />
-    <Content Include="Asset\User\Search\index.html" />
-    <Content Include="Asset\User\Search\js\index.js" />
-    <Content Include="Asset\User\Search\license.txt" />
-    <Content Include="Asset\User\Search\README.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Photos\Category\0a25880e-a47d-440a-ad75-91ab9ba53cbc.png" />
+    <Content Include="Photos\Category\0f65a76f-7cbc-4367-889a-0513f1452361.png" />
+    <Content Include="Photos\Category\4f5de437-0c49-4563-8ae9-2e2a62687c61.gif" />
+    <Content Include="Photos\Category\65e7b9ca-ac3e-4164-a374-6689de6d9740.png" />
+    <Content Include="Photos\Category\dbfc50f1-143d-4b47-9673-4093b4ba3612.png" />
+    <Content Include="Photos\Producer\6182ea25-9daa-4665-ab86-3e2f64c49ce1.png" />
+    <Content Include="Photos\Producer\82e8c19a-61d0-4361-8487-bb4382902f1f.jpg" />
+    <Content Include="Photos\Producer\d4947d0b-493d-4588-a8d1-0eac4814c4aa.png" />
+    <Content Include="Photos\Producer\f41fc588-91a0-4541-8151-5db53f7eacf2.png" />
+    <Content Include="Photos\Producer\fcdc68c0-a584-4173-ae4a-7d44d5746a1b.png" />
+    <Content Include="Photos\Product\488f44d3-1702-424e-bb4f-4e1077c2ff3c.png" />
+    <Content Include="Photos\Product\a395fea1-2fe6-4daa-831c-da9a82a5b856.png" />
+    <Content Include="Photos\Product\b1a55998-195c-41e2-910a-0910aad8d9b4.png" />
+    <Content Include="Photos\Product\c8f1b4b5-3972-4a0c-8566-ecc692bd693b.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -5086,7 +5106,6 @@
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_variables.scss" />
-    <Content Include="Asset\User\Search\scss\style.scss" />
     <None Include="Properties\PublishProfiles\OnlineShop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -5143,6 +5162,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Asset\User\Search\" />
+    <Folder Include="Views\Product\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

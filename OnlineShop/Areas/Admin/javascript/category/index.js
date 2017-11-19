@@ -1,5 +1,6 @@
 ﻿var table;
 var id;
+var currentData;
 function LoadCheckboxProducer() {
     $.ajax({
         type: "GET",
@@ -44,24 +45,36 @@ function Add() {
     } else {
         $.ajax({
             type: "POST",
-            url: '../admin/category/add/',
-            data: formdata,
-            contentType: false,
-            processData: false,
+            url: '../admin/category/CheckCategoryExist',
+            data: { "name": name },
             success: function (data) {
-                $('#AddModal').modal('hide');
-                if (data.result == "Success") {
-                    $('#message').html(data.result);
-                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                if (data) {
+                    $('#AddModalMessage').html("Danh mục đã tồn tại, không thể thêm mới");
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: '../admin/category/add/',
+                        data: formdata,
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            $('#AddModal').modal('hide');
+                            if (data.result == "Success") {
+                                $('#message').html(data.result);
+                                $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                            }
+                            else {
+                                $('#message').html(data.error);
+                                $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                            }
+                            $('#AlertModal').modal('show');
+                            table.ajax.reload();
+                        }
+                    });
                 }
-                else {
-                    $('#message').html(data.error);
-                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
-                }
-                $('#AlertModal').modal('show');
-                table.ajax.reload();
             }
-        });
+        })
+
     }
 }
 
@@ -88,26 +101,61 @@ function Update() {
     if (name == '' || arr.length == 0) {
         $('#UpdateModalMessage').html("Hãy nhập đầy đủ thông tin");
     } else {
-        $('#UpdateModal').modal('hide');
-        $.ajax({
-            type: "POST",
-            url: '../admin/category/update/',
-            data: formdata,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                if (data.result == "Success") {
-                    $('#message').html(data.result);
-                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+        if (currentData.Name != name) {
+            $.ajax({
+                type: "POST",
+                url: '../admin/category/CheckCategoryExist',
+                data: { "name": name },
+                success: function (data) {
+                    if (data) {
+                        $('#UpdateModalMessage').html("Danh mục đã tồn tại, hãy chọn tên khác");
+                    } else {
+                        $('#UpdateModal').modal('hide');
+                        $.ajax({
+                            type: "POST",
+                            url: '../admin/category/update/',
+                            data: formdata,
+                            contentType: false,
+                            processData: false,
+                            success: function (data) {
+                                if (data.result == "Success") {
+                                    $('#message').html(data.result);
+                                    $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                                }
+                                else {
+                                    $('#message').html(data.error);
+                                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                                }
+                                $('#AlertModal').modal('show');
+                                table.ajax.reload();
+                            }
+                        });
+                    }
                 }
-                else {
-                    $('#message').html(data.error);
-                    $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+            })
+        } else {
+            $('#UpdateModal').modal('hide');
+            $.ajax({
+                type: "POST",
+                url: '../admin/category/update/',
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.result == "Success") {
+                        $('#message').html(data.result);
+                        $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                    }
+                    else {
+                        $('#message').html(data.error);
+                        $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                    }
+                    $('#AlertModal').modal('show');
+                    table.ajax.reload();
                 }
-                $('#AlertModal').modal('show');
-                table.ajax.reload();
-            }
-        });
+            });
+        }
+      
     }
 }
 function Delete() {
@@ -175,6 +223,7 @@ $(document).ready(function () {
     $('#myGrid').on('click', '.btn-info', function (e) {
         e.preventDefault();
         var data = table.row($(this).parents('tr')).data();
+        currentData = data;
         id = data.Id;
         $('#UpdateForm')[0].reset();
         $('#UpdateName').val(data.Name);
