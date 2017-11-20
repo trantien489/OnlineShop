@@ -4064,6 +4064,7 @@
     <Content Include="Asset\Common\ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="Asset\Common\ckeditor\styles.js" />
     <Content Include="Asset\Common\css\loader.css" />
+    <Content Include="Asset\Common\css\Custom.css" />
     <Content Include="Asset\Common\Login\css\normalize.min.css" />
     <Content Include="Asset\Common\Login\css\style.css" />
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\css\font-awesome.css" />
@@ -5158,12 +5159,12 @@
     <Content Include="Views\Home\HomePage.cshtml" />
     <Content Include="Views\Shared\Navbar.cshtml" />
     <Content Include="Views\Shared\LeftMenu.cshtml" />
+    <Content Include="Views\Product\ViewDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Asset\User\Search\" />
-    <Folder Include="Views\Product\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>

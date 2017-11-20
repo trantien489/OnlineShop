@@ -57,9 +57,19 @@ namespace OnlineShop.Controllers
         }
 
         [HttpGet]
-        public ActionResult ViewDetail(string category, string producer, int id)
+        public ActionResult ViewDetail(string product)
         {
-
+            try
+            {
+                var productFound = DbContext.Products.Where(p => p.Status == true && p.MetaKeyword == product).FirstOrDefault();
+                ViewBag.ActionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                ViewBag.ControllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                return View(productFound);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

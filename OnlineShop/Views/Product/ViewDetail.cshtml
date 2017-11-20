@@ -1,0 +1,183 @@
+﻿@model OnlineShop.Models.Product
+@using System.Data.Entity;
+
+@{
+    ViewBag.Title = "ViewDetail";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="row" style="background-color: #38a7bb;margin-bottom: 10px; ">
+    <div style="margin:1%">
+        <div class="Search">
+            <form action="" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm" id="txtSearch" />
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="input-group" style="margin-left:5px">
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit" style="margin-left:5px">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+        <div class="row">
+
+
+            <!-- *** LEFT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-sm-3">
+
+                <!-- *** MENUS AND FILTERS ***
+                _________________________________________________________ -->
+                @{
+
+                    var context = new OnlineShop.Models.ApplicationDbContext();
+                    var categoryProducers = context.CategoryProducers.Where(c => c.Status == true).Include(c => c.Category).Include(c => c.Producer).OrderBy(c => c.CategoryId).ToList();
+
+                    var results = categoryProducers.GroupBy(c => c.CategoryId).ToDictionary(g => g.Key, g => g.Select(i => new
+                    {
+                        CategoryName = i.Category.Name,
+                        CategoryId = i.CategoryId,
+                        ProducerName = i.Producer.Name,
+                        ProducerId = i.ProducerId,
+                        CategoryImage = i.Category.Image,
+                        MetaKeyword = i.Category.MetaKeyword
+                    }));
+
+                    Html.RenderPartial("~/Views/Shared/LeftMenu.cshtml", Newtonsoft.Json.JsonConvert.SerializeObject(results));
+                }
+
+                <!-- *** MENUS AND FILTERS END *** -->
+
+                <div class="banner">
+                    <a href="shop-category.html">
+                        <img src="~/Asset/User/img/banner.jpg" alt="sales 2014" class="img-responsive">
+                    </a>
+                </div>
+                <!-- /.banner -->
+
+            </div>
+            <!-- /.col-md-3 -->
+            <!-- *** LEFT COLUMN END *** -->
+            <!-- *** RIGHT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-sm-9">
+                    <div class="row" id="productMain">
+                        <div class="col-sm-6">
+                            <div id="mainImage">
+                                <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="box">
+                                <form>
+                                    <p class="price"> @Model.ProductName<p>
+                                    <p class="price">@Model.Price.Value.ToString("N0") VND</p>
+                                    <p class="text-center">
+                                        <button type="" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                        <button type="" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
+                                    </p>
+                                </form>
+                            </div>
+
+                            <div class="row" id="thumbs">
+                                <div class="col-xs-4">
+                                    <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb active">
+                                        <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb">
+                                        <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb">
+                                        <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="box" id="details">
+                        <p>
+                        </p><h1>Product details</h1>
+                        <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
+                        <h4>Material &amp; care</h4>
+                        <ul>
+                            <li>Polyester</li>
+                            <li>Machine wash</li>
+                        </ul>
+                        <h4>Size &amp; Fit</h4>
+                        <ul>
+                            <li>Regular fit</li>
+                            <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+                        </ul>
+
+                        <blockquote>
+                            <p>
+                                <em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
+                            </p>
+                        </blockquote>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="box text-uppercase">
+                                <h3>Bạn có thể quan tâm</h3>
+                            </div>
+                        </div>
+                        @{
+                            var randomProducts = context.Products.OrderBy(r => Guid.NewGuid()).Take(3);
+                            foreach (var product in randomProducts)
+                            {
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="product">
+                                        <div class="image" style="height: 152px;">
+                                            <a href="@Url.Content($"~/san-pham/{product.MetaKeyword}/chi-tiet")">
+                                                <img src="@Url.Content($"~/Photos/Product/{product.Image}")" alt="" class="img-responsive image1">
+                                            </a>
+                                        </div>
+                                        <div class="text">
+                                            <h3>@product.ProductName</h3>
+                                            <p class="price">@product.Price.Value.ToString("N0") VND</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        
+                    </div>
+            </div>
+            <!-- /.col-md-9 -->
+            <!-- *** RIGHT COLUMN END *** -->
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Script {
+}
+

@@ -7,17 +7,6 @@
     ViewBag.Title = "HomePage";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-<style>
-    .Search {
-        width: 40%;
-        float: left;
-        margin-left: 30%;
-    }
-
-    .Center {
-        margin: auto;
-    }
-</style>
 <section style="margin-bottom:0px">
     <div class="home-carousel">
 
@@ -121,6 +110,7 @@
         </div>
     </div>
 </div>
+
 <div id="content">
     <div class="container">
         <div class="row">
@@ -181,7 +171,7 @@
                         <div class="col-md-4 col-sm-6">
                             <div class="product">
                                 <div class="image" style="height: 212px;">
-                                    <a href="shop-detail.html">
+                                    <a href="@Url.Content($"~/san-pham/{product.MetaKeyword}/chi-tiet")">
                                         <img src="@Url.Content($"~/Photos/Product/{product.Image}")" alt="" class="img-responsive image1">
                                     </a>
                                 </div>
@@ -214,6 +204,8 @@
                         {
                             @Html.PagedListPager(Model, page => Url.Action(ViewBag.Category +"/"+ ViewBag.Producer, "san-pham", new { page }));
                         }
+
+
                     }
                 </div>
 

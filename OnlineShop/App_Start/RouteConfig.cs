@@ -23,19 +23,20 @@ namespace OnlineShop
                  );
 
             routes.MapRoute(
+              name: "ProductDetail",
+              url: "san-pham/{product}/chi-tiet",
+              defaults: new { controller = "Product", action = "ViewDetail", id = UrlParameter.Optional },
+              namespaces: new[] { "OnlineShop.Controllers" }
+              );
+
+            routes.MapRoute(
                  name: "GetProductByCategoryProducer",
                  url: "san-pham/{category}/{producer}",
                  defaults: new { controller = "Product", action = "GetProductByCategoryProducer", id = UrlParameter.Optional },
                  namespaces: new[] { "OnlineShop.Controllers" }
                  );
 
-            routes.MapRoute(
-               name: "ProductDetail",
-               url: "san-pham/{category}/{producer}/{id}",
-               defaults: new { controller = "Product", action = "ViewDetail", id = UrlParameter.Optional },
-               namespaces: new[] { "OnlineShop.Controllers" }
-               );
-
+           
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
