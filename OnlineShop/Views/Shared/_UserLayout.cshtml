@@ -96,8 +96,8 @@
 
                             <div class="login">
                                @* <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>*@
-                                <a href="../account/login"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Đăng nhập</span></a>
-                                <a href="customer-register.html"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Đăng ký</span></a>
+                                <a href="~/account/login"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Đăng nhập</span></a>
+                                <a href="~/account/login"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Đăng ký</span></a>
                             </div>
 
                         </div>
@@ -118,7 +118,8 @@
                     CategoryId = i.CategoryId,
                     ProducerName = i.Producer.Name,
                     ProducerId = i.ProducerId,
-                    CategoryImage = i.Category.Image
+                    CategoryImage = i.Category.Image,
+                    CategoryMetaKeyWord = i.Category.MetaKeyword
                 }));
 
                 Html.RenderPartial("~/Views/Shared/Navbar.cshtml", Newtonsoft.Json.JsonConvert.SerializeObject(results));

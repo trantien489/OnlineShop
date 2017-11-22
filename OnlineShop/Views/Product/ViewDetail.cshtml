@@ -77,97 +77,88 @@
             _________________________________________________________ -->
 
             <div class="col-sm-9">
-                    <div class="row" id="productMain">
-                        <div class="col-sm-6">
-                            <div id="mainImage">
-                                <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                <div class="row" id="productMain">
+                    <div class="col-sm-6">
+                        <div id="mainImage" class="row">
+                            <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                        </div>
+                        <div class="row" id="thumbs">
+                            <div class="col-xs-4">
+                                <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb active">
+                                    <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb">
+                                    <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb">
+                                    <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
+                                </a>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="box">
-                                <form>
-                                    <p class="price"> @Model.ProductName<p>
-                                    <p class="price">@Model.Price.Value.ToString("N0") VND</p>
-                                    <p class="text-center">
-                                        <button type="" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                        <button type="" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
-                                    </p>
-                                </form>
-                            </div>
-
-                            <div class="row" id="thumbs">
-                                <div class="col-xs-4">
-                                    <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb active">
-                                        <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb">
-                                        <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="col-xs-4">
-                                    <a href="@Url.Content($"~/Photos/Product/{Model.Image}")" class="thumb">
-                                        <img src="@Url.Content($"~/Photos/Product/{Model.Image}")" alt="" class="img-responsive">
-                                    </a>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="box">
+                            <form>
+                                <p class="" style="font-size:50px"> @Model.ProductName<p>
+                                    <div>
+                                        <p style="font-size:x-large">Thông số kỹ thuật:</p>
+                                        @Html.Raw(Model.Information)
+                                    </div>
+                                <p class="price">Giá: @Model.Price.Value.ToString("N0") VND</p>
+                                <p class="text-center">
+                                    <button type="" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    <button type="" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
+                                </p>
+                            </form>
                         </div>
 
+                      
                     </div>
 
+                </div>
 
-                    <div class="box" id="details">
-                        <p>
-                        </p><h1>Product details</h1>
-                        <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
-                        <h4>Material &amp; care</h4>
-                        <ul>
-                            <li>Polyester</li>
-                            <li>Machine wash</li>
-                        </ul>
-                        <h4>Size &amp; Fit</h4>
-                        <ul>
-                            <li>Regular fit</li>
-                            <li>The model (height 5'8" and chest 33") is wearing a size S</li>
-                        </ul>
 
-                        <blockquote>
-                            <p>
-                                <em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
-                            </p>
-                        </blockquote>
+                <div class="box" id="details">
+                    <p>
+                    </p><h1>CHI TIẾT SẢN PHẨM</h1>
+                    <div>
+                        @Html.Raw(Model.Detail)
                     </div>
+                </div>
 
 
 
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="box text-uppercase">
-                                <h3>Bạn có thể quan tâm</h3>
-                            </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box text-uppercase">
+                            <h3>Bạn có thể quan tâm</h3>
                         </div>
-                        @{
+                    </div>
+                    @{
                             var randomProducts = context.Products.OrderBy(r => Guid.NewGuid()).Take(3);
                             foreach (var product in randomProducts)
                             {
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="product">
-                                        <div class="image" style="height: 152px;">
-                                            <a href="@Url.Content($"~/san-pham/{product.MetaKeyword}/chi-tiet")">
-                                                <img src="@Url.Content($"~/Photos/Product/{product.Image}")" alt="" class="img-responsive image1">
-                                            </a>
-                                        </div>
-                                        <div class="text">
-                                            <h3>@product.ProductName</h3>
-                                            <p class="price">@product.Price.Value.ToString("N0") VND</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product">
+                            <div class="image" style="height: 152px;">
+                                <a href="@Url.Content($"~/san-pham/{product.MetaKeyword}/chi-tiet")">
+                                    <img src="@Url.Content($"~/Photos/Product/{product.Image}")" alt="" class="img-responsive image1">
+                                </a>
+                            </div>
+                            <div class="text">
+                                <h3>@product.ProductName</h3>
+                                <p class="price">@product.Price.Value.ToString("N0") VND</p>
+                            </div>
+                        </div>
                     </div>
+                            }
+                    }
+
+                </div>
             </div>
             <!-- /.col-md-9 -->
             <!-- *** RIGHT COLUMN END *** -->
