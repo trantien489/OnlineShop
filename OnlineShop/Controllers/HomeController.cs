@@ -7,7 +7,7 @@ using PagedList;
 
 namespace OnlineShop.Controllers
 {
-    public class HomeController : UserController
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {

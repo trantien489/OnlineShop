@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineShop.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace OnlineShop.Controllers
 {
@@ -91,7 +92,7 @@ namespace OnlineShop.Controllers
                         }
                         else 
                         {
-                            return RedirectToLocal(returnUrl);
+                            return RedirectToLocal("~/");
                         }
 
                     }
@@ -154,7 +155,7 @@ namespace OnlineShop.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return View("RegisterCustom");
         }
 
         //
@@ -162,17 +163,41 @@ namespace OnlineShop.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(CustomRegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var user = new ApplicationUser { UserName = model.Username, Email = "tien@gmail.com" };
+                    var names = model.FullName.Trim().Split(' ');
+                    var lastNames = new List<string>();
+                    for (int i = 0; i < names.Count(); ++i)
+                    {
+                        if (i == 0)
+                        {
+                            continue;
+                        }
+                        lastNames.Add(names[i]);
+                    }
+                    var user = new ApplicationUser
+                    {
+                        UserName = model.Username,
+                        Email = "tien@gmail.com",
+                        FirstName = names.First(),
+                        LastName = string.Join(" ",lastNames.ToArray()),
+                        PhoneNumber = model.PhoneNumber,
+                        EmailConfirmed = true,
+                        JoinDate = DateTime.Now,
+                        Address = model.Address
+                    };
 
                     var result = await UserManager.CreateAsync(user, model.Password);
+
                     if (result.Succeeded)
                     {
+                        var rs = UserManager.Find(user.UserName, model.Password);
+                        UserManager.AddToRole(rs.Id, ApplicationUser.UserRoleName);
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -180,8 +205,7 @@ namespace OnlineShop.Controllers
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                        var rs = UserManager.Find(user.UserName, model.Password);
-                        UserManager.AddToRole(rs.Id, ApplicationUser.UserRoleName);
+
                         return RedirectToAction("HomePage", "Home");
                     }
                     AddErrors(result);
@@ -194,7 +218,8 @@ namespace OnlineShop.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            
+            return View("RegisterCustom", model);
         }
 
         //

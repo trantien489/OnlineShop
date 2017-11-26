@@ -14,42 +14,42 @@
 
 </head>
 <style>
-
-    .u-form-group input[type="text"]{
-      width: calc(50% - 22px);
-      height:45px;
-      outline: none;
-      border: 1px solid #ddd;
-      padding: 0 10px;
-      border-radius: 2px;
-      color: #333;
-      font-size:0.8rem;
-      -webkit-transition:all 0.1s linear;
-      -moz-transition:all 0.1s linear;
-      transition:all 0.1s linear;
+    .u-form-group input[type="text"] {
+        width: calc(50% - 22px);
+        height: 45px;
+        outline: none;
+        border: 1px solid #ddd;
+        padding: 0 10px;
+        border-radius: 2px;
+        color: #333;
+        font-size: 0.8rem;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
     }
 </style>
 <body>
 
     <div class="login-box" style="margin-top: 10%;">
         <div class="lb-header">
-            <a href="#" class="active" id="login-box-link">Đăng nhập</a>
-            <a href="#" id="signup-box-link">Đăng ký</a>
+            <a href="~/account/login" class="active">Đăng nhập</a>
+            <a href="~/account/register" class="" >Đăng ký</a>
         </div>
         <div class="social-login">
             <a href="#">
                 <i class="fa fa-facebook fa-lg"></i>
                 Đăng nhập bằng Facebook
             </a>
-            <a href="#" >
+            <a href="#">
                 <i class="fa fa-google-plus fa-lg"></i>
                 Đăng nhập bằng Google
             </a>
         </div>
-        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "email-login", role = "" }))
+       
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new {@class = "email-login", style = $"display:block", role = "" }))
         {
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "text-danger", style = "text-align:left;color:red" })
 
             <div class="u-form-group">
                 <input type="text" name="Username" placeholder="Tài khoản" />
@@ -65,31 +65,6 @@
             </div>
         }
 
-        @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "email-signup", role = "" }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            
-                <div class="u-form-group">
-                    <input type="text" style="width:250px" name="Username" placeholder="Tài khoản" />
-                    <input type="text" style="width:250px" name="FullName" placeholder="Họ và tên" />
-                </div>
-                <div class="u-form-group">
-                    <input type="password" style="width:250px" name="Password" placeholder="Mật khẩu" />
-                    <input type="text" style="width:250px" name="PhoneNumber" placeholder="Số điện thoại" />
-
-                </div>
-                <div class="u-form-group">
-                    <input type="password" style="width:250px" name="ConfirmPassword" placeholder="Nhập lại mật khẩu" />
-                    <input type="text" style="width:250px" name="Address" placeholder="Địa chỉ" />
-                </div>
-                <div class="u-form-group">
-                    <input type="email" style="width:250px" name="Email" placeholder="Email" />
-                    <button type="submit" style="width:271px">Đăng ký</button>
-                </div>
-          
-        }
-        
     </div>
     <script src="~/Asset/Common/Login/js/jquery-1.11.0.min.js"></script>
     <script src="~/Asset/Common/Login/js/index.js"></script>

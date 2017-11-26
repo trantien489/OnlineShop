@@ -226,9 +226,12 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\UserBaseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -262,6 +265,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryProducer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -4063,6 +4067,7 @@
     <Content Include="Asset\Common\ckeditor\skins\moono-lisa\images\refresh.png" />
     <Content Include="Asset\Common\ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="Asset\Common\ckeditor\styles.js" />
+    <Content Include="Asset\Common\css\DropDown.css" />
     <Content Include="Asset\Common\css\loader.css" />
     <Content Include="Asset\Common\css\Custom.css" />
     <Content Include="Asset\Common\Login\css\normalize.min.css" />
@@ -4196,6 +4201,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\Cart.js" />
     <Content Include="Photos\Category\0a25880e-a47d-440a-ad75-91ab9ba53cbc.png" />
     <Content Include="Photos\Category\0f65a76f-7cbc-4367-889a-0513f1452361.png" />
     <Content Include="Photos\Category\4f5de437-0c49-4563-8ae9-2e2a62687c61.gif" />
@@ -5160,12 +5166,18 @@
     <Content Include="Views\Shared\Navbar.cshtml" />
     <Content Include="Views\Shared\LeftMenu.cshtml" />
     <Content Include="Views\Product\ViewDetail.cshtml" />
+    <Content Include="Views\Shared\_UserManage.cshtml" />
+    <Content Include="Views\User\Info.cshtml" />
+    <Content Include="Views\User\Orders.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\Account\RegisterCustom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Asset\User\Search\" />
-    <Folder Include="Views\User\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\UserBase\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

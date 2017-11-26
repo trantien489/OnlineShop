@@ -110,8 +110,8 @@
                                     </div>
                                 <p class="price">Giá: @Model.Price.Value.ToString("N0") VND</p>
                                 <p class="text-center">
-                                    <button type="" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
+                                    <button type="button" onclick="AddCart(@Model.Id)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    <button type="button" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
                                 </p>
                             </form>
                         </div>

@@ -282,3 +282,4 @@ D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.GenerateResource.Cach
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.CoreCompileInputs.cache
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.dll
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.pdb
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csprojResolveAssemblyReference.cache

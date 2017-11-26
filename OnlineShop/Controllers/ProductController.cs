@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace OnlineShop.Controllers
 {
-    public class ProductController : UserController
+    public class ProductController : BaseController
     {
         // GET: Product
         public ActionResult Index()

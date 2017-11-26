@@ -1,4 +1,6 @@
 ﻿@using System.Data.Entity;
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.Owin;
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +14,14 @@
 
     <meta name="keywords" content="">
 
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap and Font Awesome css -->
-    <link href="~/Asset/User/css/font-awesome.css" rel="stylesheet" />
     <link href="~/Asset/Admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Asset/User/css/font-awesome.css" rel="stylesheet" />
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+
     <!-- Css animations  -->
     <link href="~/Asset/User/css/animate.css" rel="stylesheet">
 
@@ -48,8 +53,76 @@
     <link href="~/Asset/Common/css/loader.css" rel="stylesheet" />
     <!--Custom Css-->
     <link href="~/Asset/Common/css/Custom.css" rel="stylesheet" />
+    <!--Dropdown Menu-->
+    <link href="~/Asset/Common/css/DropDown.css" rel="stylesheet" />
 </head>
 
+<style>
+    .modal-backdrop.fade {
+        filter: alpha(opacity=0);
+        opacity: 0 !important;
+    }
+
+    .modal-backdrop.in {
+        filter: alpha(opacity=50);
+        opacity: 0 !important;
+    }
+</style>
+
+
+<!-- *** LOGIN MODAL ***
+_________________________________________________________ -->
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="Login">Customer login</h4>
+            </div>
+            <div class="modal-body">
+                <form action="customer-orders.html" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email_modal" placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password_modal" placeholder="password">
+                    </div>
+
+                    <p class="text-center">
+                        <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
+                    </p>
+
+                </form>
+
+                <p class="text-center text-muted">Not registered yet?</p>
+                <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- *** LOGIN MODAL END *** -->
+<!--Alert Modal -->
+<div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="Login">Thông báo</h4>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <img src="~/Asset/Common/Photos/Success.png" width="50px">
+                <p id="alertMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
 <body>
 
     <div class="loader">
@@ -96,8 +169,28 @@
 
                             <div class="login">
                                @* <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>*@
-                                <a href="~/account/login"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Đăng nhập</span></a>
-                                <a href="~/account/login"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Đăng ký</span></a>
+                               
+                                @{
+                                    var User = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                                    if (User == null)
+                                    {
+                                        <a href="~/account/login"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Đăng nhập</span></a>
+                                        <a href="~/account/register"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Đăng ký</span></a>
+                                    }
+                                    else
+                                    {
+                                        var fullName = "Chào " + User.FirstName + " " + User.LastName + "!";
+                                        <div class="dropdown" >
+                                            <p style="font-size: 12px;color: #eeeeee;margin-right: 15px;font-weight: 700;letter-spacing: 0.10em;" >@fullName</p>
+                                            <div class="dropdown-content">
+                                                <a href="~/user/info"><i class="fa fa-user"></i>Thông tin cá nhân</a>
+                                                <a href="~/user/orders"><i class="fa fa-list-alt"></i>Quản lý đơn hàng</a>
+                                                <a href="~/user/changepassword"><i class="fa fa-edit"></i>Đổi mật khẩu</a>
+                                                <a href="~/Account/LogOff" ><i class="fa fa-sign-out"></i>Đăng xuất</a>
+                                            </div>
+                                        </div>
+                                    }
+                                }
                             </div>
 
                         </div>
@@ -129,41 +222,6 @@
 
         </header>
 
-        <!-- *** LOGIN MODAL ***
-        _________________________________________________________ -->
-
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Customer login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="email_modal" placeholder="email">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password_modal" placeholder="password">
-                            </div>
-
-                            <p class="text-center">
-                                <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
-                            </p>
-
-                        </form>
-
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- *** LOGIN MODAL END *** -->
            @RenderBody()
         <!-- *** GET IT ***
         _________________________________________________________ -->
@@ -353,6 +411,8 @@
     <script src="~/Asset/User/js/front.js"></script>
     <!-- owl carousel -->
     <script src="~/Asset/User/js/owl.carousel.min.js"></script>
+    <!-- cart -->
+    <script src="~/js/Cart.js"></script>
     
     <script>
         $(document).ajaxStart(function () {

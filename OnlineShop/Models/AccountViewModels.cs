@@ -64,13 +64,7 @@ namespace OnlineShop.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Username")]
+        [Display(Name = "UserName")]
         public string Username { get; set; }
 
         [Required]
@@ -81,9 +75,52 @@ namespace OnlineShop.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Mật khẩu và nhập lại mật khẩu không khớp.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "FullName")]
+        public string FullName { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
     }
+
+
+    public class UpdateInfoUserModel
+    {
+        [Required]
+        public string UserName { get; set; }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        [Required]
+        [Phone]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        public string Address { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+    }
+
 
     public class CustomRegisterViewModel
     {
@@ -101,6 +138,24 @@ namespace OnlineShop.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "Mật khẩu và nhập lại mật khẩu không khớp.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "FullName")]
+        public string FullName { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string Email { get; set; }
     }
 
     public class ResetPasswordViewModel

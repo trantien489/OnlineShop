@@ -1,0 +1,90 @@
+﻿@model OnlineShop.Models.UpdateInfoUserModel
+
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_UserManage.cshtml";
+}
+
+@{
+    var message = ViewBag.Message ?? "";
+}
+
+<div class="box clearfix">
+    <div class="heading">
+        <h3 class="text-uppercase">Thông tin chi tiết</h3>  
+    </div>
+
+    <form method="post" action="~/user/info">
+        @Html.ValidationSummary("", new { @class = "text-danger", style = "text-align:left" })
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="firstname">Họ</label>
+                    <input type="text" name="Firstname" class="form-control" id="firstname" value="@Model.FirstName">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="lastname">Tên</label>
+                    <input type="text" class="form-control" id="lastname"  name="Lastname" value="@Model.LastName">
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="company">Tài khoản</label>
+                    <input type="text" class="form-control" id="company" name="Username" value="@Model.UserName" readonly>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="street">Email</label>
+                    <input type="text" class="form-control" id="street" name="Email" value="@Model.Email">
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="text" class="form-control" id="phone" name="Phonenumber" value="@Model.PhoneNumber">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="email_account">Địa chỉ</label>
+                    <input type="text" class="form-control" id="" name="Address" value="@Model.Address">
+                </div>
+            </div>
+            <div class="col-sm-12 text-center">
+                <button type="submit" class="btn btn-template-main"><i class="fa fa-save"></i>Lưu</button>
+
+            </div>
+
+        </div>
+
+        </form>
+
+</div>
+
+@section Script {
+   
+<script>
+var message = '@message';
+    if (message)
+    {
+        $('#alertMessage').html(message);
+     //   $('#login-modal').appendTo("body").modal('show');
+           $('#AlertModal').modal('show');
+
+    }
+</script>
+
+}
