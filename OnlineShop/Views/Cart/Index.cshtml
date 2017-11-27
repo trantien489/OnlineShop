@@ -1,0 +1,184 @@
+﻿@using OnlineShop.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="container">
+    <div id="heading-breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Giỏ hàng</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-9 clearfix" id="basket">
+
+            <div class="box">
+
+                <form method="post" action="shop-checkout1.html">
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá</th>
+                                    <th colspan="2">Tổng cộng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var carts = Session["Cart"] as List<CartItem>;
+                                    decimal total = 0 ;
+                                    if (carts != null)
+                                    {
+                                        foreach (var item in carts)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <a href="#">
+                                                        <img src="@Url.Content($"~/Photos/Product/{item.Product.Image}")" alt="Lỗi ảnh">
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Content($"~/san-pham/{item.Product.MetaKeyword}/chi-tiet")">@item.Product.ProductName</a>
+                                                </td>
+                                                <td>
+                                                    <input type="number" value="@item.Quantity" class="form-control">
+                                                </td>
+                                                <td>@item.Product.Price.Value.ToString("N0") VND</td>
+                                                @{ var money = (item.Product.Price.Value * item.Quantity);
+                                                    total += money;
+                                                }
+                                                <td>@money.ToString("N0") VND</td>
+                                                <td>
+                                                    <a href="#"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="4">Tổng cộng</th>
+                                    <th colspan="1">@total.ToString("N0") VND</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                    <!-- /.table-responsive -->
+
+                    <div class="box-footer">
+                        <div class="pull-left">
+                            <a href="~/" class="btn btn-default"><i class="fa fa-chevron-left"></i> Tiếp tục mua hàng</a>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" onclick="location.href='/cart/index'" class="btn btn-default"><i class="fa fa-refresh"></i> Cập nhập giỏ hàng</button>
+                            <button type="submit" class="btn btn-template-main">
+                                Thanh toán<i class="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- /.box -->
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="box text-uppercase">
+                        <h3>Bạn có thể quan tâm</h3>
+                    </div>
+                </div>
+                @{
+                    var context = new OnlineShop.Models.ApplicationDbContext();
+                    var randomProducts = context.Products.OrderBy(r => Guid.NewGuid()).Take(3);
+                    foreach (var product in randomProducts)
+                    {
+                        <div class="col-md-3 col-sm-6">
+                            <div class="product">
+                                <div class="image" style="height: 152px;">
+                                    <a href="@Url.Content($"~/san-pham/{product.MetaKeyword}/chi-tiet")">
+                                        <img src="@Url.Content($"~/Photos/Product/{product.Image}")" alt="" class="img-responsive image1">
+                                    </a>
+                                </div>
+                                <div class="text">
+                                    <h3>@product.ProductName</h3>
+                                    <p class="price">@product.Price.Value.ToString("N0") VND</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+
+        </div>
+        <!-- /.col-md-9 -->
+
+        <div class="col-md-3">
+            <div class="box" id="order-summary">
+                <div class="box-header">
+                    <h3>Tổng kết đơn hàng</h3>
+                </div>
+                <p class="text-muted">Vận chuyển và chi phí bổ sung được tính toán dựa trên các giá trị bạn đã nhập.</p>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Số tiền đơn hàng</td>
+                                <th>$446.00</th>
+                            </tr>
+                            <tr>
+                                <td>Phí vận chuyển</td>
+                                <th>$10.00</th>
+                            </tr>
+                            <tr class="total">
+                                <td>Tổng cộng</td>
+                                <th>$456.00</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+            <div class="box">
+                <div class="box-header">
+                    <h4>Mã giảm giá</h4>
+                </div>
+                <p class="text-muted">Nếu bạn có mã phiếu giảm giá, vui lòng nhập nó vào bên dưới.</p>
+                <form>
+                    <div class="input-group">
+
+                        <input type="text" class="form-control">
+
+                        <span class="input-group-btn">
+
+                            <button class="btn btn-template-main" type="button"><i class="fa fa-gift"></i></button>
+
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </form>
+            </div>
+
+        </div>
+        <!-- /.col-md-3 -->
+
+    </div>
+
+</div>
+@section Script {
+}

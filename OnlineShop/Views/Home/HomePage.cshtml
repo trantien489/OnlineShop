@@ -1,7 +1,8 @@
 ﻿@using System.Data.Entity;
 @using PagedList;
+@using OnlineShop.Models;
 @using PagedList.Mvc;
-@model IPagedList<OnlineShop.Models.Product>
+@model IPagedList<Product>
 
 @{
     ViewBag.Title = "HomePage";
@@ -87,6 +88,10 @@
 
 </section>
 
+@{
+    var carts = Session["Cart"] as List<CartItem>;
+    var totalCart = carts != null ? carts.Sum(c => c.Quantity) : 0;
+}
 <div class="row" style="background-color: #38a7bb;margin-bottom: 10px; ">
     <div style="margin:1%">
         <div class="Search">
@@ -103,8 +108,8 @@
         </div>
         <div class="input-group" style="margin-left:5px">
             <div class="input-group-btn">
-                <button class="btn btn-primary" type="submit" style="margin-left:5px">
-                    <span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng
+                <button class="btn btn-primary" type="submit" style="margin-left:5px" onclick="location.href='/cart/index'">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> (@totalCart) Giỏ hàng
                 </button>
             </div>
         </div>

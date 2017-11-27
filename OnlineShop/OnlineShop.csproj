@@ -5171,12 +5171,12 @@
     <Content Include="Views\User\Orders.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Account\RegisterCustom.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Asset\User\Search\" />
-    <Folder Include="Views\Cart\" />
     <Folder Include="Views\UserBase\" />
   </ItemGroup>
   <ItemGroup>

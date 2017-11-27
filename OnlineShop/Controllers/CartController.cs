@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace OnlineShop.Controllers
 {
-    public class CartController : UserBaseController
+    public class CartController : BaseController
     {
         // GET: Cart
         public ActionResult Index()
