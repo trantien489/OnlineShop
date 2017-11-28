@@ -29,7 +29,7 @@
         <div class="input-group" style="margin-left:5px">
             <div class="input-group-btn">
                 <button class="btn btn-primary" type="button" style="margin-left:5px" onclick="location.href='/cart/index'">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> (@totalCart) Giỏ hàng
+                        <span class="glyphicon glyphicon-shopping-cart"></span> <span  id="CountCartItem">(@totalCart) Giỏ hàng</span>
                 </button>
             </div>
         </div>
@@ -115,7 +115,7 @@
                                     </div>
                                 <p class="price">Giá: @Model.Price.Value.ToString("N0") VND</p>
                                 <p class="text-center">
-                                    <button type="button" onclick="AddCart(@Model.Id)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                    <button type="button" onclick="AddToCart(@Model.Id)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
                                     <button type="button" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
                                 </p>
                             </form>

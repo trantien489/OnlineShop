@@ -31,10 +31,10 @@
                                     <th colspan="2">Tổng cộng</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="CartContent">
                                 @{
                                     var carts = Session["Cart"] as List<CartItem>;
-                                    decimal total = 0 ;
+                                    decimal total = 0;
                                     if (carts != null)
                                     {
                                         foreach (var item in carts)
@@ -48,16 +48,20 @@
                                                 <td>
                                                     <a href="@Url.Content($"~/san-pham/{item.Product.MetaKeyword}/chi-tiet")">@item.Product.ProductName</a>
                                                 </td>
-                                                <td>
-                                                    <input type="number" value="@item.Quantity" class="form-control">
+
+                                                <td style="adding-top: 8px;">
+                                                    <i class="fa fa-minus" style="float: left;padding-top: 11px;padding-right: 6px;cursor: pointer;" onclick="SubtractionCart(@item.Product.Id)"></i>
+                                                    <input type="text" value="@item.Quantity" class="form-control" style="float: left;" readonly>
+                                                    <i class="fa fa-plus" style="float: left;padding-top: 11px; padding-left: 8px; cursor: pointer;" onclick="AddCart(@item.Product.Id)"></i>
                                                 </td>
+
                                                 <td>@item.Product.Price.Value.ToString("N0") VND</td>
                                                 @{ var money = (item.Product.Price.Value * item.Quantity);
                                                     total += money;
                                                 }
                                                 <td>@money.ToString("N0") VND</td>
                                                 <td>
-                                                    <a href="#"><i class="fa fa-trash-o"></i></a>
+                                                    <i class="fa fa-trash-o" style="cursor:pointer;font-size: 20px;color: red;" onclick="DeleteCart(@item.Product.Id)"></i>
                                                 </td>
                                             </tr>
                                         }
@@ -69,7 +73,7 @@
                             <tfoot>
                                 <tr>
                                     <th colspan="4">Tổng cộng</th>
-                                    <th colspan="1">@total.ToString("N0") VND</th>
+                                    <th colspan="1" id="TotalMoneyCart">@total.ToString("N0") VND</th>
                                 </tr>
                             </tfoot>
                         </table>

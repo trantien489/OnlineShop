@@ -10,5 +10,15 @@ namespace OnlineShop.Models
         public Product Product { get; set; }
 
         public int Quantity { get; set; }
+
+        public string GetPrice()
+        {
+            return Product.Price.Value.ToString("N0");
+        }
+
+        public string GetMoney()
+        {
+            return (Product.Price.Value * Quantity).ToString("N0");
+        }
     }
 }
