@@ -92,7 +92,7 @@ namespace OnlineShop.Controllers
                         }
                         else 
                         {
-                            return RedirectToLocal("~/");
+                            return RedirectToLocal("~" +returnUrl);
                         }
 
                     }

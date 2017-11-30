@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Models
 {
-    public class Invoice: BaseModel
+    public class Invoice : BaseModel
     {
-       
+
         public int InvoiceDetailId { get; set; }
 
         public decimal Total { get; set; }
@@ -16,6 +16,15 @@ namespace OnlineShop.Models
         //public string UserId { get; set; }
 
         public int? InvoiceStatus { get; set; }
+
+        public string NameReceive { get; set; }
+
+        public string PhoneReceive { get; set; }
+
+        public string AddressReceive { get; set; }
+
+        public string EmailReceive { get; set; }
+
 
 
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }

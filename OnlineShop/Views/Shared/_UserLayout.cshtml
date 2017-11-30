@@ -58,7 +58,7 @@
 </head>
 
 <style>
-    .modal-backdrop.fade {
+    /*.modal-backdrop.fade {
         filter: alpha(opacity=0);
         opacity: 0 !important;
     }
@@ -66,7 +66,7 @@
     .modal-backdrop.in {
         filter: alpha(opacity=50);
         opacity: 0 !important;
-    }
+    }*/
 </style>
 
 
@@ -107,7 +107,7 @@ _________________________________________________________ -->
 <!-- *** LOGIN MODAL END *** -->
 <!--Alert Modal -->
 <div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm" style="z-index:9999">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -412,9 +412,9 @@ _________________________________________________________ -->
     <!-- owl carousel -->
     <script src="~/Asset/User/js/owl.carousel.min.js"></script>
     <!-- cart -->
-    <script src="~/js/Cart.js"></script>
     
     <script>
+    
         $(document).ajaxStart(function () {
             $(".loader").css("display", "block");
         });
@@ -424,7 +424,6 @@ _________________________________________________________ -->
         });
     </script>
     @RenderSection("Script", true)
-
 </body>
 
 </html>

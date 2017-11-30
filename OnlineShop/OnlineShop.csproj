@@ -262,6 +262,18 @@
     <Compile Include="Migrations\201711121652447_add-image-in-Category.Designer.cs">
       <DependentUpon>201711121652447_add-image-in-Category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711291515484_add-some-fields-in-Invoice.cs" />
+    <Compile Include="Migrations\201711291515484_add-some-fields-in-Invoice.Designer.cs">
+      <DependentUpon>201711291515484_add-some-fields-in-Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711291534372_add-some-fields-in-Invoice-v2.cs" />
+    <Compile Include="Migrations\201711291534372_add-some-fields-in-Invoice-v2.Designer.cs">
+      <DependentUpon>201711291534372_add-some-fields-in-Invoice-v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711301537441_update-ForeignKey-Product-InvoiceDetail.cs" />
+    <Compile Include="Migrations\201711301537441_update-ForeignKey-Product-InvoiceDetail.Designer.cs">
+      <DependentUpon>201711301537441_update-ForeignKey-Product-InvoiceDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -5172,6 +5184,8 @@
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Account\RegisterCustom.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\CheckOut.cshtml" />
+    <Content Include="Views\Cart\CheckOutSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -5212,6 +5226,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711121652447_add-image-in-Category.resx">
       <DependentUpon>201711121652447_add-image-in-Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711291515484_add-some-fields-in-Invoice.resx">
+      <DependentUpon>201711291515484_add-some-fields-in-Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711291534372_add-some-fields-in-Invoice-v2.resx">
+      <DependentUpon>201711291534372_add-some-fields-in-Invoice-v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711301537441_update-ForeignKey-Product-InvoiceDetail.resx">
+      <DependentUpon>201711301537441_update-ForeignKey-Product-InvoiceDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

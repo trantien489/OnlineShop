@@ -11,11 +11,6 @@ namespace OnlineShop.Controllers
     [Authorize(Roles = "User")]
     public class UserBaseController : BaseController
     {
-        // GET: UserBase
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         protected ApplicationUserManager mUsermaneger;
         protected ApplicationUserManager UserManeger

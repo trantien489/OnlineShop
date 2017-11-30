@@ -283,3 +283,6 @@ D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csproj.CoreCompileInputs.cac
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.dll
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.pdb
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csprojResolveAssemblyReference.cache
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addsomefieldsinInvoice.resources
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addsomefieldsinInvoicev2.resources
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.updateForeignKeyProductInvoiceDetail.resources

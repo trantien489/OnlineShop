@@ -8,10 +8,7 @@ namespace OnlineShop.Models
 {
     public class InvoiceDetail:BaseModel
     {
-        public InvoiceDetail()
-        {
-            this.Products = new HashSet<Product>();
-        }
+
 
         public int? InvoiceId { get; set; }
 
@@ -26,8 +23,5 @@ namespace OnlineShop.Models
 
         public virtual Product Product { get; set; }
 
-
-
-        public virtual ICollection<Product> Products { get; set; }
     }
 }

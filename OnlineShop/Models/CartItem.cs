@@ -20,5 +20,15 @@ namespace OnlineShop.Models
         {
             return (Product.Price.Value * Quantity).ToString("N0");
         }
+
+        public decimal GetPriceDecimal()
+        {
+            return  Product.Price.Value;
+        }
+
+        public decimal GetMoneyDecimal()
+        {
+            return (Product.Price.Value * Quantity);
+        }
     }
 }

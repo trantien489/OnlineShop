@@ -10,12 +10,6 @@ namespace OnlineShop.Models
 {
     public class Product : BaseModel
     {
-
-        public Product()
-        {
-            this.InvoiceDetails = new HashSet<InvoiceDetail>();
-        }
-
         [Required]
         [StringLength(100)]
         public string ProductName { get; set; }

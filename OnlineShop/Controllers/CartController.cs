@@ -1,4 +1,6 @@
-﻿using OnlineShop.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +9,53 @@ using System.Web.Mvc;
 
 namespace OnlineShop.Controllers
 {
-    public class CartController : BaseController
+    public class CartController : UserBaseController
     {
         // GET: Cart
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
+        public ActionResult CheckOut()
+        {
+            var user = UserManeger.FindById(User.Identity.GetUserId());
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult FinsishCheckOut(Invoice invoice)
+        {
+            var user = UserManeger.FindById(User.Identity.GetUserId());
+            var carts = Session["Cart"] as List<CartItem>;
+            var total = carts.Sum(c => c.Product.Price.Value * c.Quantity);
+
+            invoice.Total = total >= 1000000 ? total : total + (total / 100) * 5;
+            invoice.ApplicationUser = user;
+            invoice.InvoiceStatus = 0;
+            var invoiceId = DbContext.Invoices.Add(invoice).Id;
+
+
+            var invoiceDetails = new List<InvoiceDetail>();
+            foreach (var item in carts)
+            {
+                var invoiceDetail = new InvoiceDetail();
+                invoiceDetail.InvoiceId = invoiceId;
+                invoiceDetail.ProductId = item.Product.Id;
+                invoiceDetail.Quantity = item.Quantity;
+                invoiceDetail.Money = item.GetMoneyDecimal();
+                invoiceDetails.Add(invoiceDetail);
+            }
+
+            DbContext.InvoiceDetails.AddRange(invoiceDetails);
+
+            DbContext.SaveChanges();
+            Session["Cart"] = null;
+            return View("CheckOutSuccess");
+        }
+
+        [AllowAnonymous]
         [HttpGet]
         public JsonResult GetInfoCart()
         {
@@ -49,6 +90,7 @@ namespace OnlineShop.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public void AddtoCart(int productId)
         {
@@ -85,7 +127,8 @@ namespace OnlineShop.Controllers
             //    }
             //);
         }
-        
+
+        [AllowAnonymous]
         [HttpPost]
         public void SubtractionCart(int productId)
         {
@@ -98,6 +141,7 @@ namespace OnlineShop.Controllers
             Session["Cart"] = carts;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public void DeleteCart(int productId)
         {

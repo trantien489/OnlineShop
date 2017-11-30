@@ -81,8 +81,10 @@ namespace OnlineShop.Models
                 .WithMany(invoice => invoice.InvoiceDetails)
                 .HasForeignKey(invoiceDetail => invoiceDetail.InvoiceId);
 
-            //modelbuilder.entity<invoicedetail>().hasmany(invoicedetail => invoicedetail.products)
-            //    .withoptional().hasforeignkey(invoicedetail => invoicedetail.productid);
+            modelBuilder.Entity<InvoiceDetail>()
+              .HasRequired(invoiceDetail => invoiceDetail.Product)
+              .WithMany(product => product.InvoiceDetails)
+              .HasForeignKey(invoiceDetail => invoiceDetail.ProductId);
 
             modelBuilder.Entity<CategoryProducer>().HasKey(CategoryProducer => CategoryProducer.Id)
                 .HasRequired(CategoryProducer => CategoryProducer.Producer)
