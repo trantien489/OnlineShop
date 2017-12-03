@@ -1,0 +1,100 @@
+﻿@model List<OnlineShop.Models.InvoiceDetail>
+@using OnlineShop.Models;
+@using System.Data.Entity;
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.Owin;
+
+@{
+    ViewBag.Title = "GetInvoiceDetailbyInvoiceId";
+    Layout = "~/Views/Shared/_UserManage.cshtml";
+}
+@{
+    var context = new ApplicationDbContext();
+
+    int invoiceId = Convert.ToInt32(ViewBag.InvoiceId);
+
+    var invoice = context.Invoices.Include(i => i.ApplicationUser).FirstOrDefault( i => i.Id == invoiceId);
+
+    var user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(invoice.ApplicationUser.Id);
+
+    var fullName = user.FirstName + " " + user.LastName;
+}
+
+<div class="col-md-12 clearfix" id="customer-order">
+
+    <div class="box">
+
+        <div class="heading">
+            <h3 class="text-uppercase">Chi tiết đơn hàng</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Tổng cộng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="#">
+                                        <img src="@Url.Content($"~/Photos/Product/{item.Product.Image}")" alt="Lỗi ảnh" width="100px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Content($"~/san-pham/{item.Product.MetaKeyword}/chi-tiet")">@item.Product.ProductName</a>
+                                </td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Product.Price.Value.ToString("N0") VND</td>
+                                <td>@item.Money.Value.ToString("N0") VND</td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4" class="text-right">Tổng cộng</th>
+                        <th>@invoice.Total.ToString("N0") VND</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+        <!-- /.table-responsive -->
+
+        <div class="row addresses">
+            <div class="col-sm-6">
+                <h3 class="text-uppercase">Thông tin người đặt</h3>
+                <p>
+                    @fullName
+                    <br>@user.PhoneNumber
+                    <br>@user.Address
+                    <br>@user.Email
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="text-uppercase">Thông tin người nhận</h3>
+                <p>
+                    @invoice.NameReceive
+                    <br>@invoice.PhoneReceive
+                    <br>@invoice.AddressReceive
+                    <br>@invoice.EmailReceive
+                </p>
+            </div>
+        </div>
+        <!-- /.addresses -->
+
+    </div>
+
+</div>
+
+@section Script {
+
+}

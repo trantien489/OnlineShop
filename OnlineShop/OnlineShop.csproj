@@ -220,6 +220,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InvoiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProducerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
@@ -274,6 +275,10 @@
     <Compile Include="Migrations\201711301537441_update-ForeignKey-Product-InvoiceDetail.Designer.cs">
       <DependentUpon>201711301537441_update-ForeignKey-Product-InvoiceDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712021658493_add-CustomerId-in-ApplicationUser.cs" />
+    <Compile Include="Migrations\201712021658493_add-CustomerId-in-ApplicationUser.Designer.cs">
+      <DependentUpon>201712021658493_add-CustomerId-in-ApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -291,8 +296,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\javascript\category\index.js" />
+    <Content Include="Areas\Admin\javascript\invoice\Index.js" />
     <Content Include="Areas\Admin\javascript\producer\Index.js" />
     <Content Include="Areas\Admin\javascript\product\Index.js" />
+    <Content Include="Areas\Admin\javascript\user\Index.js" />
     <Content Include="Asset\Admin\build\css\custom.css" />
     <Content Include="Asset\Admin\build\css\custom.min.css" />
     <Content Include="Asset\Admin\build\images\back_disabled.png" />
@@ -5068,7 +5075,6 @@
     <Content Include="Asset\Admin\vendors\validator\.gitignore" />
     <Content Include="Asset\Admin\vendors\validator\README.md" />
     <Content Include="Asset\Admin\vendors\validator\validator.jquery.json" />
-    <Content Include="Areas\Admin\Views\User\ListUser.cshtml" />
     <Content Include="Areas\Admin\Views\Producer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
@@ -5125,6 +5131,8 @@
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Asset\Common\Login\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\Invoice\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Properties\PublishProfiles\OnlineShop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -5186,11 +5194,13 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\CheckOut.cshtml" />
     <Content Include="Views\Cart\CheckOutSuccess.cshtml" />
+    <Content Include="Views\User\GetInvoiceDetailbyInvoiceId.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Asset\User\Search\" />
+    <Folder Include="Views\Invoice\" />
     <Folder Include="Views\UserBase\" />
   </ItemGroup>
   <ItemGroup>
@@ -5235,6 +5245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711301537441_update-ForeignKey-Product-InvoiceDetail.resx">
       <DependentUpon>201711301537441_update-ForeignKey-Product-InvoiceDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712021658493_add-CustomerId-in-ApplicationUser.resx">
+      <DependentUpon>201712021658493_add-CustomerId-in-ApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

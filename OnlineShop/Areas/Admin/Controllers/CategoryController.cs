@@ -25,7 +25,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 var data = DbContext.Categories.Where(c => c.Status == true).Include(c => c.CategoryProducers).ToList();
                 if (data.Count() == 0)
                 {
-                    return Json(null, JsonRequestBehavior.AllowGet);
+                    return Json(data, JsonRequestBehavior.AllowGet);
                 }
                 var response = data.Select(x => new
                 {

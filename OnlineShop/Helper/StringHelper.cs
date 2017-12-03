@@ -60,5 +60,35 @@ namespace OnlineShop.Helper
             return str2.ToLower();
 
         }
+
+
+        public static string GetstringInvoiceStatus(int number)
+        {
+            if (number == -1)
+            {
+                return "Bị Hủy";
+            }
+            else if (number == 0)
+            {
+                return "Đang xử lý";
+            }
+            else if (number == 1)
+            {
+                return "Đang vận chuyển";
+            }
+            else if (number == 2)
+            {
+                return "Đã giao hàng";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public static string GetStringStatus(bool status)
+        {
+            return status ? "Hoạt động" : "Bị khóa";
+        }
     }
 }

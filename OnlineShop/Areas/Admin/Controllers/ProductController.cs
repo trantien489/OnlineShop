@@ -27,7 +27,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 var products = DbContext.Products.ToList().Where(p => p.Status == true);
                 if (products.Count() == 0)
                 {
-                    return Json(null, JsonRequestBehavior.AllowGet);
+                    return Json(products, JsonRequestBehavior.AllowGet);
                 }
                 var resultProduct = products.Select(p => new {
                     Id = p.Id,

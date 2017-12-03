@@ -286,3 +286,4 @@ D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.csprojResolveAssemblyReferen
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addsomefieldsinInvoice.resources
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addsomefieldsinInvoicev2.resources
 D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.updateForeignKeyProductInvoiceDetail.resources
+D:\Study\OnlineShop\OnlineShop\obj\Debug\OnlineShop.Migrations.addCustomerIdinApplicationUser.resources

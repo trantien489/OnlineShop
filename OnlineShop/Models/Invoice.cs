@@ -30,4 +30,5 @@ namespace OnlineShop.Models
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
+
 }

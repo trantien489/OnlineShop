@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="Admin")]
-    public class AdminController: Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminController : Controller
     {
-        #region OwinContext
+        #region Database Context
         protected ApplicationDbContext mDbContext;
         protected ApplicationDbContext DbContext
         {
@@ -27,5 +27,20 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
         }
         #endregion
+
+        #region User Manager
+        protected ApplicationUserManager mUsermaneger;
+        protected ApplicationUserManager UserManeger
+        {
+            get
+            {
+                if (mUsermaneger == null)
+                {
+                    mUsermaneger = this.HttpContext.GetOwinContext().Get<ApplicationUserManager>();
+                }
+                return mUsermaneger;
+            }
+        }
+        #endregion
     }
-}   
+}

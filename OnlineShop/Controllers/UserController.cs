@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using OnlineShop.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -55,15 +57,58 @@ namespace OnlineShop.Controllers
             return RedirectToAction("Info", new { message = "Lưu thành công" });
         }
 
-        public ActionResult Orders()
+        public ActionResult Orders(int page = 1, int pageSize = 3)
         {
+            var userId = User.Identity.GetUserId();
+            var invoices = DbContext.Invoices.Where(i => i.Status == true).Include(i => i.ApplicationUser).Where(i => i.ApplicationUser.Id == userId)
+                .OrderByDescending(p => p.CreatedDate).ToPagedList(page, pageSize);
+            return View(invoices);
+        }
+
+        [HttpGet]
+        public ActionResult GetInvoiceDetailbyInvoiceId(int invoiceId)
+        {
+
+            var invoiceDetails = DbContext.InvoiceDetails.Where(i => i.InvoiceId == invoiceId).Include(i => i.Product).ToList();
+
+            ViewBag.InvoiceId = invoiceId;
+            return View(invoiceDetails);
+        }
+
+        public ActionResult ChangePassword(string message)
+        {
+            if (!string.IsNullOrEmpty(message))
+            {
+                ViewBag.Message = message;
+            }
             return View();
         }
 
-
-        public ActionResult ChangePassword()
+        [HttpPost]
+        public ActionResult ChangePassword(ChangPasswordModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+                var result = UserManeger.ChangePassword(userId, model.Oldpass, model.NewPass);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ChangePassword", new { message = "Đổi mật khẩu thành công" });
+                }
+                else
+                {
+
+                    ModelState.AddModelError(string.Empty, "Mật khẩu không chính xác");
+                    return View(model);
+
+                    //return RedirectToAction("ChangePassword", new { message = "Mật khẩu không chính xác" });
+                }
+
+            }
+            else
+            {
+                return View( model);
+            }
         }
     }
 }

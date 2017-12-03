@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineShop.Models
 {
@@ -40,6 +41,9 @@ namespace OnlineShop.Models
         public DateTime JoinDate { get; set; }
 
         public string Image { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CustomerId { get; set; }
 
         public virtual ICollection<Invoice> Invoices { get; set; }
     }

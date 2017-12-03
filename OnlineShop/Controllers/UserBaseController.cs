@@ -17,7 +17,7 @@ namespace OnlineShop.Controllers
         {
             get
             {
-                if (mDbContext == null)
+                if (mUsermaneger == null)
                 {
                     mUsermaneger = this.HttpContext.GetOwinContext().Get<ApplicationUserManager>();
                 }

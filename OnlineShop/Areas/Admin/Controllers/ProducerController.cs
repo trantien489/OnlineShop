@@ -159,7 +159,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 var data = DbContext.Producers.Where(p => p.Status == true).ToList();
                 if (data.Count() == 0)
                 {
-                    return Json(null, JsonRequestBehavior.AllowGet);
+                    return Json(data, JsonRequestBehavior.AllowGet);
                 }
                 return Json(data, JsonRequestBehavior.AllowGet);
             }

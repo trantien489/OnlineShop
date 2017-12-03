@@ -88,7 +88,7 @@ namespace OnlineShop.Controllers
                         var user = new ClaimsPrincipal(AuthenticationManager.AuthenticationResponseGrant.Identity);
                         if (user.IsInRole("Admin"))
                         {
-                            return RedirectToLocal("~/admin/producer");
+                            return RedirectToLocal("~/admin/invoice");
                         }
                         else 
                         {
@@ -97,7 +97,10 @@ namespace OnlineShop.Controllers
 
                     }
                 case SignInStatus.LockedOut:
-                    return View("Lockout");
+                    {
+                        ModelState.AddModelError("", "Tài khoản đang bị khóa ");
+                        return View("LoginCustom", model);
+                    }
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
@@ -499,7 +502,7 @@ namespace OnlineShop.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("HomePage", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

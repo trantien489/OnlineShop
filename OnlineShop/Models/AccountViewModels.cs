@@ -158,6 +158,22 @@ namespace OnlineShop.Models
         public string Email { get; set; }
     }
 
+
+    public class ChangPasswordModel
+    {
+        [Required]
+        public string Oldpass { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Mật khẩu tối thiểu 6 ký tự", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        public string NewPass { get; set; }
+
+        [Required]
+        [Compare("NewPass", ErrorMessage = "Mật khẩu và nhập lại mật khẩu không khớp.")]
+        public string RetypeNewPass { get; set; }
+    }
+
     public class ResetPasswordViewModel
     {
         [Required]
@@ -186,4 +202,5 @@ namespace OnlineShop.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
 }
