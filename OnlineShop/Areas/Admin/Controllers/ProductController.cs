@@ -157,6 +157,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 product.Information = model.Information;
                 product.CategoryId = model.CategoryId;
                 product.ProducerId = model.ProducerId;
+                product.Quantity = model.Quantity;
                 product.MetaKeyword = StringHelper.GetMetaTitle(model.ProductName);
 
                 DbContext.SaveChanges();

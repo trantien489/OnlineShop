@@ -20,6 +20,20 @@ namespace OnlineShop.Controllers
 
         public ActionResult CheckOut()
         {
+            //check quantity product
+            var carts = Session["Cart"] as List<CartItem>;
+
+            foreach (var item in carts)
+            {
+                if (item.Product.Quantity == 0)
+                {
+                    ModelState.AddModelError("", $"Sản phẩm {item.Product.ProductName} hết hàng");
+                }
+                else if (item.Quantity > item.Product.Quantity)
+                {
+                    ModelState.AddModelError("", $"Sản phẩm {item.Product.ProductName} không đủ hàng");
+                }
+            }
             var user = UserManeger.FindById(User.Identity.GetUserId());
             return View(user);
         }
@@ -46,6 +60,9 @@ namespace OnlineShop.Controllers
                 invoiceDetail.Quantity = item.Quantity;
                 invoiceDetail.Money = item.GetMoneyDecimal();
                 invoiceDetails.Add(invoiceDetail);
+
+                var product = DbContext.Products.First(p => p.Id == item.Product.Id);
+                product.Quantity -= item.Quantity;
             }
 
             DbContext.InvoiceDetails.AddRange(invoiceDetails);

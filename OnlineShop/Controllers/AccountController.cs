@@ -76,7 +76,7 @@ namespace OnlineShop.Controllers
             {
                 return View("LoginCustom",model);
             }
-
+       
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, false, shouldLockout: false);
@@ -86,13 +86,24 @@ namespace OnlineShop.Controllers
                 case SignInStatus.Success:
                     {
                         var user = new ClaimsPrincipal(AuthenticationManager.AuthenticationResponseGrant.Identity);
-                        if (user.IsInRole("Admin"))
+                        var usertemp = UserManager.FindById(user.Identity.GetUserId());
+
+                        if (usertemp.LockoutEnabled)
                         {
-                            return RedirectToLocal("~/admin/invoice");
+                            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                            ModelState.AddModelError("", "Tài khoản đang bị khóa ");
+                            return View("LoginCustom", model);
                         }
-                        else 
+                        else
                         {
-                            return RedirectToLocal("~" +returnUrl);
+                            if (user.IsInRole("Admin"))
+                            {
+                                return RedirectToLocal("~/admin/invoice");
+                            }
+                            else
+                            {
+                                return RedirectToLocal("~" + returnUrl);
+                            }
                         }
 
                     }
@@ -191,7 +202,8 @@ namespace OnlineShop.Controllers
                         PhoneNumber = model.PhoneNumber,
                         EmailConfirmed = true,
                         JoinDate = DateTime.Now,
-                        Address = model.Address
+                        Address = model.Address,
+                        Status = true
                     };
 
                     var result = await UserManager.CreateAsync(user, model.Password);

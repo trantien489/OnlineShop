@@ -12,6 +12,11 @@
     var carts = Session["Cart"] as List<CartItem>;
     var totalCart = carts != null ? carts.Sum(c => c.Quantity) : 0;
 }
+@section Css {
+<link href="~/Asset/Common/Viewmore/css/viewmore.css" rel="stylesheet" />
+    
+    }
+
 <div class="row" style="background-color: #38a7bb;margin-bottom: 10px; ">
     <div style="margin:1%">
         <div class="Search">
@@ -115,8 +120,18 @@
                                     </div>
                                 <p class="price">Giá: @Model.Price.Value.ToString("N0") VND</p>
                                 <p class="text-center">
-                                    <button type="button" onclick="AddToCart(@Model.Id)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                    <button type="button" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
+                                    @{
+                                        if (Model.Quantity == 0)
+                                        {
+                                            <h2 style="color:red">Sản phẩm tạm hết hàng</h2>
+                                        }
+                                        else
+                                        {
+                                            <button type="button" onclick="AddToCart(@Model.Id)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                            <button type="button" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
+                                        }
+                                    }
+                                    
                                 </p>
                             </form>
                         </div>
@@ -130,8 +145,11 @@
                 <div class="box" id="details">
                     <p>
                     </p><h1>CHI TIẾT SẢN PHẨM</h1>
-                    <div>
+                    <div class="content hideContent">
                         @Html.Raw(Model.Detail)
+                    </div>
+                    <div class="show-more">
+                        <a href="#">Hiển thị thêm</a>
                     </div>
                 </div>
 
@@ -176,6 +194,6 @@
 
 @section Script {
 <script src="~/js/Cart.js"></script>
-
+<script src="~/Asset/Common/Viewmore/js/viewmore.js"></script>
 }
 

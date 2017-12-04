@@ -23,7 +23,7 @@
         }
         else
         {
-
+            @Html.ValidationSummary("", new { @class = "text-danger", style = "text-align:left" });
             <div class="row">
 
                 <div class="col-md-6 clearfix" id="checkout">
@@ -74,7 +74,11 @@
                                     <a href="~/cart/index" class="btn btn-default"><i class="fa fa-chevron-left"></i>Quay lại giỏ hàng</a>
                                 </div>
                                 <div class="pull-right">
-                                    <button type="submit" class="btn btn-template-main">
+                                    @{
+                                        var errors = ViewData.ModelState.Where(n => n.Value.Errors.Count > 0).ToList();
+                                        var checkDisable = errors.Count > 0 ? "disabled" : "";
+                                    }
+                                    <button type="submit" class="btn btn-template-main" @checkDisable>
                                         Hoàn tất thanh toán<i class="fa fa-chevron-right"></i>
                                     </button>
                                 </div>

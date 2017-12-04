@@ -27,17 +27,19 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(DbContext));
                 var roleId = roleManager.FindByName("User").Id;
-                var users = UserManeger.Users.Include(u => u.Roles).Where(u => u.Roles.Any(r => r.RoleId == roleId)).ToList();
+                var users = UserManeger.Users.Include(u => u.Roles).Where(u => u.Roles.Any(r => r.RoleId == roleId) && u.Status == true).ToList();
                 var result = users.Select(i => new
                 {
-                    Id = i.Id,
+                    CustomerId = i.CustomerId,
                     FirstName = i.FirstName,
                     LastName = i.LastName,
                     Phone = i.PhoneNumber,
                     Email = i.Email,
                     Address = i.Address,
-                    JoinDate = i.JoinDate,
-                    Status = StringHelper.GetStringStatus(i.LockoutEnabled)
+                    JoinDate = i.JoinDate.ToString("d/M/yyyy"),
+                    LockStatus = i.LockoutEnabled,
+                    StatusString = StringHelper.GetStringLockStatus(i.LockoutEnabled),
+                    UserName = i.UserName
                 });
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
@@ -51,5 +53,55 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult Update(int customerId, bool status)
+        {
+            try
+            {
+                var user = UserManeger.Users.FirstOrDefault( u=> u.CustomerId == customerId);
+                user.LockoutEnabled = status;
+                DbContext.SaveChanges();
+                return Json(new
+                {
+                    result = "Success",
+                    data = ""
+                });
+
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    result = "Fail",
+                    error = e.ToString()
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        [HttpPost]
+        public JsonResult Delete(int customerId)
+        {
+            try
+            {
+                var user = UserManeger.Users.FirstOrDefault(u => u.CustomerId == customerId);
+                user.Status = false;
+                DbContext.SaveChanges();
+                return Json(new
+                {
+                    result = "Success",
+                    data = ""
+                });
+
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    result = "Fail",
+                    error = e.ToString()
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

@@ -3,22 +3,22 @@ var editor;
 var currentData;
 
 function Update() {
-    statusId = $('input[name=InvoiceStatusRadio]:checked').val();
+    status = $('input[name=statusRadio]:checked').val();
     $.ajax({
         type: "POST",
-        url: '/admin/invoice/UpdateStatusInvoice',
-        data: { "invoiceId": currentData.Id, "invoiceStatus": statusId },
+        url: '/admin/user/update',
+        data: { "customerId": currentData.CustomerId, "status": status },
         success: function (data) {
+            $('#ViewDetaiModal').modal('hide');
             if (data.result == "Success") {
                 $('#message').html(data.result);
-                $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                $('#alerticon').attr("src", "/Asset/Common/Photos/Success.png");
             }
             else {
                 $('#message').html(data.error);
-                $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                $('#alerticon').attr("src", "/Asset/Common/Photos/Fail.png");
             }
 
-            $('#ViewDetaiModal').modal('hide');
             $('#AlertModal').modal('show');
             table.ajax.reload();
         }
@@ -26,18 +26,18 @@ function Update() {
 }
 function Delete() {
     $.ajax({
-        url: '/admin/invoice/delete/',
+        url: '/admin/user/delete/',
         type: 'POST',
-        data: { "invoiceId": currentData.Id },
+        data: { "customerId": currentData.CustomerId },
         success: function (data) {
             $('#DeleteAlertModal').modal('hide');
             if (data.result == "Success") {
                 $('#message').html(data.result);
-                $('#alerticon').attr("src", "../Asset/Common/Photos/Success.png");
+                $('#alerticon').attr("src", "/Asset/Common/Photos/Success.png");
             }
             else {
                 $('#message').html(data.error);
-                $('#alerticon').attr("src", "../Asset/Common/Photos/Fail.png");
+                $('#alerticon').attr("src", "/Asset/Common/Photos/Fail.png");
             }
 
             $('#AlertModal').modal('show');
@@ -55,15 +55,11 @@ $(document).ready(function () {
         },
         "columns": [
 
-            { "data": "Id" },
-            { "data": "Id" },
-            { "data": "FirstName" },
-            { "data": "LastName" },
-            { "data": "Phone" },
-            { "data": "Address" },
-            { "data": "Email" },
+            { "data": "CustomerId" },
+            { "data": "CustomerId" },
+            { "data": "UserName" },
             { "data": "JoinDate" },
-            { "data": "Status" },
+            { "data": "StatusString" },
             {
                 data: null,
                 className: "center",
@@ -89,56 +85,25 @@ $(document).ready(function () {
         currentData = data;
 
         $('#CustomerId').html(data.CustomerId);
-        $('#CustomerName').html(data.CustomerName);
-        $('#InvoiceTotal').html(data.Total);
-        $('#ReceiveName').html(data.NameReceive);
-        $('#ReceivePhone').html(data.PhoneReceive);
-        $('#ReceiveAddress').html(data.AddressReceive);
-        $('#ReceiveEmail').html(data.EmailReceive);
-        $('#InvoiceId').html(data.Id);
+        $('#UserName').html(data.UserName);
+        $('#CustomerName').html(data.FirstName + " " + data.LastName);
+        $('#Phone').html(data.Phone);
+        $('#Email').html(data.Email);
+        $('#Address').html(data.Address);
+      
 
 
 
-        var invoiceStatus = "";
-        invoiceStatus += "<label class='radio-inline'>";
-        invoiceStatus += "<input type='radio' value='-1' name='InvoiceStatusRadio' " + (data.InvoiceStatusInt == -1 ? "checked" : "") + ">Bị hủy";
-        invoiceStatus += "</label>";
-        invoiceStatus += "<label class='radio-inline'>";
-        invoiceStatus += "<input type='radio' value='0' name='InvoiceStatusRadio' " + (data.InvoiceStatusInt == 0 ? "checked" : "") + ">Đang xử lý";
-        invoiceStatus += "</label>";
-        invoiceStatus += "<label class='radio-inline'>";
-        invoiceStatus += "<input type='radio' value='1' name='InvoiceStatusRadio' " + (data.InvoiceStatusInt == 1 ? "checked" : "") + ">Đang vận chuyển";
-        invoiceStatus += "</label>";
-        invoiceStatus += "<label class='radio-inline'>";
-        invoiceStatus += "<input type='radio' value='2' name='InvoiceStatusRadio' " + (data.InvoiceStatusInt == 2 ? "checked" : "") + ">Đã giao hàng";
-        invoiceStatus += "</label>";
-        $('#InvoiceStatus').html(invoiceStatus);
+        var status = "";
+        status += "<label class='radio-inline'>";
+        status += "<input type='radio' value='true' name='statusRadio' " + (data.LockStatus ? "checked" : "") + ">Bị khóa";
+        status += "</label>";
+        status += "<label class='radio-inline'>";
+        status += "<input type='radio' value='false' name='statusRadio' " + (!data.LockStatus ? "checked" : "") + ">Hoạt động";
+        status += "</label>";
+        $('#Status').html(status);
 
 
-        $.ajax({
-            type: "GET",
-            url: '/Admin/invoice/GetInvoiceDetailbyId/',
-            data: { invoiceId: currentData.Id },
-            success: function (data) {
-                if (data != null) {
-                    var html = "";
-                    var index = 1;
-                    $.each(data, function (key, value) {
-                        html += "<tr>";
-                        html += "<td>" + index + "</td>";
-                        html += "<td>" + value.ProductName + "</td>";
-                        html += "<td>" + value.Price + "</td>";
-                        html += "<td>" + value.Quantity + "</td>";
-                        html += "<td>" + value.Money + "</td>";
-                        html += "</tr>";
-
-                        index++;
-
-                    });
-                    $("#InvoiceDetail").html(html);
-                }
-            }
-        });
         $('#ViewDetaiModal').modal('show');
     });
 

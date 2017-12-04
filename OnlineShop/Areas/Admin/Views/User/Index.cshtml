@@ -15,11 +15,7 @@
                         <tr>
                             <th>Stt</th>
                             <th>Mã KH</th>
-                            <th>Họ</th>
-                            <th>Tên</th>
-                            <th>Số điện thoại</th>
-                            <th>Địa chỉ</th>
-                            <th>Email</th>
+                            <th>Tài khoản</th>
                             <th>Ngày tạo</th>
                             <th>Trạng thái</th>
                             <th>Thao tác</th>
@@ -43,7 +39,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
             </div>
             <div class="x_content">
-                <h2 style="padding-left:5%"> Bạn muốn xóa đơn hàng này? </h2>
+                <h2 style="padding-left:5%"> Bạn muốn xóa đơn khách hàng này ? </h2>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
@@ -77,54 +73,24 @@
 
 <!--View Detail Modal -->
 <div class="modal fade bs-example-modal-lg" id="ViewDetaiModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Xem chi tiết đơn hàng</h4>
+                <h4 class="modal-title" id="myModalLabel">Xem chi tiết khách hàng</h4>
             </div>
             <div class="x_content" style="margin-left:5%">
                 <div>
                     <p> Mã khách hàng: <span id="CustomerId"></span></p>
+                    <p> Tài khoản: <span id="UserName"></span></p>
                     <p> Tên khác hàng: <span id="CustomerName"></span></p>
-                    <p> Người nhận hàng: <span id="ReceiveName"></span></p>
-                    <p> SDT người nhận: <span id="ReceivePhone"></span></p>
-                    <p> Địa chỉ người nhận: <span id="ReceiveAddress"></span></p>
-                    <p> Email người nhận: <span id="ReceiveEmail"></span></p>
+                    <p> Số điện thoại: <span id="Phone"></span></p>
+                    <p> Email: <span id="Email"></span></p>
+                    <p> Địa chỉ: <span id="Address"></span></p>
+                    <p> Trạng thái: <span id="Status"></span></p>
                 </div>
-                <br>
-                <h2>Mã đơn hàng: <span id="InvoiceId"></span></h2>
-                <p>
-                    <h2>Trạng thái: </h2>
-                    <div style="margin-left:5%" id="InvoiceStatus">
-                    </div>
-                </p>
-                <table class="table" style="width:80%">
-                    <thead>
-                        <tr>
-                            <th>Stt</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Đơn giá</th>
-                            <th>Số lượng</th>
-                            <th>Tổng tiền</th>
-                        </tr>
-                    </thead>
-                    <tbody id="InvoiceDetail">
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                        </tr>
-                    </tbody>
-                    <tfoot style="font-weight:bold; font-size:20px">
-                    <td colspan="4">Tổng cộng</td>
-                    <td id="InvoiceTotal"></td>
-                    </tfoot>
-                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="Update()" class="btn btn-primary">Cập nhập</button>

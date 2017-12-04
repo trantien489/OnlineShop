@@ -86,9 +86,9 @@ namespace OnlineShop.Helper
             }
         }
 
-        public static string GetStringStatus(bool status)
+        public static string GetStringLockStatus(bool status)
         {
-            return status ? "Hoạt động" : "Bị khóa";
+            return status ? "Bị khóa" : "Hoạt động";
         }
     }
 }

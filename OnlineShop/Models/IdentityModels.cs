@@ -45,6 +45,8 @@ namespace OnlineShop.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomerId { get; set; }
 
+        public bool Status { get; set; }
+
         public virtual ICollection<Invoice> Invoices { get; set; }
     }
 

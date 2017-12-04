@@ -96,11 +96,20 @@ namespace OnlineShop.Areas.Admin.Controllers
             if (invoice != null)
             {
                 invoice.InvoiceStatus = invoiceStatus;
+                if (invoiceStatus == -1)
+                {
+                    var invoiceDetails = DbContext.InvoiceDetails.Where(i => i.InvoiceId == invoiceId).ToList();
+                    foreach (var item in invoiceDetails)
+                    {
+                        var product = DbContext.Products.First(p => p.Id == item.ProductId);
+                        product.Quantity += item.Quantity;
+                    }
+                }
                 DbContext.SaveChanges();
                 return Json(new
                 {
                     result = "Success",
-                    data = invoice
+                    data = ""
                 });
             }
             return null;
@@ -114,11 +123,23 @@ namespace OnlineShop.Areas.Admin.Controllers
             if (invoice != null)
             {
                 invoice.Status = false;
+
+                var invoiceDetails = DbContext.InvoiceDetails.Where(i => i.InvoiceId == invoiceId).ToList();
+                if (invoice.InvoiceStatus != -1)
+                {
+                    foreach (var item in invoiceDetails)
+                    {
+                        var product = DbContext.Products.First(p => p.Id == item.ProductId);
+                        product.Quantity += item.Quantity;
+                    }
+                }
+               
+
                 DbContext.SaveChanges();
                 return Json(new
                 {
                     result = "Success",
-                    data = invoice
+                    data = ""
                 });
             }
             return null;

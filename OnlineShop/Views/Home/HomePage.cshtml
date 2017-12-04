@@ -186,6 +186,15 @@
                                     <p class="price">@product.Price.Value.ToString("N0") VND</p>
                                 </div>
                                 <!-- /.text -->
+                                @{
+                                    if (product.Quantity == 0)
+                                    {
+                                        <div class="ribbon sale">
+                                            <div class="theribbon" style=" background-color: red;padding: 5px 0px 5px 0px;">Hết hàng</div>
+                                        </div>
+                                    }
+                                }
+                                
                             </div>
                             <!-- /.product -->
                         </div>
@@ -207,7 +216,7 @@
                         }
                         else if (ViewBag.ControllerName == "Product" && ViewBag.ActionName == "GetProductByCategoryProducer")
                         {
-                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.Category +"/"+ ViewBag.Producer, "san-pham", new { page }));
+                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.Category + "/" + ViewBag.Producer, "san-pham", new { page }));
                         }
 
 
