@@ -4228,6 +4228,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="js\Cart.js" />
+    <Content Include="Photos\carousel\cover_1.png" />
+    <Content Include="Photos\carousel\cover_2.gif" />
+    <Content Include="Photos\carousel\cover_3.png" />
+    <Content Include="Photos\carousel\cover_4.png" />
     <Content Include="Photos\Category\0a25880e-a47d-440a-ad75-91ab9ba53cbc.png" />
     <Content Include="Photos\Category\0f65a76f-7cbc-4367-889a-0513f1452361.png" />
     <Content Include="Photos\Category\4f5de437-0c49-4563-8ae9-2e2a62687c61.gif" />
@@ -5202,6 +5206,7 @@
     <Content Include="Views\Cart\CheckOut.cshtml" />
     <Content Include="Views\Cart\CheckOutSuccess.cshtml" />
     <Content Include="Views\User\GetInvoiceDetailbyInvoiceId.cshtml" />
+    <Content Include="Views\Home\ContactCustom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

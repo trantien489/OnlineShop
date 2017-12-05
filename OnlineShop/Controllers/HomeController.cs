@@ -28,12 +28,17 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult HomePage(int page = 1, int pageSize = 3)
+        public ActionResult HomePage(int page = 1, int pageSize = 9)
         {
-            var products = DbContext.Products.Where(p =>p.Status == true).OrderBy(p => p.CreatedDate).ToPagedList(page, pageSize);
+            var products = DbContext.Products.Where(p =>p.Status == true).OrderByDescending(p => p.CreatedDate).ToPagedList(page, pageSize);
             ViewBag.ActionName = this.ControllerContext.RouteData.Values["action"].ToString();
             ViewBag.ControllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
             return View(products);
+        }
+
+        public ActionResult ContactCustom()
+        {
+            return View();
         }
     }
 }

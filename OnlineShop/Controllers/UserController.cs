@@ -57,7 +57,7 @@ namespace OnlineShop.Controllers
             return RedirectToAction("Info", new { message = "Lưu thành công" });
         }
 
-        public ActionResult Orders(int page = 1, int pageSize = 3)
+        public ActionResult Orders(int page = 1, int pageSize = 9)
         {
             var userId = User.Identity.GetUserId();
             var invoices = DbContext.Invoices.Where(i => i.Status == true).Include(i => i.ApplicationUser).Where(i => i.ApplicationUser.Id == userId)

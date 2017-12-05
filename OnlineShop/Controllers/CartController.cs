@@ -22,18 +22,21 @@ namespace OnlineShop.Controllers
         {
             //check quantity product
             var carts = Session["Cart"] as List<CartItem>;
-
-            foreach (var item in carts)
+            if (carts != null && carts.Count > 0)
             {
-                if (item.Product.Quantity == 0)
+                foreach (var item in carts)
                 {
-                    ModelState.AddModelError("", $"Sản phẩm {item.Product.ProductName} hết hàng");
-                }
-                else if (item.Quantity > item.Product.Quantity)
-                {
-                    ModelState.AddModelError("", $"Sản phẩm {item.Product.ProductName} không đủ hàng");
+                    if (item.Product.Quantity == 0)
+                    {
+                        ModelState.AddModelError("", $"Sản phẩm {item.Product.ProductName} hết hàng");
+                    }
+                    else if (item.Quantity > item.Product.Quantity)
+                    {
+                        ModelState.AddModelError("", $"Sản phẩm {item.Product.ProductName} không đủ hàng");
+                    }
                 }
             }
+            
             var user = UserManeger.FindById(User.Identity.GetUserId());
             return View(user);
         }

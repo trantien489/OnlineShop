@@ -211,5 +211,29 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
         }
 
+
+        [HttpGet]
+        public JsonResult GetProducesCategorie(int categoryId)
+        {
+            try
+            {
+                var data = DbContext.CategoryProducers.Where(c => c.Status == true && c.CategoryId == categoryId).Include(c => c.Producer).ToList();
+                if (data.Count() == 0)
+                {
+                    return Json(data, JsonRequestBehavior.AllowGet);
+                }
+                var response = data.Select(x => new
+                {
+                    ProducerId = x.ProducerId,
+                    ProducerName = x.Producer.Name,
+                }).ToList();
+                return Json(response, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

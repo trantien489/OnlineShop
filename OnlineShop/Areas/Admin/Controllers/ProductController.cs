@@ -24,7 +24,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             try
             {
 
-                var products = DbContext.Products.ToList().Where(p => p.Status == true);
+                var products = DbContext.Products.ToList().Where(p => p.Status == true).OrderByDescending(p=>p.CreatedDate);
                 if (products.Count() == 0)
                 {
                     return Json(products, JsonRequestBehavior.AllowGet);

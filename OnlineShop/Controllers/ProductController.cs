@@ -17,7 +17,7 @@ namespace OnlineShop.Controllers
 
 
         [HttpGet]
-        public ActionResult GetProductbyCategory(string category, int page = 1, int pageSize = 3)
+        public ActionResult GetProductbyCategory(string category, int page = 1, int pageSize = 9)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace OnlineShop.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetProductByCategoryProducer(string category, string producer, int page = 1, int pageSize = 3)
+        public ActionResult GetProductByCategoryProducer(string category, string producer, int page = 1, int pageSize = 9)
         {
             try
             {
@@ -71,5 +71,23 @@ namespace OnlineShop.Controllers
                 throw e;
             }
         }
+
+        [HttpGet]
+        public ActionResult SearchProduct(string keyword, int page = 1, int pageSize = 10)
+        {
+            try
+            {
+                var products = DbContext.Products.Where(p => p.Status == true && p.ProductName.Contains(keyword)).OrderBy(p => p.CreatedDate).ToPagedList(page, pageSize);
+                ViewBag.ActionName = this.ControllerContext.RouteData.Values["action"].ToString();
+                ViewBag.ControllerName = this.ControllerContext.RouteData.Values["controller"].ToString();
+                ViewBag.Keyword = keyword;
+                return View("~/Views/Home/HomePage.cshtml", products);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }
