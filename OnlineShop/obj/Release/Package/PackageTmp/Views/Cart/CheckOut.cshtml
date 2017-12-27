@@ -1,0 +1,153 @@
+﻿@model OnlineShop.Models.ApplicationUser
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container">
+
+    <div id="heading-breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1>Thanh toán</h1>
+                </div>
+                <div class="col-md-4">
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="~/">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a href="~/cart/index">Giỏ hàng</a>
+                        </li>
+                        <li>
+                            Thanh toán
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @{
+        var carts = Session["Cart"] as List<OnlineShop.Models.CartItem>;
+        if (carts == null || carts.Count == 0)
+        {
+            <h1>Bạn chưa mua sản phẩm nào cả.</h1>
+        }
+        else
+        {
+            @Html.ValidationSummary("", new { @class = "text-danger", style = "text-align:left" });
+            <div class="row">
+
+                <div class="col-md-6 clearfix" id="checkout">
+
+                    <div class="box">
+                        <form method="post" action="~/cart/FinsishCheckOut">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="firstname">Họ và tên người nhận</label>
+                                            @{var fullName = Model.FirstName + " " + Model.LastName;}
+                                            <input type="text" class="form-control" id="FullName" name="NameReceive" value="@fullName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+                                        <div class="form-group">
+                                            <label for="firstname">Địa chị người nhận</label>
+                                            <input type="text" class="form-control" id="firstname" name="AddressReceive" value="@Model.Address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+                                        <div class="form-group">
+                                            <label for="firstname">Số điện thoại người nhận</label>
+                                            <input type="tel" class="form-control" id="firstname" name="PhoneReceive" value="@Model.PhoneNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+                                        <div class="form-group">
+                                            <label for="firstname">Email người nhận</label>
+                                            <input type="email" class="form-control" id="firstname" name="EmailReceive" value="@Model.Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="pull-left">
+                                    <a href="~/cart/index" class="btn btn-default"><i class="fa fa-chevron-left"></i>Quay lại giỏ hàng</a>
+                                </div>
+                                <div class="pull-right">
+                                    @{
+                                        var errors = ViewData.ModelState.Where(n => n.Value.Errors.Count > 0).ToList();
+                                        var checkDisable = errors.Count > 0 ? "disabled" : "";
+                                    }
+                                    <button type="submit" class="btn btn-template-main" @checkDisable>
+                                        Hoàn tất thanh toán<i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box -->
+
+
+                </div>
+                <!-- /.col-md-9 -->
+
+                <div class="col-md-6">
+
+                    <div class="box" id="order-summary">
+                        <div class="box-header">
+                            <h3>Tổng kết đơn hàng</h3>
+                        </div>
+                        <p class="text-muted">Vận chuyển và chi phí bổ sung được tính toán dựa trên 5% giá trị tổng đơn hàng.<br>Miễn phí vận chuyển cho đơn hàng trên 1.000.000 VND    </p>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Số tiền đơn hàng</td>
+                                        @{
+                                            var total = carts.Sum(c => (c.Product.Price.Value * c.Quantity));
+                                            var fee = total < 1000000 ? (total / 100) * 5 : 0;
+                                            var totalMoney = total + fee;
+                                        }
+                                        <th>@total.ToString("N0") VND</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Phí vận chuyển</td>
+                                        <th>@fee.ToString("N0") VND</th>
+                                    </tr>
+                                    <tr class="total">
+                                        <td>Tổng cộng</td>
+                                        <th>@totalMoney.ToString("N0") VND</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.col-md-3 -->
+
+            </div>
+
+                                            }
+    }
+
+</div>
+
+@section Script {
+}

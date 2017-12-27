@@ -2,6 +2,7 @@
 using OnlineShop.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -162,6 +163,30 @@ namespace OnlineShop.Areas.Admin.Controllers
                     return Json(data, JsonRequestBehavior.AllowGet);
                 }
                 return Json(data, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        [HttpGet]
+        public JsonResult GetProducersbyCategory(string id)
+        {
+            try
+            {
+                var categoryId = Convert.ToInt32(id);
+                var data = DbContext.CategoryProducers.Where(c => c.Status == true && c.CategoryId == categoryId).Include(c => c.Producer).ToList();
+                var result = data.Select(c => new
+                {
+                    Id = c.Producer.Id,
+                    Name = c.Producer.Name
+                });
+                if (data.Count() == 0)
+                {
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+                return Json(result, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {

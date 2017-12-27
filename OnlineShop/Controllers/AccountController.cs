@@ -196,17 +196,20 @@ namespace OnlineShop.Controllers
                     var user = new ApplicationUser
                     {
                         UserName = model.Username,
-                        Email = "tien@gmail.com",
+                        Email = model.Email,
                         FirstName = names.First(),
                         LastName = string.Join(" ",lastNames.ToArray()),
                         PhoneNumber = model.PhoneNumber,
                         EmailConfirmed = true,
                         JoinDate = DateTime.Now,
                         Address = model.Address,
-                        Status = true
+                        Status = true,
                     };
-
                     var result = await UserManager.CreateAsync(user, model.Password);
+
+                    var dataContext = new ApplicationDbContext();
+                    user.LockoutEnabled = false;
+                    dataContext.SaveChanges();
 
                     if (result.Succeeded)
                     {

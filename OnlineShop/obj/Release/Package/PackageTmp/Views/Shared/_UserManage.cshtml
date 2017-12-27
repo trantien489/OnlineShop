@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "_UserManage";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div id="content">
+    <div class="container">
+        <div class="row" style="margin-top: 3%">
+
+          
+            <!-- *** LEFT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-sm-3">
+
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Trang cá nhân</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        @{
+                            string url = HttpContext.Current.Request.Url.AbsolutePath;
+                            var infoActive = url.Contains("info") ?  "active" :string.Empty;
+                            var ordersActive = url.Contains("orders") ? "active" : string.Empty;
+                            var changePasswordActive = url.Contains("changepassword") ? "active" : string.Empty;
+
+                        }
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="@infoActive">
+                                <a href="~/user/info"><i class="fa fa-user"></i> Thông tin cá nhân</a>
+                            </li>
+                            <li class="@ordersActive">
+                                <a href="~/user/orders"><i class="fa fa-list"></i> Quản lý đơn hàng</a>
+                            </li>
+                            <li class="@changePasswordActive">
+                                <a href="~/user/changepassword"><i class="fa fa-edit"></i>Đổi mật khẩu</a>
+                            </li>
+                            <li>
+                                <a href="~/account/logoff"><i class="fa fa-sign-out"></i>Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.col-md-3 -->
+            <!-- *** LEFT COLUMN END *** -->
+            <!-- *** RIGHT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-sm-9">
+               
+            @RenderBody()
+
+            </div>
+            <!-- /.col-md-9 -->
+            <!-- *** RIGHT COLUMN END *** -->
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Script {
+@RenderSection("Script", true)
+}

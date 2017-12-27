@@ -1,0 +1,195 @@
+﻿@using System.Data.Entity;
+@using PagedList;
+@using OnlineShop.Models;
+@using PagedList.Mvc;
+@model IPagedList<Product>
+
+@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<section style="margin-bottom:0px">
+    <div class="home-carousel">
+
+        <div class="dark-mask"></div>
+
+        <div class="container">
+            <div class="homepage owl-carousel">
+                <div class="item">
+                    <div class="row">
+                        <img class="img-responsive" src="~/Photos/carousel/cover_1.png" alt="" width="90%" style="padding-left:10%">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <img class="img-responsive" src="~/Photos/carousel/cover_2.gif" alt="" width="90%" style="padding-left:10%">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <img class="img-responsive" src="~/Photos/carousel/cover_3.png" alt="" width="90%" style="padding-left:10%">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row">
+                        <img class="img-responsive" src="~/Photos/carousel/cover_4.png" alt="" width="90%" style="padding-left:10%">
+                    </div>
+                </div>
+            </div>
+            <!-- /.project owl-slider -->
+        </div>
+    </div>
+
+</section>
+
+@{
+    var carts = Session["Cart"] as List<CartItem>;
+    var totalCart = carts != null ? carts.Sum(c => c.Quantity) : 0;
+}
+<div class="row" style="background-color: #38a7bb;margin-bottom: 10px; ">
+    <div style="margin:1%">
+        <div class="Search">
+            <form action="~/Product/SearchProduct" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm" id="txtSearch" name="keyword"/>
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="input-group" style="margin-left:5px">
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit" style="margin-left:5px" onclick="location.href='/cart/index'">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> (@totalCart) Giỏ hàng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+        <div class="row">
+
+
+            <!-- *** LEFT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-sm-3">
+
+                <!-- *** MENUS AND FILTERS ***
+                _________________________________________________________ -->
+                @{
+
+                    var context = new OnlineShop.Models.ApplicationDbContext();
+                    var categoryProducers = context.CategoryProducers.Where(c => c.Status == true).Include(c => c.Category).Include(c => c.Producer).OrderBy(c => c.CategoryId).ToList();
+
+                    var results = categoryProducers.GroupBy(c => c.CategoryId).ToDictionary(g => g.Key, g => g.Select(i => new
+                    {
+                        CategoryName = i.Category.Name,
+                        CategoryId = i.CategoryId,
+                        ProducerName = i.Producer.Name,
+                        ProducerId = i.ProducerId,
+                        CategoryImage = i.Category.Image,
+                        MetaKeyword = i.Category.MetaKeyword
+                    }));
+
+                    Html.RenderPartial("~/Views/Shared/LeftMenu.cshtml", Newtonsoft.Json.JsonConvert.SerializeObject(results));
+                }
+
+                <!-- *** MENUS AND FILTERS END *** -->
+
+                <div class="banner">
+                    <a href="shop-category.html">
+                        <img src="~/Asset/User/img/banner.jpg" alt="sales 2014" class="img-responsive">
+                    </a>
+                </div>
+                <!-- /.banner -->
+
+            </div>
+            <!-- /.col-md-3 -->
+            <!-- *** LEFT COLUMN END *** -->
+            <!-- *** RIGHT COLUMN ***
+            _________________________________________________________ -->
+
+            <div class="col-sm-9">
+                @{
+                    if (Model.Count == 0)
+                    {
+                        <h1 style="text-align:center">Không có sản phẩm</h1>
+                    }
+                }
+
+                <div class="row products">
+
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-md-4 col-sm-6">
+                            <div class="product">
+                                <div class="image" style="height: 212px;">
+                                    <a href="@Url.Content($"~/san-pham/{product.MetaKeyword}/chi-tiet")">
+                                        <img src="@Url.Content($"~/Photos/Product/{product.Image}")" alt="" class="img-responsive image1">
+                                    </a>
+                                </div>
+                                <!-- /.image -->
+                                <div class="text">
+                                    <h3><a href="shop-detail.html">@product.ProductName</a></h3>
+                                    <p class="price">@product.Price.Value.ToString("N0") VND</p>
+                                </div>
+                                <!-- /.text -->
+                                @{
+                                    if (product.Quantity == 0)
+                                    {
+                                        <div class="ribbon sale">
+                                            <div class="theribbon" style=" background-color: red;padding: 5px 0px 5px 0px;">Hết hàng</div>
+                                        </div>
+                                    }
+                                }
+                                
+                            </div>
+                            <!-- /.product -->
+                        </div>
+                    }
+
+                    <!-- /.col-md-4 -->
+                </div>
+                <!-- /.products -->
+
+                <div class="pages" style="float:right">
+                    @{
+                        if (ViewBag.ControllerName == "Home" && ViewBag.ActionName == "HomePage")
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.ActionName, new { page }));
+                        }
+                        else if (ViewBag.ControllerName == "Product" && ViewBag.ActionName == "GetProductbyCategory")
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.Category, "san-pham", new { page }));
+                        }
+                        else if (ViewBag.ControllerName == "Product" && ViewBag.ActionName == "GetProductByCategoryProducer")
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.Category + "/" + ViewBag.Producer, "san-pham", new { page }));
+                        }
+                        else if (ViewBag.ControllerName == "Product" && ViewBag.ActionName == "SearchProduct")
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action(ViewBag.ActionName, ViewBag.ControllerName, new { ViewBag.Keyword, page }));
+                        }
+
+                    }
+                </div>
+
+
+            </div>
+            <!-- /.col-md-9 -->
+            <!-- *** RIGHT COLUMN END *** -->
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Script {
+}

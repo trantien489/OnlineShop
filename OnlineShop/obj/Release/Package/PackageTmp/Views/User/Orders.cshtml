@@ -1,0 +1,82 @@
+﻿@using System.Data.Entity;
+@using PagedList;
+@using OnlineShop.Models;
+@using OnlineShop.Helper;
+@using PagedList.Mvc;
+@model IPagedList<Invoice>
+
+@{
+    ViewBag.Title = "Orders";
+    Layout = "~/Views/Shared/_UserManage.cshtml";
+}
+
+<div class="box">
+
+    <div class="heading">
+        <h3 class="text-uppercase">Danh sách đơn hàng</h3>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày đặt hàng</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+
+                    foreach (var invoice in Model)
+                    {
+                        var labelClass = "";
+                        if (invoice.InvoiceStatus == -1)
+                        {
+                            labelClass = "label label-danger";
+                        }
+                        else if (invoice.InvoiceStatus == 0)
+                        {
+                            labelClass = "label label-warning";
+
+                        }
+                        else if (invoice.InvoiceStatus == 1)
+                        {
+                            labelClass = "label label-info";
+
+                        }
+                        else if (invoice.InvoiceStatus == 2)
+                        {
+                            labelClass = "label label-success";
+
+                        }
+
+                        <tr>
+                            <th>@invoice.Id</th>
+                            <td>@invoice.CreatedDate.Value.ToString("d/M/yyyy HH:mm")</td>
+                            <td>@invoice.Total.ToString("N0") VND</td>
+                            <td>
+                                <span class="@labelClass">@StringHelper.GetstringInvoiceStatus(invoice.InvoiceStatus.Value)</span>
+                            </td>
+                            <td>
+                                <a href="~/user/GetInvoiceDetailbyInvoiceId?invoiceId=@invoice.Id" class="btn btn-template-main btn-sm">Chi tiết</a>
+                            </td>
+                        </tr>
+                    }
+                }
+              
+               
+            </tbody>
+        </table>
+        <div class="pages" style="float:right">
+            @Html.PagedListPager(Model, page => Url.Action("Orders", "user", new { page }))
+        </div>
+    <!-- /.table-responsive -->
+
+</div>
+   
+@section Script {
+    
+}
+

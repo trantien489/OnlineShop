@@ -128,7 +128,7 @@
                                         else
                                         {
                                             <button type="button" onclick="AddToCart(@Model.Id)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                            <button type="button" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
+                                            <button type="button" onclick="BuyNow(@Model.Id)" class="btn btn-template-main"><i class="fa fa-heart-o"></i> Mua ngay</button>
                                         }
                                     }
                                     
@@ -195,5 +195,6 @@
 @section Script {
 <script src="~/js/Cart.js"></script>
 <script src="~/Asset/Common/Viewmore/js/viewmore.js"></script>
+
 }
 

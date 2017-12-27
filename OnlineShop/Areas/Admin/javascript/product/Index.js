@@ -23,7 +23,7 @@ function LoadModalAddProduct() {
     // Load select producer
     $.ajax({
         type: "GET",
-        url: '../Admin/producer/GetProducers/',
+        url: '../Admin/producer/GetProducersbyCategory/5',
         contentType: false,
         processData: false,
         method: 'GET',
@@ -225,6 +225,28 @@ function Delete() {
         }
     });
 }
+
+function LoadSelectProducer (categoryId,  htmlId)
+{
+    $.ajax({
+        type: "GET",
+        url: '../Admin/producer/GetProducersbyCategory/' + categoryId,
+        contentType: false,
+        processData: false,
+        method: 'GET',
+        success: function (data) {
+            if (data != null) {
+                var html = "";
+                $.each(data, function (key, value) {
+            
+                    html += "<option value='" + value.Id + "'>" + value.Name + "</option>";
+                });
+                $("#" + htmlId).html(html);
+            }
+        }
+    });
+}
+
 $(document).ready(function () {
     table = $('#myGrid').DataTable({
         dom: 'l<"br">Bfrtip',
@@ -233,10 +255,12 @@ $(document).ready(function () {
             "url": "/Admin/product/GetProducts/",
             "dataSrc": ""
         },
+        "order": [[0, "desc"]],
         "columns": [
 
             { "data": "Id" },
             { "data": "Name" },
+            { "data": "Category" },
             { "data": "Producer" },
             { "data": "Quantity" },
             { "data": "Price" },
@@ -299,7 +323,7 @@ $(document).ready(function () {
         // Load select producer
         $.ajax({
             type: "GET",
-            url: '../Admin/producer/GetProducers/',
+            url: '../Admin/producer/GetProducersbyCategory/' + currentData.CategoryId,
             contentType: false,
             processData: false,
             method: 'GET',
@@ -317,6 +341,7 @@ $(document).ready(function () {
                 }
             }
         });
+
         $('#UpdateName').val(currentData.Name);
         $('#UpdateQuantity').val(currentData.Quantity);
         $('#UpdatePrice').val(currentData.PriceInt);

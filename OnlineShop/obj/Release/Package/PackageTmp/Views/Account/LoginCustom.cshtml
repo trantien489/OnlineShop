@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login, Register form</title>
+    <link href="~/Asset/Common/Login/css/normalize.min.css" rel="stylesheet" />
+    <link href="~/Asset/Common/Login/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Asset/Common/Login/css/style.css">
+
+</head>
+<style>
+    .u-form-group input[type="text"] {
+        width: calc(50% - 22px);
+        height: 45px;
+        outline: none;
+        border: 1px solid #ddd;
+        padding: 0 10px;
+        border-radius: 2px;
+        color: #333;
+        font-size: 0.8rem;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+</style>
+<body>
+
+    <div class="login-box" style="margin-top: 10%;">
+        <div class="lb-header">
+            <a href="~/account/login" class="active">Đăng nhập</a>
+            <a href="~/account/register" class="" >Đăng ký</a>
+        </div>
+        <div class="social-login">
+            <a href="#">
+                <i class="fa fa-facebook fa-lg"></i>
+                Đăng nhập bằng Facebook
+            </a>
+            <a href="#">
+                <i class="fa fa-google-plus fa-lg"></i>
+                Đăng nhập bằng Google
+            </a>
+        </div>
+       
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new {@class = "email-login", style = $"display:block", role = "" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger", style = "text-align:left;color:red" })
+
+            <div class="u-form-group">
+                <input type="text" name="Username" placeholder="Tài khoản" />
+            </div>
+            <div class="u-form-group">
+                <input type="password" name="Password" placeholder="Mật khẩu" />
+            </div>
+            <div class="u-form-group">
+                <button type="submit">Đăng nhập</button>
+            </div>
+            <div class="u-form-group">
+                <a href="#" class="forgot-password">Quên mật khẩu?</a>
+            </div>
+        }
+
+    </div>
+    <script src="~/Asset/Common/Login/js/jquery-1.11.0.min.js"></script>
+    <script src="~/Asset/Common/Login/js/index.js"></script>
+</body>
+</html>

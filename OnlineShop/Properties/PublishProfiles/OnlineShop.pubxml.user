@@ -12,11 +12,41 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="ApplicationInsights.config">
       <publishTime>09/17/2017 16:35:59</publishTime>
     </File>
+    <File Include="Areas/Admin/javascript/category/index.js">
+      <publishTime>11/19/2017 22:54:36</publishTime>
+    </File>
+    <File Include="Areas/Admin/javascript/invoice/Index.js">
+      <publishTime>12/03/2017 01:23:22</publishTime>
+    </File>
+    <File Include="Areas/Admin/javascript/producer/Index.js">
+      <publishTime>11/13/2017 23:38:37</publishTime>
+    </File>
+    <File Include="Areas/Admin/javascript/product/Index.js">
+      <publishTime>12/02/2017 14:35:55</publishTime>
+    </File>
+    <File Include="Areas/Admin/javascript/user/Index.js">
+      <publishTime>12/04/2017 23:16:52</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Category/Index.cshtml">
+      <publishTime>11/14/2017 20:17:03</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/Home/Index.cshtml">
-      <publishTime>09/30/2017 16:14:02</publishTime>
+      <publishTime>11/12/2017 22:43:28</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Invoice/Index.cshtml">
+      <publishTime>12/03/2017 01:05:26</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Producer/Index.cshtml">
+      <publishTime>10/31/2017 23:15:21</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Product/Index.cshtml">
+      <publishTime>12/05/2017 00:25:09</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>09/30/2017 16:43:23</publishTime>
+      <publishTime>12/05/2017 22:07:43</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/User/Index.cshtml">
+      <publishTime>12/04/2017 23:11:41</publishTime>
     </File>
     <File Include="Areas/Admin/Views/web.config">
       <publishTime>09/26/2017 22:09:36</publishTime>
@@ -748,7 +778,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2017 21:31:50</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/bootstrap/dist/css/bootstrap.css">
-      <publishTime>09/27/2017 21:31:50</publishTime>
+      <publishTime>11/26/2017 16:38:29</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/bootstrap/dist/css/bootstrap.css.map">
       <publishTime>09/27/2017 21:31:50</publishTime>
@@ -1575,6 +1605,120 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Asset/Admin/vendors/cropper/src/scss/_variables.scss">
       <publishTime>09/27/2017 21:31:56</publishTime>
     </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.bootstrap.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.bootstrap.min.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.bootstrap4.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.bootstrap4.min.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.dataTables.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.dataTables.min.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.foundation.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.foundation.min.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.jqueryui.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.jqueryui.min.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.semanticui.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/css/editor.semanticui.min.css">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/dataTables.editor.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/dataTables.editor.min.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.bootstrap.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.bootstrap.min.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.bootstrap4.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.bootstrap4.min.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.foundation.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.foundation.min.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.jqueryui.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.jqueryui.min.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.semanticui.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Editor/js/editor.semanticui.min.js">
+      <publishTime>10/14/2017 21:33:03</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.bootstrap.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.bootstrap.min.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.bootstrap4.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.bootstrap4.min.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.dataTables.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.dataTables.min.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.foundation.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.foundation.min.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.jqueryui.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.jqueryui.min.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.semanticui.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/css/select.semanticui.min.css">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/js/dataTables.select.js">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
+    <File Include="Asset/Admin/vendors/datatable/Select/js/dataTables.select.min.js">
+      <publishTime>10/14/2017 21:56:22</publishTime>
+    </File>
     <File Include="Asset/Admin/vendors/datatables.net-bs/.bower.json">
       <publishTime>09/27/2017 21:31:56</publishTime>
     </File>
@@ -2311,232 +2455,232 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2017 21:31:59</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-JO.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-KW.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-LB.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-LY.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-MA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-OM.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-QA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-SA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-SY.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-TN.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ar-YE.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/az-Cyrl-AZ.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/az-Latn-AZ.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/be-BY.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/bg-BG.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/bs-Latn-BA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/ca-ES.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/cs-CZ.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/cy-GB.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/da-DK.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/de-AT.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/de-CH.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/de-DE.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/de-LI.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/de-LU.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/dv-MV.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/el-GR.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-029.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-AU.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-BZ.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-CA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-GB.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-IE.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-JM.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-NZ.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-PH.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-TT.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-ZA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/en-ZW.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-AR.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-BO.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-CL.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-CO.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-CR.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-DO.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-EC.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-ES.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-GT.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-HN.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-MX.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-NI.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-PA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-PE.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-PR.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-PY.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-SV.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-UY.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/es-VE.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/et-EE.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/eu-ES.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fa-IR.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fi-FI.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fo-FO.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fr-BE.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fr-CA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fr-CH.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fr-FR.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fr-LU.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/fr-MC.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/gl-ES.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/gu-IN.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/he-IL.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/hi-IN.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/hr-BA.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/hr-HR.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/hu-HU.js">
-      <publishTime>09/27/2017 21:32:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Asset/Admin/vendors/DateJS/build/i18n/hy-AM.js">
       <publishTime>09/27/2017 21:32:01</publishTime>
@@ -12834,47 +12978,1526 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Asset/Admin/vendors/validator/validator.js">
       <publishTime>09/27/2017 21:32:35</publishTime>
     </File>
+    <File Include="Asset/Common/ckeditor/adapters/jquery.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/build-config.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/CHANGES.md">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/ckeditor.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/config.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/contents.css">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/af.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ar.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/az.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/bg.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/bn.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/bs.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ca.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/cs.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/cy.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/da.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/de-ch.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/de.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/el.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/en-au.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/en-ca.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/en-gb.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/en.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/eo.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/es-mx.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/es.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/et.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/eu.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/fa.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/fi.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/fo.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/fr-ca.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/fr.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/gl.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/gu.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/he.js">
+      <publishTime>11/10/2017 23:13:41</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/hi.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/hr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/hu.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/id.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/is.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/it.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ja.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ka.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/km.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ko.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ku.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/lt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/lv.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/mk.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/mn.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ms.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/nb.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/nl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/no.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/oc.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/pl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/pt-br.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/pt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ro.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ru.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/si.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/sk.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/sl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/sq.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/sr-latn.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/sr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/sv.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/th.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/tr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/tt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/ug.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/uk.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/vi.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/zh-cn.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/lang/zh.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/LICENSE.md">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/a11yhelp.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/af.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/ar.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/az.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/bg.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/ca.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/cs.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/cy.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/da.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/de-ch.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/de.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/el.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/en-gb.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/en.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/eo.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/es-mx.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/es.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/et.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/eu.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/fa.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/fi.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/fo.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/fr-ca.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/fr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/gl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/gu.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/he.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/hi.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/hr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/hu.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/id.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/it.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/ja.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/km.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/ko.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/ku.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/lt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/lv.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/mk.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/mn.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/nb.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/nl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/no.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/oc.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/pl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/pt-br.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/pt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/ro.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/ru.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/si.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/sk.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/sl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/sq.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/sr-latn.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/sr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/sv.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/th.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/tr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/tt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/ug.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/uk.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/vi.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/zh-cn.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/zh.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/a11yhelp/dialogs/lang/_translationstatus.txt">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/about/dialogs/about.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/about/dialogs/hidpi/logo_ckeditor.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/about/dialogs/logo_ckeditor.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/dialog/dialogDefinition.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/icons.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/icons_hidpi.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/image/dialogs/image.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/image/images/noimage.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/link/dialogs/anchor.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/link/dialogs/link.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/link/images/anchor.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/link/images/hidpi/anchor.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/magicline/images/hidpi/icon-rtl.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/magicline/images/hidpi/icon.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/magicline/images/icon-rtl.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/magicline/images/icon.png">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/pastefromword/filter/default.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/scayt/CHANGELOG.md">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/scayt/dialogs/dialog.css">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/scayt/dialogs/options.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/scayt/dialogs/toolbar.css">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/scayt/LICENSE.md">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/scayt/README.md">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/af.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/ar.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/az.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/bg.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/ca.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/cs.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/cy.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/da.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/de-ch.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/de.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/el.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/en-au.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/en-ca.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/en-gb.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/en.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/eo.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/es-mx.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/es.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/et.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/eu.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/fa.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/fi.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/fr-ca.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/fr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/gl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/he.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/hr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/hu.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/id.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/it.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/ja.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/km.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/ko.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/ku.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/lt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/lv.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/nb.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/nl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/no.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/oc.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/pl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/pt-br.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/pt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/ru.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/si.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/sk.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/sl.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/sq.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/sv.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/th.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/tr.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/tt.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/ug.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/uk.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/vi.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/zh-cn.js">
+      <publishTime>11/10/2017 23:13:42</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/zh.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/lang/_translationstatus.txt">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/specialchar/dialogs/specialchar.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/table/dialogs/table.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/tableselection/styles/tableselection.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/tabletools/dialogs/tableCell.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/wsc/dialogs/ciframe.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/wsc/dialogs/tmpFrameset.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/wsc/dialogs/wsc.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/wsc/dialogs/wsc.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/wsc/dialogs/wsc_ie.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/wsc/LICENSE.md">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/wsc/README.md">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/README.md">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/css/samples.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/img/github-top.png">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/img/header-bg.png">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/img/header-separator.png">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/img/logo.png">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/img/navigation-tip.png">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/index.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/js/sample.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/js/sf.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/ajax.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/api.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/appendto.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/assets/inlineall/logo.png">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/assets/outputxhtml/outputxhtml.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/assets/posteddata.php">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/assets/sample.jpg">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/assets/uilanguages/languages.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/datafiltering.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/dialog/assets/my_dialog.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/dialog/dialog.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/divreplace.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/enterkey/enterkey.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/htmlwriter/assets/outputforflash/outputforflash.fla">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/htmlwriter/assets/outputforflash/outputforflash.swf">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/htmlwriter/assets/outputforflash/swfobject.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/htmlwriter/outputforflash.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/htmlwriter/outputhtml.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/index.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/inlineall.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/inlinebycode.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/inlinetextarea.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/jquery.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/magicline/magicline.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/readonly.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/replacebyclass.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/replacebycode.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/sample.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/sample.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/sample_posteddata.php">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/tabindex.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/toolbar/toolbar.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/uicolor.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/uilanguages.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/wysiwygarea/fullpage.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/old/xhtmlstyle.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/css/fontello.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/font/config.json">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/font/fontello.eot">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/font/fontello.svg">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/font/fontello.ttf">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/font/fontello.woff">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/font/LICENSE.txt">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/index.html">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/js/abstracttoolbarmodifier.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/js/fulltoolbareditor.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/js/toolbarmodifier.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/js/toolbartextmodifier.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/lib/codemirror/codemirror.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/lib/codemirror/codemirror.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/lib/codemirror/javascript.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/lib/codemirror/LICENSE">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/lib/codemirror/show-hint.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/samples/toolbarconfigurator/lib/codemirror/show-hint.js">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/dialog.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/dialog_ie.css">
+      <publishTime>11/10/2017 23:13:43</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/dialog_ie8.css">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/dialog_iequirks.css">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/editor.css">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/editor_gecko.css">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/editor_ie.css">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/editor_ie8.css">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/editor_iequirks.css">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/icons.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/icons_hidpi.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/arrow.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/close.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/hidpi/close.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/hidpi/lock-open.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/hidpi/lock.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/hidpi/refresh.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/lock-open.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/lock.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/refresh.png">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/images/spinner.gif">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/skins/moono-lisa/readme.md">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/ckeditor/styles.js">
+      <publishTime>11/10/2017 23:13:44</publishTime>
+    </File>
+    <File Include="Asset/Common/css/Custom.css">
+      <publishTime>11/20/2017 23:03:50</publishTime>
+    </File>
+    <File Include="Asset/Common/css/DropDown.css">
+      <publishTime>11/24/2017 23:12:59</publishTime>
+    </File>
+    <File Include="Asset/Common/css/loader.css">
+      <publishTime>11/14/2017 20:33:40</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/css/normalize.min.css">
+      <publishTime>11/13/2017 23:20:49</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/css/style.css">
+      <publishTime>11/26/2017 10:47:47</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/css/font-awesome.css">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/css/font-awesome.min.css">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/fonts/fontawesome-webfont.eot">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/fonts/fontawesome-webfont.svg">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/fonts/fontawesome-webfont.woff">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/fonts/FontAwesome.otf">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/HELP-US-OUT.txt">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/animated.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/bordered-pulled.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/core.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/fixed-width.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/font-awesome.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/icons.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/larger.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/list.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/mixins.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/path.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/rotated-flipped.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/screen-reader.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/stacked.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/less/variables.less">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/font-awesome.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_animated.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_bordered-pulled.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_core.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_fixed-width.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_icons.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_larger.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_list.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_mixins.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_path.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_rotated-flipped.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_screen-reader.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_stacked.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/font-awesome-4.7.0/scss/_variables.scss">
+      <publishTime>11/13/2017 23:19:08</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/js/index.js">
+      <publishTime>11/26/2017 10:47:02</publishTime>
+    </File>
+    <File Include="Asset/Common/Login/js/jquery-1.11.0.min.js">
+      <publishTime>11/13/2017 23:14:37</publishTime>
+    </File>
+    <File Include="Asset/Common/Photos/Fail.png">
+      <publishTime>10/21/2017 21:36:21</publishTime>
+    </File>
+    <File Include="Asset/Common/Photos/Success.png">
+      <publishTime>10/21/2017 21:34:38</publishTime>
+    </File>
+    <File Include="Asset/Common/Viewmore/css/viewmore.css">
+      <publishTime>12/05/2017 00:00:18</publishTime>
+    </File>
+    <File Include="Asset/Common/Viewmore/js/jquery-ui.min.js">
+      <publishTime>12/04/2017 23:57:01</publishTime>
+    </File>
+    <File Include="Asset/Common/Viewmore/js/viewmore.js">
+      <publishTime>12/05/2017 00:03:47</publishTime>
+    </File>
+    <File Include="Asset/User/css/animate.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/bootstrap.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/bootstrap.css.map">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/bootstrap.min.css">
+      <publishTime>11/26/2017 17:00:48</publishTime>
+    </File>
+    <File Include="Asset/User/css/custom.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/font-awesome.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/fonts/fontawesome-webfont.eot">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/fonts/fontawesome-webfont.svg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/fonts/fontawesome-webfont.ttf">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/fonts/fontawesome-webfont.woff">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/fonts/FontAwesome.otf">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/owl.carousel.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/owl.theme.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/style.blue.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/style.default.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/style.green.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/style.marsala.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/style.pink.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/style.red.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/style.turquoise.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/css/style.violet.css">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/apple-touch-icon-114x114.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/apple-touch-icon-120x120.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/apple-touch-icon-144x144.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/apple-touch-icon-152x152.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/apple-touch-icon-57x57.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/apple-touch-icon-72x72.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/apple-touch-icon-76x76.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/apple-touch-icon.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/banner.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/banner2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/basketsquare.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/blog-avatar.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/blog-avatar2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/blog-medium.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/blog-recent-2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/blog-recent-3.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/blog-recent.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/blog.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/blog2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/customer-1.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/customer-2.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/customer-3.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/customer-4.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/customer-5.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/customer-6.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/detailbig1.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/detailbig2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/detailbig3.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/detailsquare.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/detailsquare2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/detailsquare3.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/eShoplogo.png">
+      <publishTime>11/19/2017 00:10:19</publishTime>
+    </File>
+    <File Include="Asset/User/img/favicon.ico">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/fixed-background-1.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/fixed-background-2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/home-try.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/home.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/homepage-slider.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/logo-small.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/logo.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/main-slider1.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/main-slider2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/main-slider3.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/main-slider4.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/marker.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/men.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/page-1.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/page-2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/page-3.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/payment.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/person-1.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/person-2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/person-3.png">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/person-4.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/photogrid.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-1.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-3.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-4.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-5.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-6.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-7.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-8.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/portfolio-9.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/product1.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/product2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/product3.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/product4.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/slide1.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/slide2.jpg">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/img/slide3.jpg">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/slide4.jpg">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/slide5.jpg">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/slide6.jpg">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/template-easy-code.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/template-easy-customize-less.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/template-easy-customize.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/template-homepage.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/template-mac.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/template-tablets-2.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/template-tablets.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/texture-bw.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/texture-turquoise.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/texture-violet.png">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/img/women.jpg">
+      <publishTime>11/12/2017 22:27:36</publishTime>
+    </File>
+    <File Include="Asset/User/js/bootstrap-hover-dropdown.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/bootstrap.min.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/front.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/gmaps.init.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/gmaps.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/jquery-1.11.0.min.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/jquery.cookie.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/jquery.counterup.min.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/jquery.parallax-1.1.3.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/owl.carousel.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/owl.carousel.min.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/respond.min.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
+    <File Include="Asset/User/js/waypoints.min.js">
+      <publishTime>11/12/2017 22:27:35</publishTime>
+    </File>
     <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
       <publishTime>02/22/2013 08:43:40</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>09/17/2017 16:35:59</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>03/02/2015 09:32:26</publishTime>
+      <publishTime>02/03/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>03/02/2015 09:32:26</publishTime>
+      <publishTime>02/03/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>11/30/2016 16:07:42</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.DependencyCollector.dll">
-      <publishTime>12/07/2016 11:45:42</publishTime>
+      <publishTime>07/12/2016 11:45:42</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
-      <publishTime>12/07/2016 11:50:34</publishTime>
+      <publishTime>07/12/2016 11:50:34</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
-      <publishTime>12/06/2016 15:15:48</publishTime>
+      <publishTime>06/12/2016 15:15:48</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Web.dll">
-      <publishTime>12/07/2016 11:49:10</publishTime>
+      <publishTime>07/12/2016 11:49:10</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.WindowsServer.dll">
-      <publishTime>12/07/2016 11:50:34</publishTime>
+      <publishTime>07/12/2016 11:50:34</publishTime>
     </File>
     <File Include="bin/Microsoft.ApplicationInsights.dll">
-      <publishTime>12/06/2016 15:09:52</publishTime>
+      <publishTime>06/12/2016 15:09:52</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>04/03/2015 17:07:22</publishTime>
+      <publishTime>03/04/2015 17:07:22</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
-      <publishTime>04/03/2015 17:07:22</publishTime>
+      <publishTime>03/04/2015 17:07:22</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
-      <publishTime>04/03/2015 17:07:22</publishTime>
+      <publishTime>03/04/2015 17:07:22</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -12909,14 +14532,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>04/23/2012 15:23:58</publishTime>
     </File>
+    <File Include="bin/MiscUtil.dll">
+      <publishTime>02/26/2009 21:09:48</publishTime>
+    </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/03/2014 20:33:56</publishTime>
+      <publishTime>03/08/2014 20:33:56</publishTime>
     </File>
     <File Include="bin/OnlineShop.dll">
-      <publishTime>10/07/2017 20:23:36</publishTime>
+      <publishTime>12/06/2017 00:44:16</publishTime>
+    </File>
+    <File Include="bin/OnlineShop.pdb">
+      <publishTime>12/06/2017 00:44:16</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>11/27/2012 13:00:52</publishTime>
+    </File>
+    <File Include="bin/PagedList.dll">
+      <publishTime>09/30/2013 17:36:38</publishTime>
+    </File>
+    <File Include="bin/PagedList.Mvc.dll">
+      <publishTime>09/30/2013 18:15:20</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/18/2015 20:19:46</publishTime>
@@ -12970,7 +14605,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:02:18</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>02/11/2014 15:26:04</publishTime>
+      <publishTime>11/02/2014 15:26:04</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
       <publishTime>01/28/2015 04:02:32</publishTime>
@@ -12985,13 +14620,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>09/10/2013 17:28:38</publishTime>
+      <publishTime>10/09/2013 17:28:38</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>09/17/2017 16:34:56</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>09/17/2017 16:34:56</publishTime>
+    </File>
+    <File Include="Content/PagedList.css">
+      <publishTime>11/18/2017 16:42:57</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>09/17/2017 16:34:40</publishTime>
@@ -13014,8 +14652,38 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>09/17/2017 16:34:40</publishTime>
     </File>
+    <File Include="js/Cart.js">
+      <publishTime>11/29/2017 23:14:34</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>09/17/2017 16:36:00</publishTime>
+      <publishTime>11/18/2017 16:42:58</publishTime>
+    </File>
+    <File Include="Photos/carousel/cover_1.png">
+      <publishTime>12/05/2017 23:07:07</publishTime>
+    </File>
+    <File Include="Photos/carousel/cover_2.gif">
+      <publishTime>12/05/2017 23:07:07</publishTime>
+    </File>
+    <File Include="Photos/carousel/cover_3.png">
+      <publishTime>12/05/2017 23:07:07</publishTime>
+    </File>
+    <File Include="Photos/carousel/cover_4.png">
+      <publishTime>12/05/2017 23:07:07</publishTime>
+    </File>
+    <File Include="Photos/Producer/6182ea25-9daa-4665-ab86-3e2f64c49ce1.png">
+      <publishTime>10/31/2017 23:35:46</publishTime>
+    </File>
+    <File Include="Photos/Producer/82e8c19a-61d0-4361-8487-bb4382902f1f.jpg">
+      <publishTime>10/31/2017 23:36:32</publishTime>
+    </File>
+    <File Include="Photos/Producer/d4947d0b-493d-4588-a8d1-0eac4814c4aa.png">
+      <publishTime>10/31/2017 23:36:05</publishTime>
+    </File>
+    <File Include="Photos/Producer/f41fc588-91a0-4541-8151-5db53f7eacf2.png">
+      <publishTime>10/31/2017 23:35:56</publishTime>
+    </File>
+    <File Include="Photos/Producer/fcdc68c0-a584-4173-ae4a-7d44d5746a1b.png">
+      <publishTime>10/31/2017 23:36:15</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>09/17/2017 16:34:55</publishTime>
@@ -13054,7 +14722,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/17/2017 16:35:13</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>09/30/2017 16:36:09</publishTime>
+      <publishTime>10/13/2017 22:48:26</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>09/17/2017 16:35:19</publishTime>
@@ -13072,10 +14740,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/17/2017 16:35:19</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>09/17/2017 16:35:19</publishTime>
+      <publishTime>10/13/2017 21:51:53</publishTime>
+    </File>
+    <File Include="Views/Account/LoginCustom.cshtml">
+      <publishTime>12/04/2017 23:36:19</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>09/17/2017 16:35:19</publishTime>
+    </File>
+    <File Include="Views/Account/RegisterCustom.cshtml">
+      <publishTime>11/26/2017 15:45:53</publishTime>
     </File>
     <File Include="Views/Account/ResetPassword.cshtml">
       <publishTime>09/17/2017 16:35:19</publishTime>
@@ -13092,11 +14766,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
       <publishTime>09/17/2017 16:35:19</publishTime>
     </File>
+    <File Include="Views/Cart/CheckOut.cshtml">
+      <publishTime>12/05/2017 22:54:35</publishTime>
+    </File>
+    <File Include="Views/Cart/CheckOutSuccess.cshtml">
+      <publishTime>11/30/2017 23:58:18</publishTime>
+    </File>
+    <File Include="Views/Cart/Index.cshtml">
+      <publishTime>12/05/2017 22:54:24</publishTime>
+    </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>09/17/2017 16:34:40</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>09/17/2017 16:34:40</publishTime>
+    </File>
+    <File Include="Views/Home/ContactCustom.cshtml">
+      <publishTime>12/05/2017 22:29:48</publishTime>
+    </File>
+    <File Include="Views/Home/HomePage.cshtml">
+      <publishTime>12/05/2017 23:19:04</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>09/17/2017 16:34:40</publishTime>
@@ -13119,17 +14808,44 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>09/17/2017 16:35:19</publishTime>
     </File>
+    <File Include="Views/Product/ViewDetail.cshtml">
+      <publishTime>12/05/2017 23:10:25</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/17/2017 16:35:19</publishTime>
     </File>
+    <File Include="Views/Shared/LeftMenu.cshtml">
+      <publishTime>11/19/2017 23:24:32</publishTime>
+    </File>
     <File Include="Views/Shared/Lockout.cshtml">
       <publishTime>09/17/2017 16:35:20</publishTime>
+    </File>
+    <File Include="Views/Shared/Navbar.cshtml">
+      <publishTime>12/05/2017 22:10:38</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>09/17/2017 16:35:19</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>09/17/2017 16:35:20</publishTime>
+    </File>
+    <File Include="Views/Shared/_UserLayout.cshtml">
+      <publishTime>12/05/2017 22:45:20</publishTime>
+    </File>
+    <File Include="Views/Shared/_UserManage.cshtml">
+      <publishTime>11/26/2017 22:29:19</publishTime>
+    </File>
+    <File Include="Views/User/ChangePassword.cshtml">
+      <publishTime>12/03/2017 23:15:43</publishTime>
+    </File>
+    <File Include="Views/User/GetInvoiceDetailbyInvoiceId.cshtml">
+      <publishTime>12/03/2017 21:59:20</publishTime>
+    </File>
+    <File Include="Views/User/Info.cshtml">
+      <publishTime>12/03/2017 23:19:32</publishTime>
+    </File>
+    <File Include="Views/User/Orders.cshtml">
+      <publishTime>12/03/2017 21:59:14</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/17/2017 16:34:40</publishTime>
@@ -13138,7 +14854,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/17/2017 16:34:40</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/02/2017 22:00:57</publishTime>
+      <publishTime>12/06/2017 00:35:19</publishTime>
     </File>
   </ItemGroup>
 </Project>

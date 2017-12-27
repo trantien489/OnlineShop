@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login, Register form</title>
+    <link href="~/Asset/Common/Login/css/normalize.min.css" rel="stylesheet" />
+    <link href="~/Asset/Common/Login/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Asset/Common/Login/css/style.css">
+
+</head>
+<style>
+    .u-form-group input[type="text"] {
+        width: calc(50% - 22px);
+        height: 45px;
+        outline: none;
+        border: 1px solid #ddd;
+        padding: 0 10px;
+        border-radius: 2px;
+        color: #333;
+        font-size: 0.8rem;
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+    }
+</style>
+<body>
+    <div class="login-box" style="margin-top: 10%;">
+        <div class="lb-header">
+            <a href="~/account/login" >Đăng nhập</a>
+            <a href="~/account/register" class="active">Đăng ký</a>
+        </div>
+        <div class="social-login">
+            <a href="#">
+                <i class="fa fa-facebook fa-lg"></i>
+                Đăng nhập bằng Facebook
+            </a>
+            <a href="#">
+                <i class="fa fa-google-plus fa-lg"></i>
+                Đăng nhập bằng Google
+            </a>
+        </div>
+        @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "email-signup", style = $"display:block", role = "" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "text-danger", style = "text-align:left" })
+            <div style="float:left">
+                <div class="u-form-group">
+                    <input type="text" style="width:250px" name="Username" placeholder="Tài khoản" />
+                </div>
+
+                <div class="u-form-group">
+                    <input type="password" style="width:250px" name="Password" placeholder="Mật khẩu" />
+                </div>
+                <div class="u-form-group">
+                    <input type="password" style="width:250px" name="ConfirmPassword" placeholder="Nhập lại mật khẩu" />
+                </div>
+                <div class="u-form-group">
+                    <input type="email" style="width:250px" name="Email" placeholder="Email" />
+                </div>
+            </div>
+
+            <div style="float:right">
+                <div class="u-form-group">
+                    <input type="text" style="width:250px" name="FullName" placeholder="Họ và tên" />
+                </div>
+                <div class="u-form-group">
+                    <input type="text" style="width:250px" name="PhoneNumber" placeholder="Số điện thoại" />
+                </div>
+                <div class="u-form-group">
+                    <input type="text" style="width:250px" name="Address" placeholder="Địa chỉ" />
+                </div>
+                <div class="u-form-group">
+                    <button type="submit" style="width:271px">Đăng ký</button>
+                </div>
+            </div>
+
+        }
+
+    </div>
+    <script src="~/Asset/Common/Login/js/jquery-1.11.0.min.js"></script>
+    <script src="~/Asset/Common/Login/js/index.js"></script>
+</body>
+</html>

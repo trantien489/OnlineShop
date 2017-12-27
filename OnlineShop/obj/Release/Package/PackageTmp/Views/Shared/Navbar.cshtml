@@ -1,0 +1,105 @@
+﻿@model string
+@{
+    dynamic obj = Json.Decode(Model);
+}
+
+<div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+
+                <a class="navbar-brand home" href="~/">
+                    <img src="~/Asset/User/img/eShoplogo.png" alt="Universal logo" class="hidden-xs hidden-sm" style="width:140px; margin-top:-3%">
+                    <img src="~/Asset/User/img/eShoplogo.png" alt="Universal logo" class="visible-xs visible-sm" style="width:100px"><span class="sr-only">Universal - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            <!--/.navbar-header -->
+
+            <div class="navbar-collapse collapse" id="navigation">
+
+                <ul class="nav navbar-nav navbar-right">
+                    @foreach (var item in obj)
+                    {
+                        @*var imgPath = item.Value[0].CategoryImage != null ? $"~/Photos/Category/{item.Value[0].CategoryImage}" : "";
+                        <li class="dropdown use-yamm yamm-fw">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">@item.Value[0].CategoryName<b class="caret"></b></a>
+                            <ul class="dropdown-menu" style="display: none;">
+                                <li>
+                                    <div class="yamm-content">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <img src="@Url.Content(imgPath)" class="img-responsive hidden-xs" alt="">
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <ul>
+                                                    @foreach (var value in item.Value)
+                                                    {
+                                                        var productPath = $"~/product/{value.CategoryId}/{value.ProducerId}";
+                                                        <li>
+                                                            <a href="@Url.Content(productPath)">@value.ProducerName</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>*@
+
+
+                        <li class="dropdown">
+                            <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">@item.Value[0].CategoryName <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var value in item.Value)
+                                {
+                                    var productPath = $"~/san-pham/{value.CategoryMetaKeyWord}/{value.ProducerName.ToLower()}";
+                                    <li>
+                                        <a href="@Url.Content(productPath)">@value.ProducerName</a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    <li class="dropdown">
+                        <a href="~/home/contactcustom" class="dropdown-toggle" >Liên hệ</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!--/.nav-collapse -->
+
+
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                            <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                        </span>
+                    </div>
+                </form>
+
+            </div>
+            <!--/.nav-collapse -->
+
+        </div>
+
+
+    </div>
+    <!-- /#navbar -->
+
+</div>

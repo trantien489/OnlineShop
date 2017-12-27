@@ -1,0 +1,303 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>DANH SÁCH SẢN PHẨM</h2>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <table id="myGrid" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Stt</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Tên hãng</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Add Modal-->
+<div class="modal fade bs-example-modal-lg" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Thêm mới sản phẩm</h4>
+            </div>
+            <div class="modal-body">
+                <form id="AddForm" method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Tên danh mục
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12" id="">
+                            <select id="SelectCategory" style="margin-top: 7px">
+                                <!--Load Category-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Tên hãng
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12" id="">
+                            <select id="SelectProducer" style="margin-top: 7px">
+
+                                <!--Load select Producer-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Tên sản phẩm <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="Name" id="Name" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Số lượng <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" name="Quantity" id="Quantity" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Giá <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" name="Price" id="Price" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Hình ảnh <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" name="Image" id="Image" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Thông số kỹ thuật <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <textarea name="Information" id="Information"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Chi tiết <span class="required"></span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                            <textarea name="Deatail" id="Detail"></textarea>
+                        </div>
+                    </div>
+                    <span id="AddModalMessage" style="color: red; margin-left:30%"> </span>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="Add();">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete  Modal -->
+<div class="modal fade" id="DeleteAlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+            </div>
+            <div class="x_content">
+                <h2 style="padding-left:5%"> Bạn muốn xóa mục này? </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Không</button>
+                <button type="button" onclick="Delete()" class="btn btn-secondary">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Update Alert Modal -->
+<div class="modal fade bs-example-modal-lg" id="UpdateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Chỉnh sửa sản phẩm</h4>
+            </div>
+            <div class="modal-body">
+                <form id="UpdateForm" method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Tên danh mục
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12" id="">
+                            <select id="UpdateSelectCategory" style="margin-top: 7px">
+                                <!--Load Category-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Tên hãng
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12" id="">
+                            <select id="UpdateSelectProducer" style="margin-top: 7px">
+                                <!--Load select Producer-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Tên sản phẩm <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="Name" id="UpdateName" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Số lượng <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" name="Quantity" id="UpdateQuantity" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Giá <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" name="Price" id="UpdatePrice" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Hình ảnh <span class="required"></span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <img width="70%" id="UpdateimageView" />
+                            <input type="file" name="Image" id="UpdateImage" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Thông số kỹ thuật <span class="required">*</span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <textarea name="Information" id="UpdateInformation"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Chi tiết <span class="required"></span>
+                        </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <textarea name="Deatail" id="UpdateDetail"></textarea>
+                        </div>
+                    </div>
+                    <span id="UpdateModalMessage" style="color: red; margin-left:30%"> </span>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="Update();">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Alert Modal -->
+<div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width:30%; margin:10px auto;display:table">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+            </div>
+            <div class="x_content">
+                <div style="margin:0 auto; display:table">
+                    <img src="" id="alerticon" style="width:50px" /> <h2 id="message"></h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--View Detail Modal -->
+<div class="modal fade bs-example-modal-lg" id="ViewDetaiModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Xem chi tiết sản phẩm</h4>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-12">
+                        <div class="product-image">
+                            <img id="DetailProductImage" alt="...">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-12" style="border:0px solid #e5e5e5;">
+                        <h3 class="prod_title" id="DetailName"></h3>
+                        <p>Danh mục: <span id="DetailCategory"></span> </p>
+                        <p>Hãng sản xuất: <span id="DetailProducer"></span> </p>
+                        <p>Giá: <span id="DetailPrice"></span></p>
+                        <p>Thông số kỹ thuật: <span id="DetailInformation"></span> </p>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:3%">
+                    <h3>Chi tiết</h3>
+                    <div id="DetailDetail" class="content hideContent">
+
+                    </div>
+                    <div class="show-more">
+                        <a href="#">Hiển thị thêm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    @section Script {
+        <script src="~/Areas/Admin/javascript/product/Index.js"></script>
+<script src="~/Asset/Common/Viewmore/js/viewmore.js"></script>
+    }
+

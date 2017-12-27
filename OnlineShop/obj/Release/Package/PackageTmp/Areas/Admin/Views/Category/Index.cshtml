@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>DANH SÁCH DANH MỤC</h2>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <table id="myGrid" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Stt</th>
+                            <th>Tên danh mục</th>
+                            <th>Tên hãng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Add Modal-->
+<div class="modal fade bs-example-modal-lg" id="AddModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Thêm mới danh mục</h4>
+            </div>
+            <div class="modal-body">
+                <form id="AddForm" method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Tên danh mục <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="name" id="name" required class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Tên hãng
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12" id="CheckboxProducer">
+                            <!--Load checkbox Producers-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Hình ảnh
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" name="image" id="image" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <span id="AddModalMessage" style="color: red; margin-left:30%"> </span>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="Add();">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete  Modal -->
+<div class="modal fade" id="DeleteAlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+            </div>
+            <div class="x_content">
+                <h2 style="padding-left:5%"> Bạn muốn xóa mục này? </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                <button type="button" onclick="Delete()" class="btn btn-primary">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Update Alert Modal -->
+<div class="modal fade bs-example-modal-lg" id="UpdateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Thêm mới danh mục</h4>
+            </div>
+            <div class="modal-body">
+                <form id="UpdateForm" method="post" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Tên danh mục <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="UpdateName" id="UpdateName"  class="form-control col-md-7 col-xs-12" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Tên hãng
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12" id="UpdateCheckboxProducer">
+                            <!--Load checkbox Producers-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Hình ảnh
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <img width=200px" id="UpdateImageView" />
+                            <input type="file" name="image" id="Updateimage" class="form-control col-md-7 col-xs-12" style="margin-top:10px">
+                        </div>
+                    </div>
+                    <span id="UpdateModalMessage" style="color: red; margin-left:30%"> </span>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="Update();">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Alert Modal -->
+<div class="modal fade" id="AlertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width:30%; margin:10px auto;display:table">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
+            </div>
+            <div class="x_content">
+                <div style="margin:0 auto; display:table">
+                    <img src="" id="alerticon" style="width:50px" /> <h2 id="message"></h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Script {
+    <script src="~/Areas/Admin/javascript/category/index.js"></script>
+}
+
+
+
+

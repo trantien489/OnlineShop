@@ -52,6 +52,18 @@ function DeleteCart(productId) {
     });
 }
 
+function BuyNow(productId) {
+    $.ajax({
+        type: "POST",
+        url: '/cart/AddtoCart/',
+        data: { productId: productId },
+        success: function (data) {
+            window.location.href = "/cart/checkout"
+        }
+    });
+
+}
+
 function ReloadCart() {
     $.ajax({
         type: "GET",
